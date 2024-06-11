@@ -2,18 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class enemy : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
-    private UnityEngine.AI.NavMeshAgent agent;
+    private UnityEngine.AI.NavMeshAgent _agent;
     // Start is called before the first frame update
     void Start()
     {  
-      agent = this.GetComponent<UnityEngine.AI.NavMeshAgent>();
+      _agent = this.GetComponent<UnityEngine.AI.NavMeshAgent>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        agent.SetDestination(GameObject.Find("Tower").transform.position);
+        _agent.SetDestination(GameObject.Find("Tower").transform.position);
     }
 }
