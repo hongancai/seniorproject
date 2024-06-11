@@ -42,7 +42,7 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
                     ""name"": ""JoyStick"",
                     ""id"": ""0e69c7a8-dd44-4a97-a87e-557b94555724"",
                     ""path"": ""2DVector(mode=2)"",
-                    ""interactions"": ""Press(behavior=2)"",
+                    ""interactions"": ""Press"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Movement"",

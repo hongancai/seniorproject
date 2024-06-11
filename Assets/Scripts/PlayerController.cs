@@ -21,10 +21,13 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        Vector2 vector2 = _inputMaster.Player.Movement.ReadValue<Vector2>();
-        Debug.Log(vector2);
         Vector3 move = Vector3.zero;
-
+        
+        Vector2 gamepadInput = _inputMaster.Player.Movement.ReadValue<Vector2>();
+        if (gamepadInput != Vector2.zero)
+        {
+            move = new Vector3(gamepadInput.x, 0, gamepadInput.y);
+        }
         // 檢查按鍵輸入並設置移動向量
         if (Input.GetKey(KeyCode.A))
         {
