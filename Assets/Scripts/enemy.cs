@@ -5,17 +5,19 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
-    public Transform _traget;
-    public NavMeshAgent _agent;
-    // Start is called before the first frame update
+    public Transform target;
+    public NavMeshAgent agent;
+
     void Start()
-    {  
-      _agent = GetComponent<NavMeshAgent>();
+    {
+        agent = GetComponent<NavMeshAgent>(); //取得物件的Agent元件
     }
 
-    // Update is called once per frame
     void Update()
     {
-        _agent.SetDestination(_traget.transform.position);
+        if (target != null)
+        {
+            agent.SetDestination(target.position); // 設定目標位置
+        }
     }
 }
