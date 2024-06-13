@@ -1,0 +1,104 @@
+
+方婉庭設定圖Q版45度2.png
+size: 415,527
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+右包頭
+  rotate: false
+  xy: 201, 28
+  size: 84, 89
+  orig: 84, 89
+  offset: 0, 0
+  index: -1
+右手
+  rotate: false
+  xy: 287, 2
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+右腳
+  rotate: true
+  xy: 342, 250
+  size: 59, 66
+  orig: 59, 66
+  offset: 0, 0
+  index: -1
+右髮片1
+  rotate: true
+  xy: 201, 164
+  size: 49, 196
+  orig: 49, 196
+  offset: 0, 0
+  index: -1
+左包頭
+  rotate: false
+  xy: 258, 217
+  size: 82, 92
+  orig: 82, 92
+  offset: 0, 0
+  index: -1
+左手
+  rotate: true
+  xy: 355, 52
+  size: 65, 58
+  orig: 65, 58
+  offset: 0, 0
+  index: -1
+左腳
+  rotate: true
+  xy: 287, 68
+  size: 49, 66
+  orig: 49, 66
+  offset: 0, 0
+  index: -1
+左髮片1
+  rotate: true
+  xy: 201, 119
+  size: 43, 185
+  orig: 43, 185
+  offset: 0, 0
+  index: -1
+眼睛
+  rotate: false
+  xy: 273, 473
+  size: 130, 52
+  orig: 130, 52
+  offset: 0, 0
+  index: -1
+耳朵
+  rotate: false
+  xy: 2, 215
+  size: 254, 98
+  orig: 254, 98
+  offset: 0, 0
+  index: -1
+臉
+  rotate: false
+  xy: 2, 12
+  size: 197, 201
+  orig: 197, 201
+  offset: 0, 0
+  index: -1
+身體
+  rotate: true
+  xy: 273, 311
+  size: 97, 120
+  orig: 97, 120
+  offset: 0, 0
+  index: -1
+頭
+  rotate: false
+  xy: 2, 315
+  size: 269, 210
+  orig: 269, 210
+  offset: 0, 0
+  index: -1
+髮片2
+  rotate: true
+  xy: 273, 410
+  size: 61, 128
+  orig: 61, 128
+  offset: 0, 0
+  index: -1
