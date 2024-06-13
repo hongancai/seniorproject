@@ -15,9 +15,6 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        if (target != null)
-        {
-            agent.SetDestination(target.position); // 設定目標位置
-        }
+        agent.SetDestination(target.position); // 設定目標位置
     }
 }
