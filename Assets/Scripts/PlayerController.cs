@@ -8,13 +8,12 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 5f;
 
     private Rigidbody _rb;
-
+   
     private InputMaster _inputMaster;
-
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
-
+        
         _inputMaster = new InputMaster();
         _inputMaster.Enable();
     }
@@ -28,7 +27,7 @@ public class PlayerController : MonoBehaviour
         {
             move = new Vector3(gamepadInput.x, 0, gamepadInput.y);
         }
-        // 檢查按鍵輸入並設置移動向量
+        
         if (Input.GetKey(KeyCode.A))
         {
             move -= new Vector3(1, 0, 0);
@@ -48,5 +47,6 @@ public class PlayerController : MonoBehaviour
 
         // 設置角色的速度
         _rb.MovePosition(transform.position + move * (moveSpeed * Time.deltaTime));
+      
     }
 }
