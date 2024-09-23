@@ -4,20 +4,24 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class PauseMenu : MonoBehaviour
 {
-    [SerializeField] private InputActionReference menuInputActionReference; // 用於 Xbox 控制器的 Menu 鍵
+    private InputMaster _inputMaster;
     public GameObject pausemenu;
     public bool isShow;
-
     private void OnEnable()
     {
-        menuInputActionReference.action.started += MenuPressed;
+        _inputMaster = new InputMaster();
+        _inputMaster.Enable();
+
+        // 綁定 PauseMenu 鍵
+        _inputMaster.Menu.PauseMenu.performed += context => TogglePauseMenu();
     }
 
     private void OnDisable()
     {
-        menuInputActionReference.action.started -= MenuPressed;
+        // 取消綁定 PauseMenu 鍵
+        _inputMaster.Menu.PauseMenu.performed -= context => TogglePauseMenu();
+        _inputMaster.Disable();
     }
-
     void Start()
     {
         pausemenu.SetActive(isShow);
@@ -31,13 +35,6 @@ public class PauseMenu : MonoBehaviour
             TogglePauseMenu();
         }
     }
-
-    // 當 Menu 鍵被按下時觸發
-    private void MenuPressed(InputAction.CallbackContext context)
-    {
-        TogglePauseMenu();
-    }
-
     // 切換暫停選單顯示
     void TogglePauseMenu()
     {
