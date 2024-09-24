@@ -10,10 +10,11 @@ public class PlayerController : MonoBehaviour
     private Rigidbody _rb;
    
     private InputMaster _inputMaster;
+    private Animator animator;
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
-        
+        animator = GetComponent<Animator>();
         _inputMaster = new InputMaster();
         _inputMaster.Enable();
     }
@@ -31,6 +32,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             move -= new Vector3(1, 0, 0);
+           
         }
         if (Input.GetKey(KeyCode.D))
         {
@@ -43,6 +45,15 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.S))
         {
             move -= new Vector3(0, 0, 1);
+        }
+
+        if (move==Vector3.zero)
+        {
+            animator.Play("idle");
+        }
+        else
+        {
+            animator.Play("walk");
         }
 
         // 設置角色的速度
