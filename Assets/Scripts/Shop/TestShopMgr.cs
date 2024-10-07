@@ -23,8 +23,8 @@ public class TestShopMgr : MonoBehaviour
         //fromDB
         list = new List<ItemData>();
         IList<ItemData> result = new List<ItemData>();
-        result.Add(new ItemData() {Id = 0, Name = "麵線" , SpriteId = 0 });
-        result.Add(new ItemData() {Id = 1, Name = "高粱酒" , SpriteId = 1 });
+        result.Add(new ItemData() {Id = 0, Name = "高粱酒" , SpriteId = 0 });
+        result.Add(new ItemData() {Id = 1, Name = "后頭風獅爺" , SpriteId = 1 });
         result.Add(new ItemData() {Id = 2, Name = "貢糖" , SpriteId = 2 });
         result.Add(new ItemData() {Id = 3, Name = "牛肉乾" , SpriteId = 3 });
         
