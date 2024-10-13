@@ -5,12 +5,12 @@ using UnityEngine;
 public static class GameDB 
 {
     //Player
-    public static float playerHp;
-    public static float playerSpd;
-    public static float playerAtk;
-    public static float playerDef;
-    public static float playerAtkSpd;
-    public static float playerexp;
+    public static int playerHp = 0;
+    public static int playerSpd;
+    public static int playerAtk;
+    public static int playerDef;
+    public static int playerAtkSpd;
+    public static int playerexp;
     
     //Shop
     public static Res res;

@@ -1,37 +1,48 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class ShopOpener : MonoBehaviour
 {
     public GameObject shopUI;  // 指定商店的UI介面
-    public LayerMask shopLayerMask;  // 用於區分哪些物件是可以點擊的，例如你的 Quad
+    public LayerMask shopLayerMask;  // 用於Raycast檢測的Layer
+
+    void Start()
+    {
+        shopUI.SetActive(false);
+    }
 
     void Update()
     {
-        // 檢測玩家點擊
-        if (Input.GetMouseButtonDown(0))  // 檢查滑鼠左鍵點擊
+        // 當玩家按下滑鼠右鍵時進行檢測
+        if (Input.GetMouseButtonDown(1))  
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
+            PerformRaycast();
+        }
+    }
 
-            // 如果點擊到物件
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, shopLayerMask))
+    // 執行Raycast檢測
+    void PerformRaycast()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);  // 從攝影機到滑鼠指針發射射線
+        RaycastHit hit;
+
+        // 使用Raycast檢測射線是否打到了指定的Layer物件
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, shopLayerMask))
+        {
+            // 檢查擊中的物體是否有"Shop"標籤
+            if (hit.collider != null && hit.collider.CompareTag("Shop"))
             {
-                // 檢查點擊的是否是 Quad（或是你想要的物件）
-                if (hit.collider != null && hit.collider.CompareTag("ShopQuad"))
-                {
-                    ToggleShopUI();
-                }
+                OpenShopUI();
             }
         }
     }
 
-    // 顯示或隱藏商店
-    void ToggleShopUI()
+    // 打開商店UI
+    void OpenShopUI()
     {
-        bool isShopActive = shopUI.activeSelf;
-        shopUI.SetActive(!isShopActive);  // 切換商店UI的顯示狀態
-        
+        if (shopUI != null)
+        {
+            shopUI.SetActive(true);
+        }
     }
 }
