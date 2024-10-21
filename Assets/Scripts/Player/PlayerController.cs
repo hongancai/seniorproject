@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed = 5f;
+    //public float moveSpeed = 5f;
 
     private Rigidbody _rb;
    
@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     void Start()
     {
+        GameDB.playerSpd = 3.0f;
         _rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         _inputMaster = new InputMaster();
@@ -57,7 +58,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // 設置角色的速度
-        _rb.MovePosition(transform.position + move * (moveSpeed * Time.deltaTime));
+        _rb.MovePosition(transform.position + move * (GameDB.playerSpd * Time.deltaTime));
       
     }
 }

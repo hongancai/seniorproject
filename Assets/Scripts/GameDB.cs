@@ -6,28 +6,34 @@ public static class GameDB
 {
     //Player
     public static int playerHp = 0;
-    public static int playerSpd;
-    public static int playerAtk;
-    public static int playerDef;
-    public static int playerAtkSpd;
-    public static int playerexp;
+    public static int playerAtk = 0;
+    public static int playerDef = 0;
+    public static float playerSpd = 0.0f;
     
     //Shop
     public static Res res;
     
     //Enemy
-    public static float enemyHp;
-    public static float enemySpd;
-    public static float enemyAtk;
-    public static float enemyDef;
-    public static float enemyAtkSpd;
+    public static int enemyHp = 0;
+    public static int enemyAtk = 0;
+    public static int enemyDef =0;
     
     //Tower
-    public static float towerexp;
-    public static float towerHp;
-    public static float towerSpd;
-    public static float towerAtk;
-    public static float towerDef;
-    public static float towerAtkSpd;
+    public static int towerexp;
+    public static int towerHp;
+    public static int towerAtk;
+    public static int towerDef;
+    public static int towerAtkSpd;
+    
+    //PlayerPrefs
+    public static void Save()
+    {
+       //PlayerPrefs.SetInt();
+    }
+    
+    public static void Load()
+    {
+        
+    }
     
 }
