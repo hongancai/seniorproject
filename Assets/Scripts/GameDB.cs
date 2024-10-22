@@ -12,6 +12,7 @@ public static class GameDB
     
     //Shop
     public static Res res;
+    public static int money;
     
     //Enemy
     public static int enemyHp = 0;
@@ -19,7 +20,6 @@ public static class GameDB
     public static int enemyDef =0;
     
     //Tower
-    public static int towerexp;
     public static int towerHp;
     public static int towerAtk;
     public static int towerDef;
