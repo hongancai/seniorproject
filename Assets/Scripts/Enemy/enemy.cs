@@ -19,6 +19,7 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         _agent.SetDestination(_traget.transform.position);
+        gameObject.transform.eulerAngles = new Vector3(30, 0, 0);
     }
 
     public void TakeDamage()
@@ -28,6 +29,8 @@ public class Enemy : MonoBehaviour
         if (GameDB.enemyHp <= 0)
         {
             Destroy(gameObject);
+            //
+            
         }
     }
 }

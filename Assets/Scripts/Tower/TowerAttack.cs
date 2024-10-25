@@ -14,6 +14,7 @@ public class TowerAttack : MonoBehaviour
     {
         if (target != null)
         {
+            gameObject.transform.eulerAngles = new Vector3(30, 0, 0);
             // 瞄準目標
             Vector3 direction = target.position - transform.position;
             Quaternion lookRotation = Quaternion.LookRotation(direction);
