@@ -61,4 +61,5 @@ public class PlayerController : MonoBehaviour
         _rb.MovePosition(transform.position + move * (GameDB.playerSpd * Time.deltaTime));
       
     }
+    
 }

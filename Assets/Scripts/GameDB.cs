@@ -25,6 +25,8 @@ public static class GameDB
     public static int towerDef;
     public static int towerAtkSpd;
     
+    //PauseMenu
+    
     //PlayerPrefs
     public static void Save()
     {

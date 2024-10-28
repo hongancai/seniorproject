@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 7676634913464628857}
   - component: {fileID: 1837015540880333369}
   - component: {fileID: 7257558518750952853}
-  - component: {fileID: 3191231311247366874}
   - component: {fileID: 1991842349471845092}
+  - component: {fileID: 3666732593139453709}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 9183403750092064583}
   serializedVersion: 2
   m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
-  m_LocalPosition: {x: 498.33, y: 0.11135459, z: 499.948}
+  m_LocalPosition: {x: 498.336, y: 0.11135459, z: 499.948}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -66,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f660db34f63c734408734e7293aa0864, type: 2}
+  - {fileID: 2100000, guid: 532070abb0e760a4a85ca3506b2ead26, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9db98c60740638449864eb028fbe7ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: 44aa64594071c7e48aed3f5f29b23cae, type: 2}
+  skeletonDataAsset: {fileID: 11400000, guid: 4904c4555b32d074c9b47588361e4c3b, type: 2}
   initialSkinName: 
   initialFlipX: 0
   initialFlipY: 0
@@ -173,9 +173,21 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 116
   m_CollisionDetection: 0
---- !u!65 &3191231311247366874
+--- !u!114 &1991842349471845092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9183403750092064583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e46defac85d6fb46a2b8d2e84925918, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &3666732593139453709
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -194,17 +206,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.50973785, y: 0.9401797, z: 0.16}
-  m_Center: {x: 0.018127441, y: 0.4842282, z: -0.021190459}
---- !u!114 &1991842349471845092
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9183403750092064583}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e46defac85d6fb46a2b8d2e84925918, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Size: {x: 0.49066162, y: 1.2345178, z: 0.009}
+  m_Center: {x: 0.05407715, y: 0.6113175, z: -0.00000011360589}

@@ -8,11 +8,16 @@ public class MainMenu : MonoBehaviour
 {
     public Button btnstart;
     public Button btnexit;
+    public GameObject pauseMenu;
     
     void Start()
     {
         btnstart.onClick.AddListener(OnStartClick);
         btnexit.onClick.AddListener(OnExitClick);
+        if (pauseMenu != null)
+        {
+            pauseMenu.SetActive(false); // 確保主選單顯示時暫停介面是關閉的
+        }
     }
 
     // Update is called once per frame
@@ -22,6 +27,13 @@ public class MainMenu : MonoBehaviour
     }
     private void OnStartClick()
     {
+        SceneManager.LoadScene("S1");
+        if (pauseMenu != null)
+        {
+            pauseMenu.SetActive(false); // 在開始遊戲時關閉暫停介面
+        }
+
+        Time.timeScale = 1f; // 確保遊戲時間正常運行
         SceneManager.LoadScene("S1");
     }
     private void OnExitClick()

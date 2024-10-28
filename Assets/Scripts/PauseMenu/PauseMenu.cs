@@ -7,6 +7,7 @@ public class PauseMenu : MonoBehaviour
     private InputMaster _inputMaster;
     public GameObject pausemenu;
     public bool isShow;
+    
     private void OnEnable()
     {
         _inputMaster = new InputMaster();
@@ -24,6 +25,7 @@ public class PauseMenu : MonoBehaviour
     }
     void Start()
     {
+        pausemenu.SetActive(false);
         pausemenu.SetActive(isShow);
     }
 
