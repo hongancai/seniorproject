@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class GameDB 
+public static class GameDB
 {
+    public static string clickItemName;
+    
     //Player
     public static int playerHp = 0;
     public static int playerAtk = 0;
@@ -26,7 +28,7 @@ public static class GameDB
     public static int towerAtkSpd;
     
     //PauseMenu
-    
+    public static bool pausemenu = false;
     //PlayerPrefs
     public static void Save()
     {
