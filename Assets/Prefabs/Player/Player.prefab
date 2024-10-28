@@ -86,7 +86,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 500
+  m_SortingOrder: 1000
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!95 &7676634913464628857
 Animator:
@@ -98,7 +98,7 @@ Animator:
   m_GameObject: {fileID: 9183403750092064583}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 03d598180593dbd42b6602821ef34519, type: 2}
+  m_Controller: {fileID: 9100000, guid: e009ee7127081eb408a3312fe032b113, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -206,5 +206,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.49066162, y: 1.2345178, z: 0.009}
-  m_Center: {x: 0.05407715, y: 0.6113175, z: -0.00000011360589}
+  m_Size: {x: 0.5307007, y: 1.2210186, z: 0.09}
+  m_Center: {x: 0.031707764, y: 0.60456014, z: -0.0000039659417}
