@@ -33,26 +33,11 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             move -= new Vector3(1, 0, 0);
-            if (move==Vector3.zero)
-            {
-                animator.Play("L_idle");
-            }
-            else
-            {
-                animator.Play("L_walk");
-            }
+           
         }
         if (Input.GetKey(KeyCode.D))
         {
             move += new Vector3(1, 0, 0);
-            if (move==Vector3.zero)
-            {
-                animator.Play("R_idle");
-            }
-            else
-            {
-                animator.Play("R_walk");
-            }
         }
         if (Input.GetKey(KeyCode.W))
         {
@@ -62,7 +47,14 @@ public class PlayerController : MonoBehaviour
         {
             move -= new Vector3(0, 0, 1);
         }
-
+        if (move==Vector3.zero)
+        {
+            animator.Play("L_idle");
+        }
+        else
+        {
+            animator.Play("L_walk");
+        }
        
 
         // 設置角色的速度
