@@ -7,14 +7,14 @@ using UnityEngine.UI;
 public class PlayerHealth : MonoBehaviour
 {
     public Slider healthSlider;
-    public GameObject playerDiePnl;
-    public Button rebirthBtn;
+    //public GameObject playerDiePnl;
+    //public Button rebirthBtn;
     void Start()
     {
-        playerDiePnl.SetActive(false);
-        GameDB.playerHp = 10;
+        //playerDiePnl.SetActive(false);
+        GameDB.playerHp = 100;
         UpdateHealthSlider();
-        rebirthBtn.onClick.AddListener(OnRebirth);
+        //rebirthBtn.onClick.AddListener(OnRebirth);
     }
     
     void Update()
@@ -32,13 +32,13 @@ public class PlayerHealth : MonoBehaviour
 
     public void Die()
     {
-        playerDiePnl.SetActive(true);
+        //playerDiePnl.SetActive(true);
     }
     
     private void OnRebirth()
     {
-        GameDB.playerHp = 10;           // 重置玩家血量
-        playerDiePnl.SetActive(false);   // 隱藏死亡面板
+        GameDB.playerHp = 100;           // 重置玩家血量
+        //playerDiePnl.SetActive(false);   // 隱藏死亡面板
         UpdateHealthSlider(); 
         SceneManager.LoadScene("上");
     }
