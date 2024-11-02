@@ -5,13 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class EnterMarket : MonoBehaviour
 {
-    // Start is called before the first frame update
+   
     void Start()
     {
         
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         
@@ -20,7 +19,7 @@ public class EnterMarket : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            SceneManager.LoadScene("上");
+            SceneManager.LoadScene("S2");
         }
     }
 }

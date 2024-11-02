@@ -97,5 +97,6 @@ public class PlayerController : MonoBehaviour
 
         // 設置角色的速度
         _rb.MovePosition(transform.position + move * (GameDB.playerSpd * Time.deltaTime));
+        
     }
 }
