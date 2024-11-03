@@ -8,7 +8,7 @@ public static class GameDB
     
     //Player
     public static int playerHp = 0;
-    public static int playerAtk = 0;
+    public static int playerAtk = 01;
     public static int playerDef = 0;
     public static float playerSpd = 0.0f;
     
