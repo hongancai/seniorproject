@@ -6,11 +6,12 @@ TagManager:
   tags:
   - Enemy
   - Shop
+  - PlaceablePlane
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Plane
   - Water
   - UI
   - ShopUI

@@ -11,10 +11,12 @@ public class PlayerController : MonoBehaviour
 
     // 用來記錄最後的移動方向
     private string lastDirection = "L"; // 預設為左邊
+    private float normalSpeed = 3.0f; // 正常移動速度
+    private float sprintSpeed = 6.0f; // 加速移動速度
 
     void Start()
     {
-        GameDB.playerSpd = 3.0f;
+        GameDB.playerSpd = normalSpeed;
         _rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         _inputMaster = new InputMaster();
@@ -24,10 +26,11 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         Vector3 move = Vector3.zero;
+        bool isMoving = false;
 
         // 讀取控制器的輸入
         Vector2 gamepadInput = _inputMaster.Player.Movement.ReadValue<Vector2>();
-        bool isMoving = false;
+        bool isSprinting = Keyboard.current.shiftKey.isPressed; // 檢查 Shift 鍵是否被按下
 
         if (gamepadInput != Vector2.zero)
         {
@@ -69,17 +72,33 @@ public class PlayerController : MonoBehaviour
             isMoving = true;
         }
 
-        // 根據移動狀態播放相應的動畫
+        // 根據移動狀態和加速狀態播放相應的動畫
         if (isMoving)
         {
-            // 移動時播放 walk 動畫
-            if (lastDirection == "R")
+            // 判斷是走路還是跑步
+            if (isSprinting)
             {
-                animator.Play("R_walk");
+                // 按住 Shift 時播放 run 動畫
+                if (lastDirection == "R")
+                {
+                    animator.Play("R_run");
+                }
+                else if (lastDirection == "L")
+                {
+                    animator.Play("L_run");
+                }
             }
-            else if (lastDirection == "L")
+            else
             {
-                animator.Play("L_walk");
+                // 正常移動時播放 walk 動畫
+                if (lastDirection == "R")
+                {
+                    animator.Play("R_walk");
+                }
+                else if (lastDirection == "L")
+                {
+                    animator.Play("L_walk");
+                }
             }
         }
         else
@@ -95,8 +114,34 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        // 設置角色的速度
-        _rb.MovePosition(transform.position + move * (GameDB.playerSpd * Time.deltaTime));
-        
+        // 設置角色的速度，根據是否加速決定速度
+        float speed = isSprinting ? sprintSpeed : normalSpeed;
+        _rb.MovePosition(transform.position + move * (speed * Time.deltaTime));
+    }
+    private void HandleAttack()
+    {
+        // 檢測滑鼠左鍵點擊並確認點擊目標
+        if (Mouse.current.leftButton.wasPressedThisFrame)
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                // 如果點擊到敵人 (檢查敵人標籤)
+                if (hit.collider.CompareTag("Enemy"))
+                {
+                    // 根據角色的最後方向播放相應的攻擊動畫
+                    if (lastDirection == "R")
+                    {
+                        animator.Play("R_att");
+                    }
+                    else
+                    {
+                        animator.Play("L_att");
+                    }
+                }
+            }
+        }
     }
 }
