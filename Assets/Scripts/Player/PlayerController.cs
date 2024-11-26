@@ -103,6 +103,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            _rb.velocity = new Vector3(0, 0, 0);
             // 停止移動時，根據最後的方向播放對應的 idle 動畫
             if (lastDirection == "R")
             {
@@ -117,31 +118,5 @@ public class PlayerController : MonoBehaviour
         // 設置角色的速度，根據是否加速決定速度
         float speed = isSprinting ? sprintSpeed : normalSpeed;
         _rb.MovePosition(transform.position + move * (speed * Time.deltaTime));
-    }
-    private void HandleAttack()
-    {
-        // 檢測滑鼠左鍵點擊並確認點擊目標
-        if (Mouse.current.leftButton.wasPressedThisFrame)
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit))
-            {
-                // 如果點擊到敵人 (檢查敵人標籤)
-                if (hit.collider.CompareTag("Enemy"))
-                {
-                    // 根據角色的最後方向播放相應的攻擊動畫
-                    if (lastDirection == "R")
-                    {
-                        animator.Play("R_att");
-                    }
-                    else
-                    {
-                        animator.Play("L_att");
-                    }
-                }
-            }
-        }
     }
 }

@@ -7,7 +7,6 @@ public class MonsterSpawner : MonoBehaviour
     public GameObject graveBirdPrefab;       // 墓坑鳥的預製件
     public GameObject headlessTroopPrefab;   // 無頭部隊的預製件
     
-    public GameObject warningPanel;          // 警告面板
 
     private int totalWaves = 3;              // 總波數
     private int monstersPerWave = 5;         // 每波怪物數量
@@ -19,8 +18,7 @@ public class MonsterSpawner : MonoBehaviour
 
     void Start()
     {
-        // 隱藏警告面板
-        warningPanel.SetActive(false);
+        
         // 等待 10 秒後開始波次生成
         StartCoroutine(DelayedStart());
     }
@@ -50,12 +48,7 @@ public class MonsterSpawner : MonoBehaviour
                     monsterPrefab = headlessTroopPrefab;
                     break;
             }
-
-            // 顯示警告面板
-            warningPanel.SetActive(true);
-            yield return new WaitForSeconds(3f);  // 顯示3秒
-            warningPanel.SetActive(false);
-
+            
             // 生成該波的怪物，使用固定位置
             for (int i = 0; i < monstersPerWave; i++)
             {
