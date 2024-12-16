@@ -49,7 +49,7 @@ public class Enemy : MonoBehaviour
     private void DropCoins()
     {
         int coinCount = Random.Range(minCoins, maxCoins + 1); // 隨機掉落 1 到 3 個金幣
-        for (int i = 0; i < coinCount; i++)
+        for (int i = 0; i <= coinCount; i++)
         {
             // 在怪物位置生成金幣
             Vector3 offset = new Vector3(Random.Range(-0.5f, 0.5f), 0, Random.Range(-0.5f, 0.5f));

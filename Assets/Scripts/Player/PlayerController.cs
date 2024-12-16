@@ -9,10 +9,9 @@ public class PlayerController : MonoBehaviour
     private InputMaster _inputMaster;
     private Animator animator;
 
-    // 用來記錄最後的移動方向
     private string lastDirection = "L"; // 預設為左邊
-    private float normalSpeed = 3.0f; // 正常移動速度
-    private float sprintSpeed = 6.0f; // 加速移動速度
+    private float normalSpeed = 3.0f;   // 正常移動速度
+    private float sprintSpeed = 4.0f;   // 加速移動速度
 
     void Start()
     {
@@ -25,98 +24,98 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        Movement();
+    }
+
+    private void Movement()
+    {
         Vector3 move = Vector3.zero;
         bool isMoving = false;
 
-        // 讀取控制器的輸入
+        // 控制器輸入
         Vector2 gamepadInput = _inputMaster.Player.Movement.ReadValue<Vector2>();
-        bool isSprinting = Keyboard.current.shiftKey.isPressed; // 檢查 Shift 鍵是否被按下
+        bool isSprinting = _inputMaster.Player.Sprint.IsPressed()|| Input.GetKey(KeyCode.LeftShift);; // 使用控制器 RB 鍵檢查
 
         if (gamepadInput != Vector2.zero)
         {
             move = new Vector3(gamepadInput.x, 0, gamepadInput.y);
             isMoving = true;
-
-            // 判斷最後方向
-            if (gamepadInput.x > 0)
-            {
-                lastDirection = "R";
-            }
-            else if (gamepadInput.x < 0)
-            {
-                lastDirection = "L";
-            }
+            UpdateDirection(gamepadInput.x);
         }
 
-        // 處理鍵盤輸入
+        // 鍵盤輸入
         if (Input.GetKey(KeyCode.A))
         {
-            move -= new Vector3(1, 0, 0);
-            lastDirection = "L";
+            move += Vector3.left;
+            UpdateDirection(-1);
             isMoving = true;
         }
         if (Input.GetKey(KeyCode.D))
         {
-            move += new Vector3(1, 0, 0);
-            lastDirection = "R";
+            move += Vector3.right;
+            UpdateDirection(1);
             isMoving = true;
         }
         if (Input.GetKey(KeyCode.W))
         {
-            move += new Vector3(0, 0, 1);
+            move += Vector3.forward;
             isMoving = true;
         }
         if (Input.GetKey(KeyCode.S))
         {
-            move -= new Vector3(0, 0, 1);
+            move += Vector3.back;
             isMoving = true;
         }
 
-        // 根據移動狀態和加速狀態播放相應的動畫
+        // 移動向量規範化
+        if (move.magnitude > 1)
+        {
+            move.Normalize();
+        }
+
+        // 更新動畫
+        UpdateAnimation(isMoving, isSprinting);
+
+        // 設置移動速度並移動角色
+        float speed = isSprinting ? sprintSpeed : normalSpeed;
+        _rb.MovePosition(transform.position + move * (speed * Time.deltaTime));
+    }
+
+    private void UpdateDirection(float xInput)
+    {
+        if (xInput > 0)
+        {
+            lastDirection = "R";
+        }
+        else if (xInput < 0)
+        {
+            lastDirection = "L";
+        }
+    }
+
+    private void UpdateAnimation(bool isMoving, bool isSprinting)
+    {
         if (isMoving)
         {
-            // 判斷是走路還是跑步
-            if (isSprinting)
+            // 移動時，根據方向和是否加速選擇動畫
+            string animationToPlay = isSprinting
+                ? (lastDirection == "R" ? "R_run" : "L_run")
+                : (lastDirection == "R" ? "R_walk" : "L_walk");
+
+            if (!animator.GetCurrentAnimatorStateInfo(0).IsName(animationToPlay))
             {
-                // 按住 Shift 時播放 run 動畫
-                if (lastDirection == "R")
-                {
-                    animator.Play("R_run");
-                }
-                else if (lastDirection == "L")
-                {
-                    animator.Play("L_run");
-                }
-            }
-            else
-            {
-                // 正常移動時播放 walk 動畫
-                if (lastDirection == "R")
-                {
-                    animator.Play("R_walk");
-                }
-                else if (lastDirection == "L")
-                {
-                    animator.Play("L_walk");
-                }
+                animator.Play(animationToPlay);
             }
         }
         else
         {
-            _rb.velocity = new Vector3(0, 0, 0);
-            // 停止移動時，根據最後的方向播放對應的 idle 動畫
-            if (lastDirection == "R")
+            // 停止移動時播放 Idle 動畫
+            _rb.velocity = new Vector3(0,0,0);
+            string idleAnimation = lastDirection == "R" ? "R_idle" : "L_idle";
+            if (!animator.GetCurrentAnimatorStateInfo(0).IsName(idleAnimation))
             {
-                animator.Play("R_idle");
-            }
-            else if (lastDirection == "L")
-            {
-                animator.Play("L_idle");
+                animator.Play(idleAnimation);
             }
         }
-
-        // 設置角色的速度，根據是否加速決定速度
-        float speed = isSprinting ? sprintSpeed : normalSpeed;
-        _rb.MovePosition(transform.position + move * (speed * Time.deltaTime));
     }
 }
