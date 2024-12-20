@@ -20,7 +20,7 @@ public class EnterOrchard : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            SceneManager.LoadScene("下");
+            SceneManager.LoadScene("S3");
         }
     }
 }
