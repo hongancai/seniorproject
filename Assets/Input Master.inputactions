@@ -131,6 +131,54 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Zoom",
+            "id": "3114f9fe-e6dc-4b76-817b-9eb3d2e94d34",
+            "actions": [
+                {
+                    "name": "Zoom In ",
+                    "type": "Button",
+                    "id": "66275db7-0ed9-4082-aaba-c516c0abc508",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Zoom Out ",
+                    "type": "Button",
+                    "id": "65fe0fca-4291-472e-b34b-8437af40d987",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "2e1aefaf-14fd-4a9e-8286-9a8894e2d7a7",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Zoom In ",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f22770aa-a31c-4928-9795-7bbc98a53a8b",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Zoom Out ",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

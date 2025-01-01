@@ -14,7 +14,7 @@ PlayerSettings:
   accelerometerFrequency: 60
   companyName: LTU
   productName: "\u72C2\u98A8\u6012\u865F-\u5B88\u8B77\u98A8\u7345\u723A\u5927\u4F5C\u6230-"
-  defaultCursor: {fileID: 0}
+  defaultCursor: {fileID: 2800000, guid: 83af58f2a7bdac943bf47f146b9ad2a4, type: 3}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
   m_ShowUnitySplashScreen: 1

@@ -16,7 +16,7 @@ public class EnterOrchard : MonoBehaviour
     {
         
     }
-    private void OnCollisionEnter(Collision collision)
+    private void  OnCollisionEnter(Collision collision)     
     {
         if (collision.gameObject.CompareTag("Player"))
         {

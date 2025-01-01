@@ -6,19 +6,17 @@ using UnityEngine.UI;
 
 public class BirdEnemy : MonoBehaviour
 {
-    public Transform _traget;
-    public NavMeshAgent _agent;
+    public Transform traget;
+    public NavMeshAgent agent;
     public GameObject coinPrefab;
-    public Slider enemy2health;
     private Animator animator;
     public int minCoins = 1;
     public int maxCoins = 3;
-    //public int hitPoints = 3;
+    
     
     void Start()
     {  
-        _agent = GetComponent<NavMeshAgent>();
-        GameDB.enemyHp = 30;
+        agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         UpdateEnemy1HealthSlider();
     }
@@ -26,14 +24,14 @@ public class BirdEnemy : MonoBehaviour
     
     void Update()
     {
-        _agent.SetDestination(_traget.transform.position);
+        agent.SetDestination(traget.transform.position);
         animator.Play("R_move");
         gameObject.transform.eulerAngles = new Vector3(30, 0, 0);
     }
 
     public void UpdateEnemy1HealthSlider()
     {
-        enemy2health.value = GameDB.enemyHp;
+       
     }
     public void TakeDamage()
     {

@@ -2,16 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody _rb;
     private InputMaster _inputMaster;
     private Animator animator;
+  
 
     private string lastDirection = "L"; // 預設為左邊
     private float normalSpeed = 3.0f;   // 正常移動速度
-    private float sprintSpeed = 4.0f;   // 加速移動速度
+    private float sprintSpeed = 4.0f; // 加速移動速度
 
     void Start()
     {
@@ -44,24 +46,24 @@ public class PlayerController : MonoBehaviour
         }
 
         // 鍵盤輸入
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A)|| Input.GetKey(KeyCode.LeftArrow))
         {
             move += Vector3.left;
             UpdateDirection(-1);
             isMoving = true;
         }
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D)|| Input.GetKey(KeyCode.RightArrow))
         {
             move += Vector3.right;
             UpdateDirection(1);
             isMoving = true;
         }
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W)|| Input.GetKey(KeyCode.UpArrow))
         {
             move += Vector3.forward;
             isMoving = true;
         }
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.S)||Input.GetKey(KeyCode.DownArrow))
         {
             move += Vector3.back;
             isMoving = true;

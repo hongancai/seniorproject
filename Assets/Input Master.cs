@@ -153,6 +153,54 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Zoom"",
+            ""id"": ""3114f9fe-e6dc-4b76-817b-9eb3d2e94d34"",
+            ""actions"": [
+                {
+                    ""name"": ""Zoom In "",
+                    ""type"": ""Button"",
+                    ""id"": ""66275db7-0ed9-4082-aaba-c516c0abc508"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Zoom Out "",
+                    ""type"": ""Button"",
+                    ""id"": ""65fe0fca-4291-472e-b34b-8437af40d987"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""2e1aefaf-14fd-4a9e-8286-9a8894e2d7a7"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Zoom In "",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f22770aa-a31c-4928-9795-7bbc98a53a8b"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Zoom Out "",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -176,6 +224,10 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_PauseMenu = m_Menu.FindAction("PauseMenu", throwIfNotFound: true);
+        // Zoom
+        m_Zoom = asset.FindActionMap("Zoom", throwIfNotFound: true);
+        m_Zoom_ZoomIn = m_Zoom.FindAction("Zoom In ", throwIfNotFound: true);
+        m_Zoom_ZoomOut = m_Zoom.FindAction("Zoom Out ", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -333,6 +385,60 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
         }
     }
     public MenuActions @Menu => new MenuActions(this);
+
+    // Zoom
+    private readonly InputActionMap m_Zoom;
+    private List<IZoomActions> m_ZoomActionsCallbackInterfaces = new List<IZoomActions>();
+    private readonly InputAction m_Zoom_ZoomIn;
+    private readonly InputAction m_Zoom_ZoomOut;
+    public struct ZoomActions
+    {
+        private @InputMaster m_Wrapper;
+        public ZoomActions(@InputMaster wrapper) { m_Wrapper = wrapper; }
+        public InputAction @ZoomIn => m_Wrapper.m_Zoom_ZoomIn;
+        public InputAction @ZoomOut => m_Wrapper.m_Zoom_ZoomOut;
+        public InputActionMap Get() { return m_Wrapper.m_Zoom; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(ZoomActions set) { return set.Get(); }
+        public void AddCallbacks(IZoomActions instance)
+        {
+            if (instance == null || m_Wrapper.m_ZoomActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_ZoomActionsCallbackInterfaces.Add(instance);
+            @ZoomIn.started += instance.OnZoomIn;
+            @ZoomIn.performed += instance.OnZoomIn;
+            @ZoomIn.canceled += instance.OnZoomIn;
+            @ZoomOut.started += instance.OnZoomOut;
+            @ZoomOut.performed += instance.OnZoomOut;
+            @ZoomOut.canceled += instance.OnZoomOut;
+        }
+
+        private void UnregisterCallbacks(IZoomActions instance)
+        {
+            @ZoomIn.started -= instance.OnZoomIn;
+            @ZoomIn.performed -= instance.OnZoomIn;
+            @ZoomIn.canceled -= instance.OnZoomIn;
+            @ZoomOut.started -= instance.OnZoomOut;
+            @ZoomOut.performed -= instance.OnZoomOut;
+            @ZoomOut.canceled -= instance.OnZoomOut;
+        }
+
+        public void RemoveCallbacks(IZoomActions instance)
+        {
+            if (m_Wrapper.m_ZoomActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IZoomActions instance)
+        {
+            foreach (var item in m_Wrapper.m_ZoomActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_ZoomActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public ZoomActions @Zoom => new ZoomActions(this);
     private int m_XboxSchemeIndex = -1;
     public InputControlScheme XboxScheme
     {
@@ -350,5 +456,10 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
     public interface IMenuActions
     {
         void OnPauseMenu(InputAction.CallbackContext context);
+    }
+    public interface IZoomActions
+    {
+        void OnZoomIn(InputAction.CallbackContext context);
+        void OnZoomOut(InputAction.CallbackContext context);
     }
 }
