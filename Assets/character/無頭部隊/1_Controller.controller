@@ -201,7 +201,37 @@ AnimationClip:
     m_KeepOriginalPositionXZ: 0
     m_HeightFromFeet: 0
     m_Mirror: 0
-  m_EditorCurves: []
+  m_EditorCurves:
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1.0667
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: dummy
+    path: 
+    classID: 1
+    script: {fileID: 0}
+    flags: 0
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
@@ -497,7 +527,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 3635648553860600201}
-    m_Position: {x: 249.02338, y: 221.5234, z: 0}
+    m_Position: {x: 190, y: 220, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8746035361204860583}
     m_Position: {x: 410.2486, y: 400.66245, z: 0}
@@ -506,7 +536,7 @@ AnimatorStateMachine:
     m_Position: {x: 712.22577, y: 339.24332, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5278804735862016311}
-    m_Position: {x: 420.48505, y: 298.29727, z: 0}
+    m_Position: {x: 280, y: 290, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []

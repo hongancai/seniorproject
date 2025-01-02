@@ -47,7 +47,20 @@ public static class GameDB
     {
        
     }
+    public static Vector3 playerPosition = Vector3.zero; // 玩家位置
 
+    public static void UpdatePlayerPosition(string fromScene)
+    {
+        // 根據來源場景設置玩家位置
+        if (fromScene == "S2")
+        {
+            playerPosition = new Vector3(500.0653f, 0.1113f, 505.7999f);
+        }
+        else if (fromScene == "S3")
+        {
+            playerPosition = new Vector3(500.09f, 0.1113f, 492.08f);
+        }
+    }
     
 }
 

@@ -137,6 +137,10 @@ public class AudioMgr : MonoBehaviour
     {
         _sfxAudioSource.PlayOneShot(audioData.cancelClip);
     }
-
+    
+    public void  Placingtower()
+    {
+        _sfxAudioSource.PlayOneShot(audioData.placingtowerClip);
+    }
     #endregion
 }

@@ -8,7 +8,8 @@ public class AudioData : MonoBehaviour
     public AudioClip pressClip;
     public AudioClip submitClip;
     public AudioClip cancelClip;
-    public AudioClip puttower;
+    
+    public AudioClip placingtowerClip;
     void Start()
     {
         
