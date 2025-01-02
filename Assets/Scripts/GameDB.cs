@@ -29,6 +29,14 @@ public static class GameDB
     
     //PauseMenu
     public static bool pausemenu = false;
+    // Audio
+    public static AudioMgr Audio;
+    public static ConfigData Config = new ConfigData();
+    public class ConfigData
+    {
+        public float bgmAudioVolume = 1.0f;  // 預設音量為 1
+        public float sfxAudioVolume = 1.0f;  // 預設音量為 1
+    }
     //PlayerPrefs
     public static void Save()
     {
@@ -39,5 +47,8 @@ public static class GameDB
     {
        
     }
+
     
 }
+
+
