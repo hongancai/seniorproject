@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class S2Mgr : MonoBehaviour
 {
+    public AudioClip s2bgm;
     public List<Button> goodsButtons; // 商品按鈕列表
     public List<GameObject> goodsPanels; // 商品面板列表
     public Button closeButton; // 關閉按鈕
@@ -28,6 +29,7 @@ public class S2Mgr : MonoBehaviour
 
         // 關閉按鈕綁定
         closeButton.onClick.AddListener(CloseActivePanel);
+        GameDB.Audio.PlayBgm(s2bgm);
     }
 
     // 打開指定面板

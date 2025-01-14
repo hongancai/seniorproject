@@ -6,12 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public AudioClip mainmenubgm;
     public Button btnstart;
     public Button btnexit;
     public GameObject pauseMenu;
     public GameObject settingMenu;
     void Start()
     {
+        
         btnstart.onClick.AddListener(OnStartClick);
         btnexit.onClick.AddListener(OnExitClick);
         if (pauseMenu != null)
@@ -27,7 +29,7 @@ public class MainMenu : MonoBehaviour
     }
     private void OnStartClick()
     {
-        PlayerPrefs.DeleteAll();
+        
         SceneManager.LoadScene("S1");
         if (pauseMenu != null)
         {

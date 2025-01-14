@@ -653,37 +653,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &946031109
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 946031110}
-  m_Layer: 0
-  m_Name: AudioMgr
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &946031110
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 946031109}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 300, y: 270, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1315548286
 GameObject:
   m_ObjectHideFlags: 0
@@ -1129,8 +1098,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2044079519}
   - component: {fileID: 2044079518}
-  - component: {fileID: 2044079520}
   - component: {fileID: 2044079521}
+  - component: {fileID: 2044079522}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -1168,22 +1137,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2044079520
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2044079516}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b908510200971f44ba8d558beaa3f97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  btnstart: {fileID: 1381174484}
-  btnexit: {fileID: 1781101021}
-  pauseMenu: {fileID: 0}
-  settingMenu: {fileID: 0}
 --- !u!114 &2044079521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1225,6 +1178,23 @@ MonoBehaviour:
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
+--- !u!114 &2044079522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044079516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b908510200971f44ba8d558beaa3f97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainmenubgm: {fileID: 0}
+  btnstart: {fileID: 1381174484}
+  btnexit: {fileID: 1781101021}
+  pauseMenu: {fileID: 0}
+  settingMenu: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1234,4 +1204,3 @@ SceneRoots:
   - {fileID: 832575519}
   - {fileID: 276735205}
   - {fileID: 2044079519}
-  - {fileID: 946031110}

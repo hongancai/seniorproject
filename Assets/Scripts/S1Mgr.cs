@@ -1,12 +1,12 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class S1Mgr : MonoBehaviour
 {
-    public GameObject prefabs;
+    public AudioClip s1bgm;
+    public List<GameObject> lionPrefabs; // 5 隻風獅爺的 Prefab
+    public List<Button> lionButtons; // 5 個按鈕
 
     public enum MyState
     {
@@ -16,15 +16,21 @@ public class S1Mgr : MonoBehaviour
     }
 
     private MyState currentState;
-    public Button btnHero;
+    private GameObject cacheTower;
 
-    private GameObject cacheTowwer;
-
+    private GameObject selectedPrefab; // 當前選擇的 Prefab
 
     void Start()
     {
+        GameDB.Audio.PlayBgm();
         currentState = MyState.Idle;
-        btnHero.onClick.AddListener(OnBtnHeroClick);
+
+        // 初始化按鈕點擊事件
+        for (int i = 0; i < lionButtons.Count; i++)
+        {
+            int index = i; // 避免閉包問題
+            lionButtons[i].onClick.AddListener(() => OnLionButtonClick(index));
+        }
     }
 
     void Update()
@@ -41,32 +47,17 @@ public class S1Mgr : MonoBehaviour
                 ProcessDragTower();
                 break;
         }
-
-        //if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            //Vector2 myVector = Input.mousePosition;
-            //myVector.x -= 5;
-            //Mouse.current.WarpCursorPosition(myVector);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (RectTransformUtility.RectangleContainsScreenPoint(btnHero.GetComponent<RectTransform>(),
-                    Input.mousePosition))
-            {
-                OnBtnHeroClick();
-            }
-        }
     }
 
-    private void OnBtnHeroClick()
+    private void OnLionButtonClick(int index)
     {
-        currentState = MyState.PlacingTower;
-
-        Debug.Log("開始放置");
+        if (index >= 0 && index < lionPrefabs.Count)
+        {
+            selectedPrefab = lionPrefabs[index];
+            currentState = MyState.PlacingTower;
+            Debug.Log($"準備放置風獅爺: {lionPrefabs[index].name}");
+        }
     }
-
-    /*---------------  Function  -------------------*/
 
     private void ProcessIdle()
     {
@@ -77,11 +68,15 @@ public class S1Mgr : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit))
             {
-                if (hit.transform.gameObject.name.Contains("后頭風獅爺"))
+                Debug.Log($"hit.transform.gameObject.name===>{hit.transform.gameObject.name}");
+                if (hit.transform.parent.gameObject.name.Contains("風獅爺"))
                 {
+                    Debug.Log("Hit");
+              //  if (hit.transform.gameObject.name.Contains("劉澳風獅爺" + "后水風獅爺" + "塔后風獅爺" + "安崎風獅爺" + "瓊林風獅爺"))
+                //{
                     // cache 
-                    cacheTowwer = hit.transform.gameObject;
-                    //該狀態
+                    cacheTower = hit.transform.parent.gameObject;
+                    // 該狀態
                     currentState = MyState.DragTower;
                 }
             }
@@ -90,7 +85,7 @@ public class S1Mgr : MonoBehaviour
 
     private void ProcessPlacingTower()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && selectedPrefab != null)
         {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -99,15 +94,16 @@ public class S1Mgr : MonoBehaviour
             {
                 Vector3 placePosition = hit.point;
                 placePosition.y = 0.5f;
-                
+
                 if (hit.transform.gameObject.GetComponent<RoadTag>() != null)
                 {
-                    GameObject temp = Instantiate(prefabs);
+                    GameObject temp = Instantiate(selectedPrefab);
                     temp.transform.localScale = Vector3.one;
                     temp.transform.localEulerAngles = new Vector3(30, 0, 0);
                     temp.transform.position = placePosition;
-                    
-                    currentState = MyState.Idle; //改變狀態!!!
+
+                    currentState = MyState.Idle; // 改變狀態
+                    selectedPrefab = null; // 清除選擇
                 }
             }
         }
@@ -123,13 +119,13 @@ public class S1Mgr : MonoBehaviour
             {
                 Vector3 dragPosition = hit.point;
                 dragPosition.y = 0.5f; // 確保 Y 軸固定為 0.5
-                cacheTowwer.transform.position = dragPosition;
+                cacheTower.transform.position = dragPosition;
             }
         }
 
         if (Input.GetButtonUp("Fire1"))
         {
-            cacheTowwer = null;
+            cacheTower = null;
             currentState = MyState.Idle;
         }
     }

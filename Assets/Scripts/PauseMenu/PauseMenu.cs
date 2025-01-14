@@ -2,11 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 public class PauseMenu : MonoBehaviour
 {
     private InputMaster _inputMaster;
     public GameObject pausemenu;
+    public GameObject settingUI;
     public bool isShow;
+    
+    public Button settingBtn;
+    public Button closeBtn;
+    public Button backmenuBtn;
+    public Button conBtn;
     
     private void OnEnable()
     {
@@ -25,8 +34,34 @@ public class PauseMenu : MonoBehaviour
     }
     void Start()
     {
+        backmenuBtn.onClick.AddListener(BackMenuClick);
+        closeBtn.onClick.AddListener(ClosesettingClick);
+        settingBtn.onClick.AddListener(OnsettingClick);
+        conBtn.onClick.AddListener(ConBtnClick);
+        settingUI.SetActive(false);
         pausemenu.SetActive(false);
         pausemenu.SetActive(isShow);
+    }
+
+    private void BackMenuClick()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    private void ClosesettingClick()
+    {
+        settingUI.SetActive(false);
+    }
+
+    private void ConBtnClick()
+    {
+        pausemenu.SetActive(false);
+        Time.timeScale =  1f;
+    }
+
+    private void OnsettingClick()
+    {
+        settingUI.SetActive(true);
     }
 
     void Update()

@@ -9,12 +9,13 @@ public class PlayerController : MonoBehaviour
     private Rigidbody _rb;
     private InputMaster _inputMaster;
     private Animator animator;
-  
+    
 
     private string lastDirection = "L"; // 預設為左邊
     private float normalSpeed = 3.0f;   // 正常移動速度
     private float sprintSpeed = 4.0f; // 加速移動速度
 
+    public AudioClip playerwaik;
     void Start()
     {
         GameDB.playerSpd = normalSpeed;
@@ -22,6 +23,7 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         _inputMaster = new InputMaster();
         _inputMaster.Enable();
+        
     }
 
     void Update()
@@ -33,7 +35,7 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 move = Vector3.zero;
         bool isMoving = false;
-
+        
         // 控制器輸入
         Vector2 gamepadInput = _inputMaster.Player.Movement.ReadValue<Vector2>();
         bool isSprinting = _inputMaster.Player.Sprint.IsPressed()|| Input.GetKey(KeyCode.LeftShift);; // 使用控制器 RB 鍵檢查
@@ -51,22 +53,26 @@ public class PlayerController : MonoBehaviour
             move += Vector3.left;
             UpdateDirection(-1);
             isMoving = true;
+            //GameDB.Audio.PlaySfx(playerwaik);
         }
         if (Input.GetKey(KeyCode.D)|| Input.GetKey(KeyCode.RightArrow))
         {
             move += Vector3.right;
             UpdateDirection(1);
             isMoving = true;
+            //GameDB.Audio.PlaySfx(playerwaik);
         }
         if (Input.GetKey(KeyCode.W)|| Input.GetKey(KeyCode.UpArrow))
         {
             move += Vector3.forward;
             isMoving = true;
+            //GameDB.Audio.PlaySfx(playerwaik);
         }
         if (Input.GetKey(KeyCode.S)||Input.GetKey(KeyCode.DownArrow))
         {
             move += Vector3.back;
             isMoving = true;
+            //GameDB.Audio.PlaySfx(playerwaik);
         }
 
         // 移動向量規範化
