@@ -53,26 +53,26 @@ public class PlayerController : MonoBehaviour
             move += Vector3.left;
             UpdateDirection(-1);
             isMoving = true;
-            //GameDB.Audio.PlaySfx(playerwaik);
+            
         }
         if (Input.GetKey(KeyCode.D)|| Input.GetKey(KeyCode.RightArrow))
         {
             move += Vector3.right;
             UpdateDirection(1);
             isMoving = true;
-            //GameDB.Audio.PlaySfx(playerwaik);
+            
         }
         if (Input.GetKey(KeyCode.W)|| Input.GetKey(KeyCode.UpArrow))
         {
             move += Vector3.forward;
             isMoving = true;
-            //GameDB.Audio.PlaySfx(playerwaik);
+            
         }
         if (Input.GetKey(KeyCode.S)||Input.GetKey(KeyCode.DownArrow))
         {
             move += Vector3.back;
             isMoving = true;
-            //GameDB.Audio.PlaySfx(playerwaik);
+            
         }
 
         // 移動向量規範化
