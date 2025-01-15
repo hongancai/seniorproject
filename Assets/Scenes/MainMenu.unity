@@ -1190,7 +1190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b908510200971f44ba8d558beaa3f97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainmenubgm: {fileID: 0}
+  mainmenubgm: {fileID: 8300000, guid: 6e37fc4696dcb96479c8e5e68ffe1a8e, type: 3}
   btnstart: {fileID: 1381174484}
   btnexit: {fileID: 1781101021}
   pauseMenu: {fileID: 0}
