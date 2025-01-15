@@ -8,12 +8,12 @@ public class S3Mgr : MonoBehaviour
     public AudioClip s3bgm;
     void Start()
     {
+        GameDB.Audio.PlayBgm(s3bgm);
         // 初始化，隱藏所有購買面板
         foreach (GameObject panel in shopPanels)
         {
             panel.SetActive(false);
         }
-        GameDB.Audio.PlayBgm(s3bgm);
     }
 
     public void ShowPanel(int index)

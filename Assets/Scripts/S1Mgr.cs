@@ -22,7 +22,7 @@ public class S1Mgr : MonoBehaviour
 
     void Start()
     {
-        GameDB.Audio.PlayBgm();
+        GameDB.Audio.PlayBgm(s1bgm);
         currentState = MyState.Idle;
 
         // 初始化按鈕點擊事件

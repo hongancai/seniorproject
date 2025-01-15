@@ -7,13 +7,18 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     public AudioClip mainmenubgm;
+    public Button btnsetting;
+    public Button btnsettingclose;
     public Button btnstart;
     public Button btnexit;
     public GameObject pauseMenu;
     public GameObject settingMenu;
     void Start()
     {
-        
+        GameDB.Audio.PlayBgm(mainmenubgm);
+        settingMenu.SetActive(false);
+        btnsettingclose.onClick.AddListener(OnSettingClickfalse);
+        btnsetting.onClick.AddListener(OnSettingClick);
         btnstart.onClick.AddListener(OnStartClick);
         btnexit.onClick.AddListener(OnExitClick);
         if (pauseMenu != null)
@@ -22,10 +27,14 @@ public class MainMenu : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnSettingClickfalse()
     {
-        
+        settingMenu.SetActive(false);
+    }
+
+    private void OnSettingClick()
+    {
+        settingMenu.SetActive(true);
     }
     private void OnStartClick()
     {
@@ -44,4 +53,10 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
         Debug.Log("Exit");
     }
+
+    void Update()
+    {
+        
+    }
+   
 }
