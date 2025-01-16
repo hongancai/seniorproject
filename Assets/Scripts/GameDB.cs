@@ -7,9 +7,6 @@ public static class GameDB
     public static string clickItemName;
     
     //Player
-    public static int playerHp = 0;
-    public static int playerAtk = 0;
-    public static int playerDef = 0;
     public static float playerSpd = 0.0f;
     
     //Shop
@@ -34,8 +31,8 @@ public static class GameDB
     public static ConfigData Config = new ConfigData();
     public class ConfigData
     {
-        public float bgmAudioVolume = 1.0f;  // 預設音量為 1
-        public float sfxAudioVolume = 1.0f;  // 預設音量為 1
+        public float bgmAudioVolume = 0.6f;  // 預設音量為 1
+        public float sfxAudioVolume = 0.8f;  // 預設音量為 1
     }
     //PlayerPrefs
     public static void Save()
