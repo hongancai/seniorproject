@@ -501,7 +501,7 @@ GameObject:
   - component: {fileID: 114830360}
   - component: {fileID: 114830359}
   m_Layer: 5
-  m_Name: "\u725B\u8089\u4E7E\u8CFC\u8CB7"
+  m_Name: "\u8CA2\u7CD6\u8CFC\u8CB7"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2232,7 +2232,7 @@ GameObject:
   - component: {fileID: 594678428}
   - component: {fileID: 594678427}
   m_Layer: 5
-  m_Name: "\u725B\u8089\u4E7E\u8CFC\u8CB7"
+  m_Name: "\u71D2\u9905\u8CFC\u8CB7"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2510,8 +2510,8 @@ RectTransform:
   m_Children:
   - {fileID: 1086469486}
   - {fileID: 1926641995}
-  - {fileID: 1264489063}
   - {fileID: 1281485131}
+  - {fileID: 1264489063}
   - {fileID: 1687268180}
   - {fileID: 1326646633}
   - {fileID: 313465548}
@@ -3254,7 +3254,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 343fab1fd5ee09f499129d2fa6aed9b2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 813a085f040fd2443ac02e5329e99dc2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3644,7 +3644,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 343fab1fd5ee09f499129d2fa6aed9b2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ac59ea38a09ee5a4089f2a9df51538fd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5520,7 +5520,7 @@ GameObject:
   - component: {fileID: 1456210166}
   - component: {fileID: 1456210165}
   m_Layer: 5
-  m_Name: "\u725B\u8089\u4E7E\u8CFC\u8CB7"
+  m_Name: "\u9AD8\u7CB1\u9152\u8CFC\u8CB7"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5980,6 +5980,7 @@ MonoBehaviour:
   - {fileID: 1264489062}
   - {fileID: 1687268179}
   - {fileID: 1326646632}
+  boughtItem: []
   closeButton: {fileID: 958695439}
 --- !u!114 &1627028240
 MonoBehaviour:

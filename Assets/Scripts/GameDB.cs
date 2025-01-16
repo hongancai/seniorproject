@@ -12,7 +12,22 @@ public static class GameDB
     //Shop
     public static Res res;
     public static int money;
-    
+    public static List<bool> Bought = new List<bool>();
+
+    static GameDB()
+    {
+        Bought.Add(false);
+        Bought.Add(false);
+        Bought.Add(false);
+        Bought.Add(false);
+        Bought.Add(false);
+    }
+
+    public static void BuyItem(int index)
+    {
+        Bought[index] = true;
+    }
+        
     //Enemy
     public static int enemyHp = 0;
     public static int enemyAtk = 0;
