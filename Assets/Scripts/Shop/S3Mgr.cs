@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class S3Mgr : MonoBehaviour
 {
+    public GameObject[] lion;
     public GameObject[] shopPanels; // 將所有購買面板拖到這個陣列中
     public AudioClip s3bgm;
     void Start()

@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     public Transform traget;
     public NavMeshAgent agent;
     public GameObject coinPrefab;
-    //public Slider enemy1health;
+    
     private Animator animator;
     public int minCoins = 1;
     public int maxCoins = 3;

@@ -6,126 +6,163 @@ using UnityEngine.UI;
 public class S2Mgr : MonoBehaviour
 {
     public AudioClip s2bgm;
-    public List<Button> goodsButtons; // 商品按鈕列表
-    public List<GameObject> goodsPanels; // 商品面板列表
-    public List<Button> boughtItem;
-    public Button closeButton; // 關閉按鈕
+    public List<Button> goodsButtons;
+    public List<GameObject> goodsPnl;
+    public List<Button> closegoodsPnlBtn;
+    public List<GameObject> buyedItem;
+    public GameObject warningPnl;
+    public Button closeWarnBtn;
+    public Button buy01;
+    public Button buy02;
+    public Button buy03;
+    public Button buy04;
+    public Button buy05;
 
-    private GameObject activePanel = null; // 當前顯示的面板
+    public GameObject activePanel = null;
 
     void Start()
     {
+        warningPnl.gameObject.SetActive(false);
+        GameDB.Audio.PlayBgm(s2bgm);
+        // 初始化所有已購買物品的顯示狀態
         for (int i = 0; i < 5; i++)
         {
-            //boughtItem[i].onClick.AddListener(() => OpenPanel(index));
+            buyedItem[i].SetActive(GameDB.Bought[i]);
         }
 
-        // 初始化，確保所有面板關閉
-        foreach (var panel in goodsPanels)
+        // 初始化時關閉所有面板
+        foreach (var panel in goodsPnl)
         {
             panel.SetActive(false);
         }
 
-        // 綁定按鈕點擊事件
+        // 設置開啟面板的按鈕監聽器
         for (int i = 0; i < goodsButtons.Count; i++)
         {
-            int index = i; // 避免閉包問題
+            int index = i; // 重要：要用區域變數來保存索引
             goodsButtons[i].onClick.AddListener(() => OpenPanel(index));
         }
 
-        // 關閉按鈕綁定
-        closeButton.onClick.AddListener(CloseActivePanel);
-
-
-        GameDB.Audio.PlayBgm(s2bgm);
+        // 設置關閉面板的按鈕監聽器
+        for (int i = 0; i < closegoodsPnlBtn.Count; i++)
+        {
+            int index = i;
+            closegoodsPnlBtn[i].onClick.AddListener(() => ClosePanel(index));
+        }
+        
+        closeWarnBtn.onClick.AddListener(OncCloseWarning);
+        buy01.onClick.AddListener(OnBtnBuyItem1);
+        buy02.onClick.AddListener(OnBtnBuyItem2);
+        buy03.onClick.AddListener(OnBtnBuyItem3);
+        buy04.onClick.AddListener(OnBtnBuyItem4);
+        buy05.onClick.AddListener(OnBtnBuyItem5);
     }
 
-    // 打開指定面板
-    void OpenPanel(int index)
+    private void OncCloseWarning()
     {
-        // 關閉當前面板（如果有）
+        warningPnl.gameObject.SetActive(false);
+    }
+    
+    private void OpenPanel(int index)
+    {
+        // 如果有活動面板，先關閉它
         if (activePanel != null)
         {
             activePanel.SetActive(false);
         }
 
-        // 打開新的面板
-        activePanel = goodsPanels[index];
-        activePanel.SetActive(true);
+        // 開啟新的面板
+        goodsPnl[index].SetActive(true);
+        activePanel = goodsPnl[index];
     }
 
-    // 關閉當前面板
-    void CloseActivePanel()
+    private void ClosePanel(int index)
     {
-        if (activePanel != null)
+        goodsPnl[index].SetActive(false);
+        if (activePanel == goodsPnl[index])
         {
-            activePanel.SetActive(false);
-            activePanel = null; // 重置
+            activePanel = null;
         }
     }
 
-    public void OnBtnBuyIem1()
+    public void OnBtnBuyItem1()
     {
-        if (GameDB.money > 80 && !GameDB.Bought[0])
+        if (GameDB.money > 50 && !GameDB.Bought[0])
         {
-            GameDB.money -= 80;
+            GameDB.money -= 50;
             GameDB.Bought[0] = true;
+            buyedItem[0].SetActive(true);
+            GameDB.Save();
+            Debug.Log("你買了燒餅");
         }
         else
         {
-            //warning
+            warningPnl.gameObject.SetActive(true);
+            Debug.Log("你不夠50塊");
         }
     }
-
-    public void OnBtnBuyIem2()
+    public void OnBtnBuyItem2()
     {
         if (GameDB.money > 100 && !GameDB.Bought[1])
         {
             GameDB.money -= 100;
             GameDB.Bought[1] = true;
+            buyedItem[1].SetActive(true);
+            GameDB.Save();
+            Debug.Log("你買了貢糖");
         }
         else
         {
-            //warning
+            warningPnl.gameObject.SetActive(true);
+            Debug.Log("你不夠100塊");
         }
     }
-
-    public void OnBtnBuyIem3()
+    public void OnBtnBuyItem3()
     {
         if (GameDB.money > 200 && !GameDB.Bought[2])
         {
             GameDB.money -= 200;
             GameDB.Bought[2] = true;
+            buyedItem[2].SetActive(true);
+            GameDB.Save();
+            Debug.Log("你買了麵線");
         }
         else
         {
-            //warning
+            warningPnl.gameObject.SetActive(true);
+            Debug.Log("你不夠200塊");
         }
     }
-
-    public void OnBtnBuyIem4()
+    public void OnBtnBuyItem4()
     {
         if (GameDB.money > 500 && !GameDB.Bought[3])
         {
             GameDB.money -= 500;
             GameDB.Bought[3] = true;
+            buyedItem[3].SetActive(true);
+            GameDB.Save();
+            Debug.Log("你買了燒餅");
         }
         else
         {
-            //warning
+            warningPnl.gameObject.SetActive(true);
+            Debug.Log("你不夠250塊");
         }
     }
-
-    public void OnBtnBuyIem5()
+    public void OnBtnBuyItem5()
     {
         if (GameDB.money > 600 && !GameDB.Bought[4])
         {
             GameDB.money -= 600;
             GameDB.Bought[4] = true;
+            buyedItem[4].SetActive(true);
+            GameDB.Save();
+            Debug.Log("你買了高粱");
         }
         else
         {
-            //warning
+            warningPnl.gameObject.SetActive(true);
+            Debug.Log("你不夠500塊");
         }
     }
 }

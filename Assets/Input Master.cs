@@ -201,6 +201,34 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Mouse"",
+            ""id"": ""211bc4c9-ff70-41ce-8ad6-9e79979d2767"",
+            ""actions"": [
+                {
+                    ""name"": ""Control"",
+                    ""type"": ""Value"",
+                    ""id"": ""a5e579db-fae4-4f92-9914-2968f680001b"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""a28da949-16d8-4015-a074-6ea1004cda93"",
+                    ""path"": ""<XInputController>/rightStick/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Control"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -228,6 +256,9 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
         m_Zoom = asset.FindActionMap("Zoom", throwIfNotFound: true);
         m_Zoom_ZoomIn = m_Zoom.FindAction("Zoom In ", throwIfNotFound: true);
         m_Zoom_ZoomOut = m_Zoom.FindAction("Zoom Out ", throwIfNotFound: true);
+        // Mouse
+        m_Mouse = asset.FindActionMap("Mouse", throwIfNotFound: true);
+        m_Mouse_Control = m_Mouse.FindAction("Control", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -439,6 +470,52 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
         }
     }
     public ZoomActions @Zoom => new ZoomActions(this);
+
+    // Mouse
+    private readonly InputActionMap m_Mouse;
+    private List<IMouseActions> m_MouseActionsCallbackInterfaces = new List<IMouseActions>();
+    private readonly InputAction m_Mouse_Control;
+    public struct MouseActions
+    {
+        private @InputMaster m_Wrapper;
+        public MouseActions(@InputMaster wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Control => m_Wrapper.m_Mouse_Control;
+        public InputActionMap Get() { return m_Wrapper.m_Mouse; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(MouseActions set) { return set.Get(); }
+        public void AddCallbacks(IMouseActions instance)
+        {
+            if (instance == null || m_Wrapper.m_MouseActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_MouseActionsCallbackInterfaces.Add(instance);
+            @Control.started += instance.OnControl;
+            @Control.performed += instance.OnControl;
+            @Control.canceled += instance.OnControl;
+        }
+
+        private void UnregisterCallbacks(IMouseActions instance)
+        {
+            @Control.started -= instance.OnControl;
+            @Control.performed -= instance.OnControl;
+            @Control.canceled -= instance.OnControl;
+        }
+
+        public void RemoveCallbacks(IMouseActions instance)
+        {
+            if (m_Wrapper.m_MouseActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IMouseActions instance)
+        {
+            foreach (var item in m_Wrapper.m_MouseActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_MouseActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public MouseActions @Mouse => new MouseActions(this);
     private int m_XboxSchemeIndex = -1;
     public InputControlScheme XboxScheme
     {
@@ -461,5 +538,9 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
     {
         void OnZoomIn(InputAction.CallbackContext context);
         void OnZoomOut(InputAction.CallbackContext context);
+    }
+    public interface IMouseActions
+    {
+        void OnControl(InputAction.CallbackContext context);
     }
 }

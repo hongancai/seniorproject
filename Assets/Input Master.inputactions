@@ -179,6 +179,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Mouse",
+            "id": "211bc4c9-ff70-41ce-8ad6-9e79979d2767",
+            "actions": [
+                {
+                    "name": "Control",
+                    "type": "Value",
+                    "id": "a5e579db-fae4-4f92-9914-2968f680001b",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "a28da949-16d8-4015-a074-6ea1004cda93",
+                    "path": "<XInputController>/rightStick/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Control",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

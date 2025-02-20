@@ -5,30 +5,35 @@ using UnityEngine.UI;
 
 public class ShopMgr : MonoBehaviour
 {
-    public GameObject shopPanel;      // 指向商店面板
-    public Button closeButton;        // 關閉商店面板的按鈕
+    public GameObject shopPnl;
+    public Button closeshoBtn;
 
     void Start()
     {
-        shopPanel.SetActive(false);   // 初始隱藏商店面板
-        closeButton.onClick.AddListener(CloseShopPanel); // 設定關閉按鈕的監聽
+        shopPnl.gameObject.SetActive(false);
+        closeshoBtn.onClick.AddListener(OnBtnClose);
     }
 
-    // 當玩家點擊商店時顯示商店面板
-    private void OnMouseDown()
+    private void OnBtnClose()
     {
-        OpenShopPanel();
+        shopPnl.gameObject.SetActive(false);
     }
 
-    // 開啟商店面板
-    public void OpenShopPanel()
-    {
-        shopPanel.SetActive(true);
-    }
 
-    // 關閉商店面板
-    public void CloseShopPanel()
+    void Update()
     {
-        shopPanel.SetActive(false);
+        if (Input.GetButtonDown("Fire1"))
+        {
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out hit))
+            {
+                if (hit.transform.gameObject.GetComponent<ShopTag>() != null)
+                {
+                    shopPnl.gameObject.SetActive(true);
+                    Debug.Log("測試開商店");
+                }
+            }
+        }
     }
 }

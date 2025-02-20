@@ -1006,7 +1006,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 17.9
+  field of view: 35.41
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -1204,7 +1204,6 @@ GameObject:
   - component: {fileID: 344560869}
   - component: {fileID: 344560868}
   - component: {fileID: 344560870}
-  - component: {fileID: 344560871}
   m_Layer: 0
   m_Name: "\u540E\u6C34\u982D\u98A8\u7345\u723A"
   m_TagString: Untagged
@@ -1221,7 +1220,7 @@ Transform:
   m_GameObject: {fileID: 344560865}
   serializedVersion: 2
   m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
-  m_LocalPosition: {x: -0.22, y: 0.26, z: 2.05}
+  m_LocalPosition: {x: -0.15, y: 0.24, z: 2.61}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1298,20 +1297,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.69158936, y: 0.96892464, z: 0.13450855}
   m_Center: {x: 0.00894165, y: -0.01553762, z: -0.013254304}
---- !u!114 &344560871
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 344560865}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a885d73cbcf22054983379c687175d8d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shopPanel: {fileID: 886264099}
-  closeButton: {fileID: 748774594}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -3088,7 +3073,6 @@ GameObject:
   - component: {fileID: 665558973}
   - component: {fileID: 665558972}
   - component: {fileID: 665558974}
-  - component: {fileID: 665558975}
   m_Layer: 0
   m_Name: "\u5854\u540E\u98A8\u7345\u723A"
   m_TagString: Untagged
@@ -3105,7 +3089,7 @@ Transform:
   m_GameObject: {fileID: 665558969}
   serializedVersion: 2
   m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
-  m_LocalPosition: {x: 0.59, y: 0.26, z: 0.20000243}
+  m_LocalPosition: {x: 3.14, y: 0.231, z: 0.77}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3182,20 +3166,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.69158936, y: 0.96892464, z: 0.13685244}
   m_Center: {x: 0.00894165, y: -0.015537619, z: -0.01442624}
---- !u!114 &665558975
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 665558969}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a885d73cbcf22054983379c687175d8d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shopPanel: {fileID: 533640841}
-  closeButton: {fileID: 1688833095}
 --- !u!1 &748774592
 GameObject:
   m_ObjectHideFlags: 0
@@ -3645,7 +3615,6 @@ GameObject:
   - component: {fileID: 817338557}
   - component: {fileID: 817338556}
   - component: {fileID: 817338558}
-  - component: {fileID: 817338559}
   m_Layer: 0
   m_Name: "\u74CA\u6797\u98A8\u7345\u723A"
   m_TagString: Untagged
@@ -3662,7 +3631,7 @@ Transform:
   m_GameObject: {fileID: 817338553}
   serializedVersion: 2
   m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
-  m_LocalPosition: {x: 3.11, y: 0.26, z: 2.049989}
+  m_LocalPosition: {x: 1.42, y: 0.215, z: 1.504}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3739,20 +3708,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.69158936, y: 0.96892464, z: 0.09}
   m_Center: {x: 0.00894165, y: -0.0155376345, z: 0.008999975}
---- !u!114 &817338559
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 817338553}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a885d73cbcf22054983379c687175d8d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shopPanel: {fileID: 87293559}
-  closeButton: {fileID: 14417652}
 --- !u!1 &824068281
 GameObject:
   m_ObjectHideFlags: 0
@@ -4439,7 +4394,6 @@ GameObject:
   - component: {fileID: 968362472}
   - component: {fileID: 968362471}
   - component: {fileID: 968362473}
-  - component: {fileID: 968362474}
   m_Layer: 0
   m_Name: "\u5B89\u5C90\u98A8\u7345\u723A"
   m_TagString: Untagged
@@ -4456,7 +4410,7 @@ Transform:
   m_GameObject: {fileID: 968362468}
   serializedVersion: 2
   m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
-  m_LocalPosition: {x: 1.4699926, y: 0.26, z: 2.049989}
+  m_LocalPosition: {x: 2.78, y: 0.31, z: 2.04}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4533,20 +4487,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.69158936, y: 0.96892464, z: 0.09}
   m_Center: {x: 0.00894165, y: -0.0155376345, z: 0.008999975}
---- !u!114 &968362474
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 968362468}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a885d73cbcf22054983379c687175d8d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shopPanel: {fileID: 1120270818}
-  closeButton: {fileID: 1892721319}
 --- !u!1 &1041432249
 GameObject:
   m_ObjectHideFlags: 0
@@ -6253,7 +6193,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 936762639}
   m_Follow: {fileID: 936762639}
   m_Lens:
-    FieldOfView: 17.9
+    FieldOfView: 35.41
     OrthographicSize: 5
     NearClipPlane: 0.3
     FarClipPlane: 1000
@@ -7031,7 +6971,6 @@ GameObject:
   - component: {fileID: 1680418488}
   - component: {fileID: 1680418487}
   - component: {fileID: 1680418489}
-  - component: {fileID: 1680418490}
   m_Layer: 0
   m_Name: "\u5289\u6FB3\u98A8\u7345\u723A"
   m_TagString: Untagged
@@ -7048,7 +6987,7 @@ Transform:
   m_GameObject: {fileID: 1680418484}
   serializedVersion: 2
   m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
-  m_LocalPosition: {x: 2.229, y: 0.26, z: 0.2}
+  m_LocalPosition: {x: 0.07, y: 0.33, z: 0.85}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7125,20 +7064,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.69158936, y: 0.96892464, z: 0.13946171}
   m_Center: {x: 0.00894165, y: -0.01553762, z: -0.015730875}
---- !u!114 &1680418490
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1680418484}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a885d73cbcf22054983379c687175d8d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shopPanel: {fileID: 1404794996}
-  closeButton: {fileID: 80597370}
 --- !u!1 &1688833093
 GameObject:
   m_ObjectHideFlags: 0
@@ -8474,6 +8399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d5d603d8d624bb45b14f5a9ac9fc8e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lion: []
   shopPanels:
   - {fileID: 886264099}
   - {fileID: 1120270818}

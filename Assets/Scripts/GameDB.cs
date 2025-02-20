@@ -4,30 +4,47 @@ using UnityEngine;
 
 public static class GameDB
 {
-    public static string clickItemName;
     
     //Player
     public static float playerSpd = 0.0f;
-    
-    //Shop
-    public static Res res;
     public static int money;
+    //Shop
+    
     public static List<bool> Bought = new List<bool>();
-
+    private static bool isInitialized = false;
     static GameDB()
     {
-        Bought.Add(false);
-        Bought.Add(false);
-        Bought.Add(false);
-        Bought.Add(false);
-        Bought.Add(false);
+        if (!isInitialized)
+        {
+            InitializeData();
+            isInitialized = true;
+        }
+    }
+
+    private static void InitializeData()
+    {
+        // 清空列表以防重複添加
+        Bought.Clear();
+        // 初始化購買狀態
+        for (int i = 0; i < 5; i++)
+        {
+            Bought.Add(false);
+        }
     }
 
     public static void BuyItem(int index)
     {
         Bought[index] = true;
+        Save();
     }
-        
+    
+    
+    //S1 Wave
+    public static bool wave1;
+    public static bool wave2;
+    public static bool wave3;
+    public static bool wave4;
+    
     //Enemy
     public static int enemyHp = 0;
     public static int enemyAtk = 0;
@@ -49,30 +66,32 @@ public static class GameDB
         public float bgmAudioVolume = 0.6f;  // 預設音量為 1
         public float sfxAudioVolume = 0.8f;  // 預設音量為 1
     }
+    
     //PlayerPrefs
     public static void Save()
     {
-       
+        PlayerPrefs.SetInt("Money", money);
+        
+        // 儲存購買狀態
+        for (int i = 0; i < Bought.Count; i++)
+        {
+            PlayerPrefs.SetInt($"Bought_{i}", Bought[i] ? 1 : 0);
+        }
+        
+        PlayerPrefs.Save();
     }
     
     public static void Load()
     {
-       
-    }
-    public static Vector3 playerPosition = Vector3.zero; // 玩家位置
-
-    public static void UpdatePlayerPosition(string fromScene)
-    {
-        // 根據來源場景設置玩家位置
-        if (fromScene == "S2")
+        money = PlayerPrefs.GetInt("Money", 0);
+        
+        // 讀取購買狀態
+        for (int i = 0; i < Bought.Count; i++)
         {
-            playerPosition = new Vector3(500.0653f, 0.1113f, 505.7999f);
-        }
-        else if (fromScene == "S3")
-        {
-            playerPosition = new Vector3(500.09f, 0.1113f, 492.08f);
+            Bought[i] = PlayerPrefs.GetInt($"Bought_{i}", 0) == 1;
         }
     }
+   
     
 }
 

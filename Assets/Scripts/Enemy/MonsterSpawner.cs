@@ -8,7 +8,6 @@ public class MonsterSpawner : MonoBehaviour
     public GameObject headlessTroopPrefab;
     
     
-
     private int totalWaves = 3;           
     private int monstersPerWave = 5;         // 每波怪物數量
     private float minInterval = 15f;         // 最小生成間隔
