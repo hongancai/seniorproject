@@ -40,10 +40,10 @@ public static class GameDB
     
     
     //S1 Wave
-    public static bool wave1;
-    public static bool wave2;
-    public static bool wave3;
-    public static bool wave4;
+    public static bool wave1 = false;
+    public static bool wave2= false;
+    public static bool wave3= false;
+    public static bool wave4= false;
     
     //Enemy
     public static int enemyHp = 0;

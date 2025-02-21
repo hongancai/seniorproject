@@ -12,9 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/S1.unity
     guid: b0bc713990e488b43abe65bcbbcb2da9
   - enabled: 1
-    path: Assets/Scenes/S2.unity
+    path: Assets/Scenes/Market.unity
     guid: d55af7db860accd44b0d0b5476dec9e8
   - enabled: 1
-    path: Assets/Scenes/S3.unity
+    path: Assets/Scenes/Park.unity
     guid: c6d7b74881c04b941ae397d55d5d9b7e
   m_configObjects: {}

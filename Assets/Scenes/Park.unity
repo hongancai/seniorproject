@@ -3952,7 +3952,7 @@ GameObject:
   - component: {fileID: 859281983}
   - component: {fileID: 859281982}
   m_Layer: 5
-  m_Name: "\u8F49\u5834"
+  m_Name: FadeImg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8407,6 +8407,7 @@ MonoBehaviour:
   - {fileID: 87293559}
   - {fileID: 533640841}
   s3bgm: {fileID: 8300000, guid: 6e37fc4696dcb96479c8e5e68ffe1a8e, type: 3}
+  blackScreen: {fileID: 859281982}
 --- !u!114 &1897634999
 MonoBehaviour:
   m_ObjectHideFlags: 0

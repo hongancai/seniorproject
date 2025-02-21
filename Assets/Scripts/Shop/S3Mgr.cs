@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class S3Mgr : MonoBehaviour
 {
     public GameObject[] lion;
-    public GameObject[] shopPanels; // 將所有購買面板拖到這個陣列中
+    public GameObject[] shopPanels; 
     public AudioClip s3bgm;
+    public Image blackScreen;
     void Start()
     {
         GameDB.Audio.PlayBgm(s3bgm);
@@ -15,8 +18,24 @@ public class S3Mgr : MonoBehaviour
         {
             panel.SetActive(false);
         }
+        blackScreen.gameObject.SetActive(true);
+        blackScreen.color = new Color(0, 0, 0, 1);
+       
+        // 開始淡出黑幕
+        blackScreen.DOFade(0f, 2f)
+            .SetEase(Ease.InOutSine)
+            .OnComplete(() => 
+            {
+                blackScreen.gameObject.SetActive(false);
+            });
     }
-
+    void Update()
+    {
+        if (GameDB.Audio._bgmAudioSource.volume <=0.6f)
+        {
+            GameDB.Audio._bgmAudioSource.volume += Time.deltaTime;
+        }   
+    }
     public void ShowPanel(int index)
     {
         // 隱藏所有面板

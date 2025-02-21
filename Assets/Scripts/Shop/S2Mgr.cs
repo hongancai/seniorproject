@@ -1,15 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class S2Mgr : MonoBehaviour
 {
     public AudioClip s2bgm;
+    public Image blackScreen;
     public List<Button> goodsButtons;
     public List<GameObject> goodsPnl;
     public List<Button> closegoodsPnlBtn;
-    public List<GameObject> buyedItem;
+    //public List<GameObject> buyedItem;
     public GameObject warningPnl;
     public Button closeWarnBtn;
     public Button buy01;
@@ -24,10 +26,21 @@ public class S2Mgr : MonoBehaviour
     {
         warningPnl.gameObject.SetActive(false);
         GameDB.Audio.PlayBgm(s2bgm);
+        blackScreen.gameObject.SetActive(true);
+        blackScreen.color = new Color(0, 0, 0, 1);
+       
+        // 開始淡出黑幕
+        blackScreen.DOFade(0f, 2f)
+            .SetEase(Ease.InOutSine)
+            .OnComplete(() => 
+            {
+                blackScreen.gameObject.SetActive(false);
+            });
+        GameDB.Load();
         // 初始化所有已購買物品的顯示狀態
         for (int i = 0; i < 5; i++)
         {
-            buyedItem[i].SetActive(GameDB.Bought[i]);
+            //buyedItem[i].SetActive(GameDB.Bought[i]);
         }
 
         // 初始化時關閉所有面板
@@ -56,6 +69,13 @@ public class S2Mgr : MonoBehaviour
         buy03.onClick.AddListener(OnBtnBuyItem3);
         buy04.onClick.AddListener(OnBtnBuyItem4);
         buy05.onClick.AddListener(OnBtnBuyItem5);
+    }
+    void Update()
+    {
+        if (GameDB.Audio._bgmAudioSource.volume <=0.6f)
+        {
+            GameDB.Audio._bgmAudioSource.volume += Time.deltaTime;
+        }   
     }
 
     private void OncCloseWarning()
@@ -91,7 +111,7 @@ public class S2Mgr : MonoBehaviour
         {
             GameDB.money -= 50;
             GameDB.Bought[0] = true;
-            buyedItem[0].SetActive(true);
+            //buyedItem[0].SetActive(true);
             GameDB.Save();
             Debug.Log("你買了燒餅");
         }
@@ -107,7 +127,7 @@ public class S2Mgr : MonoBehaviour
         {
             GameDB.money -= 100;
             GameDB.Bought[1] = true;
-            buyedItem[1].SetActive(true);
+            //buyedItem[1].SetActive(true);
             GameDB.Save();
             Debug.Log("你買了貢糖");
         }
@@ -123,7 +143,7 @@ public class S2Mgr : MonoBehaviour
         {
             GameDB.money -= 200;
             GameDB.Bought[2] = true;
-            buyedItem[2].SetActive(true);
+            //buyedItem[2].SetActive(true);
             GameDB.Save();
             Debug.Log("你買了麵線");
         }
@@ -139,7 +159,7 @@ public class S2Mgr : MonoBehaviour
         {
             GameDB.money -= 500;
             GameDB.Bought[3] = true;
-            buyedItem[3].SetActive(true);
+            //buyedItem[3].SetActive(true);
             GameDB.Save();
             Debug.Log("你買了燒餅");
         }
@@ -155,7 +175,7 @@ public class S2Mgr : MonoBehaviour
         {
             GameDB.money -= 600;
             GameDB.Bought[4] = true;
-            buyedItem[4].SetActive(true);
+            //buyedItem[4].SetActive(true);
             GameDB.Save();
             Debug.Log("你買了高粱");
         }

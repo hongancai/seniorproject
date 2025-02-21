@@ -555,6 +555,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioData: {fileID: 288280221}
+  _bgmAudioSource: {fileID: 0}
 --- !u!1 &324004620
 GameObject:
   m_ObjectHideFlags: 0
@@ -2425,6 +2426,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainmenubgm: {fileID: 8300000, guid: 6e37fc4696dcb96479c8e5e68ffe1a8e, type: 3}
   startsfx: {fileID: 8300000, guid: cf81bb1c8ec1fc54c86577e129a123aa, type: 3}
+  btnsfx: {fileID: 8300000, guid: 42cb8fc809e54874d98f66872e74ec2b, type: 3}
   btnsetting: {fileID: 324004622}
   btnsettingclose: {fileID: 1636109383}
   btnstart: {fileID: 1381174484}

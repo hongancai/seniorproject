@@ -3,8 +3,9 @@ using UnityEngine;
 public class AudioMgr : MonoBehaviour
 {
     public AudioData audioData;
-    private AudioSource _bgmAudioSource;
+    public AudioSource _bgmAudioSource;
     private AudioSource _sfxAudioSource;
+
 
     private void Awake()
     {

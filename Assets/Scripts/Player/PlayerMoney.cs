@@ -23,7 +23,7 @@ public class PlayerMoney : MonoBehaviour
     {
         if (moneyText != null)
         {
-            moneyText.text = $"${GameDB.money}";  // 可以根據需求修改顯示格式
+            moneyText.text = $"{GameDB.money}";  // 可以根據需求修改顯示格式
         }
     }
 }

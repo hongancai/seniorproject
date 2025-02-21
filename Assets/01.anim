@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Fire
+  m_Name: 01
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -22,13 +22,13 @@ AnimationClip:
     curve:
     - time: 0
       value: {fileID: 2100000, guid: 0041177a1190e9543a5399650d35b2d1, type: 2}
-    - time: 0.13333334
+    - time: 0.11666667
       value: {fileID: 2100000, guid: 6b97027dfe13e8b4fbefd1a99271071d, type: 2}
-    - time: 0.26666668
+    - time: 0.25
       value: {fileID: 2100000, guid: 043190d13bcc1514b9898ab0983c1ca5, type: 2}
-    - time: 0.41666666
+    - time: 0.38333333
       value: {fileID: 2100000, guid: 05968f531870b584cbf6ef764c1556c4, type: 2}
-    - time: 0.55
+    - time: 0.51666665
       value: {fileID: 2100000, guid: 892eae381d75f1047837f70825fbcc6b, type: 2}
     attribute: m_Materials.Array.data[0]
     path: 
@@ -62,7 +62,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.56666666
+    m_StopTime: 0.5333333
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
