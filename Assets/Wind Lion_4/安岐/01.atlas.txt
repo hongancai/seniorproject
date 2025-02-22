@@ -1,0 +1,146 @@
+
+01.png
+size: 1024,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+01
+  rotate: true
+  xy: 735, 83
+  size: 52, 100
+  orig: 52, 100
+  offset: 0, 0
+  index: -1
+02
+  rotate: false
+  xy: 825, 404
+  size: 52, 100
+  orig: 52, 100
+  offset: 0, 0
+  index: -1
+03
+  rotate: true
+  xy: 2, 227
+  size: 277, 560
+  orig: 277, 560
+  offset: 0, 0
+  index: -1
+04
+  rotate: true
+  xy: 529, 80
+  size: 145, 71
+  orig: 145, 71
+  offset: 0, 0
+  index: -1
+05
+  rotate: false
+  xy: 36, 18
+  size: 129, 207
+  orig: 129, 207
+  offset: 0, 0
+  index: -1
+06
+  rotate: false
+  xy: 167, 20
+  size: 136, 205
+  orig: 136, 205
+  offset: 0, 0
+  index: -1
+07
+  rotate: true
+  xy: 681, 254
+  size: 250, 120
+  orig: 250, 120
+  offset: 0, 0
+  index: -1
+08
+  rotate: false
+  xy: 564, 237
+  size: 115, 267
+  orig: 115, 267
+  offset: 0, 0
+  index: -1
+09
+  rotate: false
+  xy: 781, 9
+  size: 97, 72
+  orig: 97, 72
+  offset: 0, 0
+  index: -1
+10
+  rotate: false
+  xy: 803, 256
+  size: 49, 107
+  orig: 49, 107
+  offset: 0, 0
+  index: -1
+11
+  rotate: true
+  xy: 880, 365
+  size: 49, 112
+  orig: 49, 112
+  offset: 0, 0
+  index: -1
+12
+  rotate: false
+  xy: 305, 7
+  size: 238, 58
+  orig: 238, 58
+  offset: 0, 0
+  index: -1
+13
+  rotate: true
+  xy: 464, 69
+  size: 156, 36
+  orig: 156, 36
+  offset: 0, 0
+  index: -1
+14
+  rotate: true
+  xy: 502, 71
+  size: 154, 25
+  orig: 154, 25
+  offset: 0, 0
+  index: -1
+15
+  rotate: true
+  xy: 735, 137
+  size: 115, 88
+  orig: 115, 88
+  offset: 0, 0
+  index: -1
+16
+  rotate: false
+  xy: 305, 67
+  size: 157, 158
+  orig: 157, 158
+  offset: 0, 0
+  index: -1
+17
+  rotate: true
+  xy: 545, 2
+  size: 76, 234
+  orig: 76, 234
+  offset: 0, 0
+  index: -1
+18
+  rotate: false
+  xy: 880, 416
+  size: 115, 88
+  orig: 115, 88
+  offset: 0, 0
+  index: -1
+19
+  rotate: true
+  xy: 2, 4
+  size: 221, 32
+  orig: 221, 32
+  offset: 0, 0
+  index: -1
+20
+  rotate: true
+  xy: 602, 101
+  size: 134, 131
+  orig: 134, 131
+  offset: 0, 0
+  index: -1
