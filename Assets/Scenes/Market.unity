@@ -5974,6 +5974,7 @@ GameObject:
   - component: {fileID: 1627028238}
   - component: {fileID: 1627028239}
   - component: {fileID: 1627028240}
+  - component: {fileID: 1627028241}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -6065,6 +6066,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   s2bgm: {fileID: 8300000, guid: 897afe5b4194b574b9975fb51e0bf309, type: 3}
+  buysfx: {fileID: 8300000, guid: e8c5a61bf0b5384448d83e676dc65aa1, type: 3}
+  btnsfx: {fileID: 8300000, guid: 42cb8fc809e54874d98f66872e74ec2b, type: 3}
   blackScreen: {fileID: 729678710}
   goodsButtons:
   - {fileID: 1192324598}
@@ -6111,6 +6114,22 @@ MonoBehaviour:
   closeBtn: {fileID: 2019005766}
   backmenuBtn: {fileID: 195704589}
   conBtn: {fileID: 2137872702}
+--- !u!114 &1627028241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1627028233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a885d73cbcf22054983379c687175d8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  openshopsfx: {fileID: 8300000, guid: eecad27b8cbb0d448a44e06a22078120, type: 3}
+  btnsfx: {fileID: 8300000, guid: 42cb8fc809e54874d98f66872e74ec2b, type: 3}
+  shopPnl: {fileID: 1086469485}
+  closeshoBtn: {fileID: 958695439}
 --- !u!224 &1677368984 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4249367287487872658, guid: b53380fa30342144ea8817ea92816dff,
@@ -6424,7 +6443,6 @@ GameObject:
   - component: {fileID: 1841207665}
   - component: {fileID: 1841207664}
   - component: {fileID: 1841207666}
-  - component: {fileID: 1841207667}
   - component: {fileID: 1841207668}
   m_Layer: 0
   m_Name: "\u9AD8\u7CB1"
@@ -6519,20 +6537,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 0.94558823, z: 0.09000001}
   m_Center: {x: 0, y: -0.027198492, z: -5.2844373e-10}
---- !u!114 &1841207667
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1841207661}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a885d73cbcf22054983379c687175d8d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shopPnl: {fileID: 1086469485}
-  closeshoBtn: {fileID: 958695439}
 --- !u!114 &1841207668
 MonoBehaviour:
   m_ObjectHideFlags: 0

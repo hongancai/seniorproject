@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class S2Mgr : MonoBehaviour
 {
     public AudioClip s2bgm;
+    public AudioClip buysfx;
+    public AudioClip btnsfx;
     public Image blackScreen;
     public List<Button> goodsButtons;
     public List<GameObject> goodsPnl;
@@ -80,6 +82,7 @@ public class S2Mgr : MonoBehaviour
 
     private void OncCloseWarning()
     {
+        GameDB.Audio.PlaySfx(btnsfx);
         warningPnl.gameObject.SetActive(false);
     }
     
@@ -98,6 +101,7 @@ public class S2Mgr : MonoBehaviour
 
     private void ClosePanel(int index)
     {
+        GameDB.Audio.PlaySfx(btnsfx);
         goodsPnl[index].SetActive(false);
         if (activePanel == goodsPnl[index])
         {
@@ -109,6 +113,8 @@ public class S2Mgr : MonoBehaviour
     {
         if (GameDB.money > 50 && !GameDB.Bought[0])
         {
+            GameDB.Audio.PlaySfx(buysfx);
+            buy01.gameObject.SetActive(false);
             GameDB.money -= 50;
             GameDB.Bought[0] = true;
             //buyedItem[0].SetActive(true);
@@ -125,6 +131,8 @@ public class S2Mgr : MonoBehaviour
     {
         if (GameDB.money > 100 && !GameDB.Bought[1])
         {
+            GameDB.Audio.PlaySfx(buysfx);
+            buy02.gameObject.SetActive(false);
             GameDB.money -= 100;
             GameDB.Bought[1] = true;
             //buyedItem[1].SetActive(true);
@@ -141,6 +149,8 @@ public class S2Mgr : MonoBehaviour
     {
         if (GameDB.money > 200 && !GameDB.Bought[2])
         {
+            GameDB.Audio.PlaySfx(buysfx);
+            buy03.gameObject.SetActive(false);
             GameDB.money -= 200;
             GameDB.Bought[2] = true;
             //buyedItem[2].SetActive(true);
@@ -157,6 +167,8 @@ public class S2Mgr : MonoBehaviour
     {
         if (GameDB.money > 500 && !GameDB.Bought[3])
         {
+            GameDB.Audio.PlaySfx(buysfx);
+            buy04.gameObject.SetActive(false);
             GameDB.money -= 500;
             GameDB.Bought[3] = true;
             //buyedItem[3].SetActive(true);
@@ -173,6 +185,8 @@ public class S2Mgr : MonoBehaviour
     {
         if (GameDB.money > 600 && !GameDB.Bought[4])
         {
+            GameDB.Audio.PlaySfx(buysfx);
+            buy05.gameObject.SetActive(false);
             GameDB.money -= 600;
             GameDB.Bought[4] = true;
             //buyedItem[4].SetActive(true);
@@ -182,7 +196,7 @@ public class S2Mgr : MonoBehaviour
         else
         {
             warningPnl.gameObject.SetActive(true);
-            Debug.Log("你不夠500塊");
+            Debug.Log("你不夠600塊");
         }
     }
 }

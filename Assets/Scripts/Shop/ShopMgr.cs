@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class ShopMgr : MonoBehaviour
 {
+    public AudioClip openshopsfx;
+    public AudioClip btnsfx;
     public GameObject shopPnl;
     public Button closeshoBtn;
 
@@ -16,12 +18,18 @@ public class ShopMgr : MonoBehaviour
 
     private void OnBtnClose()
     {
+        Time.timeScale = 1f;
         shopPnl.gameObject.SetActive(false);
+        GameDB.Audio.PlaySfx(btnsfx);
     }
 
 
     void Update()
     {
+        if (shopPnl.activeSelf)
+        {
+            return;
+        }
         if (Input.GetButtonDown("Fire1"))
         {
             RaycastHit hit;
@@ -30,6 +38,8 @@ public class ShopMgr : MonoBehaviour
             {
                 if (hit.transform.gameObject.GetComponent<ShopTag>() != null)
                 {
+                    Time.timeScale = 0f;
+                    GameDB.Audio.PlaySfx(openshopsfx);
                     shopPnl.gameObject.SetActive(true);
                     Debug.Log("測試開商店");
                 }
