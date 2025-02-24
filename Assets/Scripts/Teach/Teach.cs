@@ -60,7 +60,7 @@ public class Teach : MonoBehaviour
     
     void Update()
     {
-        if (image[4].activeSelf)
+        if (image[3].activeSelf)
         {
             rBtn.gameObject.SetActive(false);
         }
