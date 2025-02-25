@@ -4686,7 +4686,6 @@ GameObject:
   - component: {fileID: 1229462652}
   - component: {fileID: 1229462651}
   - component: {fileID: 1229462650}
-  - component: {fileID: 1229462654}
   m_Layer: 0
   m_Name: Go to S1
   m_TagString: Untagged
@@ -4721,8 +4720,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5bcfb1e0cd62284783cc0edfbaa1851, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transsfx: {fileID: 0}
-  blackScreen: {fileID: 0}
+  transsfx: {fileID: 8300000, guid: bd12d747b6836cb42ba8171e84f2a451, type: 3}
+  blackScreen: {fileID: 729678710}
 --- !u!65 &1229462651
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4794,20 +4793,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1229462648}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1229462654
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1229462648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5bcfb1e0cd62284783cc0edfbaa1851, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transsfx: {fileID: 0}
-  blackScreen: {fileID: 0}
 --- !u!114 &1242176768 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8665993918650329377, guid: b53380fa30342144ea8817ea92816dff,
@@ -6285,7 +6270,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: 0fc5c16ed993062419399abd4ab8597f, type: 3}
 --- !u!224 &1693283991 stripped
 RectTransform:
-  m_CorrespondingSourceObject: {fileID: 3399264454287967191, guid: 0fc5c16ed993062419399abd4ab8597f,
+  m_CorrespondingSourceObject: {fileID: 7933452249177939684, guid: 0fc5c16ed993062419399abd4ab8597f,
     type: 3}
   m_PrefabInstance: {fileID: 1693283990}
   m_PrefabAsset: {fileID: 0}
