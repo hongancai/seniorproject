@@ -73,6 +73,8 @@ public static class GameDB
     // Audio
     public static AudioMgr Audio;
     public static ConfigData Config = new ConfigData();
+    
+
     public class ConfigData
     {
         public float bgmAudioVolume = 0.6f;  // 預設音量為 1

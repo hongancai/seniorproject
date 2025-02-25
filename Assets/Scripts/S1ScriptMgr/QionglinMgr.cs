@@ -36,6 +36,7 @@ public class QionglinMgr : MonoBehaviour
 
     void Update()
     {
+        
         switch (currentState)
         {
             case QionglinState.Idle:
@@ -53,12 +54,14 @@ public class QionglinMgr : MonoBehaviour
                 break;
             case QionglinState.拖砲塔:
                 ProcessDargTower();
+                //RacastAll();
                 break;
         }
         if (currentState == QionglinState.丟砲塔)
         {
             followQionglinImage.transform.position = Input.mousePosition;
         }
+        
     }
 
     private void ProcessIdle()
@@ -117,7 +120,7 @@ public class QionglinMgr : MonoBehaviour
     
         Debug.Log("取消放置");
     }
-
+    
     private void ProcessDargTower()
     {
         RaycastHit hit;
@@ -126,6 +129,7 @@ public class QionglinMgr : MonoBehaviour
         {
             if (hit.transform.gameObject.GetComponent<RoadTag>() != null)
             {
+                Debug.Log(hit.transform.gameObject.name);
                 cache砲塔.transform.localPosition = hit.point;
             }
         }
@@ -136,5 +140,19 @@ public class QionglinMgr : MonoBehaviour
             currentState = QionglinState.Idle;
         }
     }
-}
+
+    void RacastAll()
+    {
+        RaycastHit[] hits;
+        hits = Physics.RaycastAll(transform.position, transform.forward, 100.0F);
+
+        for (int i = 0; i < hits.Length; i++)
+        {
+            RaycastHit hit = hits[i];
+          Debug.Log(hit.transform.gameObject.name);
+           
+        }
+    }
+    }
+
 

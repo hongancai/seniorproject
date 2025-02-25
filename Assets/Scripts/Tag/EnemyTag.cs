@@ -9,10 +9,4 @@ public class EnemyTag : MonoBehaviour
     {
         
     }
-
-   
-    void Update()
-    {
-        
-    }
 }

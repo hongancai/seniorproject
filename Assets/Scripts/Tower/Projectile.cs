@@ -16,7 +16,7 @@ public class Projectile : MonoBehaviour
         this.target = target;
     }
 
-    // Update is called once per frame
+    
     void Update()
     { 
         if (target == null)
