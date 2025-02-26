@@ -23,10 +23,10 @@ public class LiuMgr : MonoBehaviour
     {
         cache砲塔 = null;
         currentState = LiuState.Idle;
-        btnLiu.onClick.AddListener(OnBtnTahouClick);
+        btnLiu.onClick.AddListener(OnBtnLiuClick);
     }
 
-    private void OnBtnTahouClick()
+    private void OnBtnLiuClick()
     {
         followLiuImage.gameObject.SetActive(true); 
         currentState = LiuState.丟砲塔;

@@ -25,10 +25,10 @@ public class QionglinMgr : MonoBehaviour
     {
         cache砲塔 = null;
         currentState = QionglinState.Idle;
-        btnQionglin.onClick.AddListener(OnBtnTahouClick);
+        btnQionglin.onClick.AddListener(OnBtnQiongClick);
     }
 
-    private void OnBtnTahouClick()
+    private void OnBtnQiongClick()
     {
         followQionglinImage.gameObject.SetActive(true);
         currentState = QionglinState.丟砲塔;
@@ -50,14 +50,16 @@ public class QionglinMgr : MonoBehaviour
                 {
                     currentState = QionglinState.Cancel; // 切換到取消狀態
                 }
-
                 break;
             case QionglinState.Cancel:
                 ProcessCancel();
                 break;
             case QionglinState.拖砲塔:
                 ProcessDargTower();
-                //RacastAll();
+                if (cache砲塔 != null)
+                {
+                    RacastAll();
+                }
                 break;
         }
 
@@ -65,6 +67,11 @@ public class QionglinMgr : MonoBehaviour
         {
             followQionglinImage.transform.position = Input.mousePosition;
         }
+    }
+
+    private void PAll()
+    {
+        
     }
 
     private void ProcessIdle()
@@ -146,13 +153,29 @@ public class QionglinMgr : MonoBehaviour
 
     void RacastAll()
     {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit[] hits;
-        hits = Physics.RaycastAll(transform.position, transform.forward, 100.0F);
+        hits = Physics.RaycastAll(ray);
 
         for (int i = 0; i < hits.Length; i++)
         {
             RaycastHit hit = hits[i];
             Debug.Log(hit.transform.gameObject.name);
+            hit.transform.gameObject.GetComponent<QionglinTag>();
+            if (Physics.Raycast(ray, out hit))
+            {
+                if (hit.transform.gameObject.GetComponent<RoadTag>() != null)
+                {
+                    Debug.Log(hit.transform.gameObject.name);
+                    cache砲塔.transform.localPosition = hit.point;
+                }
+            }
+
+            if (Input.GetButtonUp("Fire1"))
+            {
+                cache砲塔 = null;
+                currentState = QionglinState.Idle;
+            }
         }
     }
 }
