@@ -21,6 +21,7 @@ public class HoushuiMgr : MonoBehaviour
     
     void Start()
     {
+        cache砲塔 = null;
         currentState = HoushuiState.Idle;
         btnHoushui.onClick.AddListener(OnBtnHoushuiClick);
     }
@@ -70,7 +71,7 @@ public class HoushuiMgr : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit))
             {
-                if (hit.transform.gameObject.name.ToLower().Contains("houshui"))
+                if (hit.transform.gameObject.GetComponent<HoushuiTag>()!= null)
                 {
                     // cache 
                     cache砲塔 = hit.transform.gameObject;
@@ -128,7 +129,6 @@ public class HoushuiMgr : MonoBehaviour
             {
                 cache砲塔.transform.localPosition = hit.point;
             }
-            return;
         }
 
         if (Input.GetButtonUp("Fire1"))

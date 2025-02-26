@@ -21,6 +21,7 @@ public class TahouMgr : MonoBehaviour
     
     void Start()
     {
+        cache砲塔 = null;
         currentState = TahouState.Idle;
         btnTahou.onClick.AddListener(OnBtnTahouClick);
     }
@@ -70,7 +71,7 @@ public class TahouMgr : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit))
             {
-                if (hit.transform.gameObject.name.ToLower().Contains("tahou"))
+                if (hit.transform.gameObject.GetComponent<TahouTag>()!= null)
                 {
                     // cache 
                     cache砲塔 = hit.transform.gameObject;
@@ -128,7 +129,6 @@ public class TahouMgr : MonoBehaviour
             {
                 cache砲塔.transform.localPosition = hit.point;
             }
-            return;
         }
 
         if (Input.GetButtonUp("Fire1"))

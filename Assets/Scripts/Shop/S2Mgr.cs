@@ -72,6 +72,7 @@ public class S2Mgr : MonoBehaviour
         buy04.onClick.AddListener(OnBtnBuyItem4);
         buy05.onClick.AddListener(OnBtnBuyItem5);
     }
+   
     void Update()
     {
         if (GameDB.Audio._bgmAudioSource.volume <=0.6f)

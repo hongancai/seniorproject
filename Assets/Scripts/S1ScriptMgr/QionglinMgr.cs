@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class QionglinMgr : MonoBehaviour
 {
-   public GameObject qionglinprefabs;
+    public GameObject qionglinprefabs;
+
     public enum QionglinState
     {
         Idle,
@@ -13,21 +14,23 @@ public class QionglinMgr : MonoBehaviour
         Cancel,
         拖砲塔,
     }
+
     private QionglinState currentState;
     public Button btnQionglin;
     public GameObject followQionglinImage;
-   
+
     private GameObject cache砲塔;
-    
+
     void Start()
     {
+        cache砲塔 = null;
         currentState = QionglinState.Idle;
         btnQionglin.onClick.AddListener(OnBtnTahouClick);
     }
 
     private void OnBtnTahouClick()
     {
-        followQionglinImage.gameObject.SetActive(true); 
+        followQionglinImage.gameObject.SetActive(true);
         currentState = QionglinState.丟砲塔;
         btnQionglin.interactable = false;
         Debug.Log("開始丟瓊林風獅爺喔");
@@ -36,7 +39,6 @@ public class QionglinMgr : MonoBehaviour
 
     void Update()
     {
-        
         switch (currentState)
         {
             case QionglinState.Idle:
@@ -44,10 +46,11 @@ public class QionglinMgr : MonoBehaviour
                 break;
             case QionglinState.丟砲塔:
                 ProcessPlacingTower();
-                if (Input.GetMouseButtonDown(1))  // 按下右鍵
+                if (Input.GetMouseButtonDown(1)) // 按下右鍵
                 {
-                    currentState = QionglinState.Cancel;  // 切換到取消狀態
+                    currentState = QionglinState.Cancel; // 切換到取消狀態
                 }
+
                 break;
             case QionglinState.Cancel:
                 ProcessCancel();
@@ -57,11 +60,11 @@ public class QionglinMgr : MonoBehaviour
                 //RacastAll();
                 break;
         }
+
         if (currentState == QionglinState.丟砲塔)
         {
             followQionglinImage.transform.position = Input.mousePosition;
         }
-        
     }
 
     private void ProcessIdle()
@@ -73,7 +76,7 @@ public class QionglinMgr : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit))
             {
-                if (hit.transform.gameObject.name.ToLower().Contains("qionglin"))
+                if (hit.transform.gameObject.GetComponent<QionglinTag>() != null)
                 {
                     // cache 
                     cache砲塔 = hit.transform.gameObject;
@@ -87,7 +90,7 @@ public class QionglinMgr : MonoBehaviour
     private void ProcessPlacingTower()
     {
         if (Input.GetButtonDown("Fire1"))
-        {   
+        {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -111,16 +114,16 @@ public class QionglinMgr : MonoBehaviour
     {
         // 隱藏跟隨圖片
         followQionglinImage.gameObject.SetActive(false);
-    
+
         // 重新啟用按鈕
         btnQionglin.interactable = true;
-    
+
         // 重置狀態
         currentState = QionglinState.Idle;
-    
+
         Debug.Log("取消放置");
     }
-    
+
     private void ProcessDargTower()
     {
         RaycastHit hit;
@@ -132,7 +135,6 @@ public class QionglinMgr : MonoBehaviour
                 Debug.Log(hit.transform.gameObject.name);
                 cache砲塔.transform.localPosition = hit.point;
             }
-            return;
         }
 
         if (Input.GetButtonUp("Fire1"))
@@ -150,10 +152,7 @@ public class QionglinMgr : MonoBehaviour
         for (int i = 0; i < hits.Length; i++)
         {
             RaycastHit hit = hits[i];
-          Debug.Log(hit.transform.gameObject.name);
-           
+            Debug.Log(hit.transform.gameObject.name);
         }
     }
-    }
-
-
+}

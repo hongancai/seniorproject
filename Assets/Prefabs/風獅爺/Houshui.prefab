@@ -376,6 +376,7 @@ GameObject:
   - component: {fileID: 5607402495054623612}
   - component: {fileID: 997985634990633901}
   - component: {fileID: 463469434866500636}
+  - component: {fileID: 2586392103551237282}
   m_Layer: 0
   m_Name: Houshui
   m_TagString: Untagged
@@ -561,3 +562,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
+--- !u!114 &2586392103551237282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7718614051222927974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de4eb6c705e2a7c45ad4c531876f1bde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -269,6 +269,7 @@ GameObject:
   - component: {fileID: 914013036967329250}
   - component: {fileID: 1189718477384986631}
   - component: {fileID: 3371637350584644120}
+  - component: {fileID: 5723170774301837207}
   m_Layer: 0
   m_Name: Tahou
   m_TagString: Untagged
@@ -452,6 +453,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
+--- !u!114 &5723170774301837207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6220549650797080446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b38272c59e6437a43b28220578be19f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7798891822652582578
 GameObject:
   m_ObjectHideFlags: 0

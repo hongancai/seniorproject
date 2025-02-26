@@ -21,6 +21,7 @@ public class LiuMgr : MonoBehaviour
     
     void Start()
     {
+        cache砲塔 = null;
         currentState = LiuState.Idle;
         btnLiu.onClick.AddListener(OnBtnTahouClick);
     }
@@ -70,7 +71,7 @@ public class LiuMgr : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit))
             {
-                if (hit.transform.gameObject.name.ToLower().Contains("liu"))
+                if (hit.transform.gameObject.GetComponent<LiuTag>()!= null)
                 {
                     // cache 
                     cache砲塔 = hit.transform.gameObject;
@@ -128,7 +129,6 @@ public class LiuMgr : MonoBehaviour
             {
                 cache砲塔.transform.localPosition = hit.point;
             }
-            return;
         }
 
         if (Input.GetButtonUp("Fire1"))

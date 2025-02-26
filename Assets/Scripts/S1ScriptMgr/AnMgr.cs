@@ -21,6 +21,7 @@ public class AnMgr : MonoBehaviour
     
     void Start()
     {
+        cache砲塔 = null;
         currentState = AnState.Idle;
         btnAn.onClick.AddListener(OnBtnAnClick);
     }
@@ -70,7 +71,7 @@ public class AnMgr : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit))
             {
-                if (hit.transform.gameObject.name.ToLower().Contains("an"))
+                if (hit.transform.gameObject.GetComponent<AnTag>()!= null)
                 {
                     // cache 
                     cache砲塔 = hit.transform.gameObject;
@@ -128,7 +129,6 @@ public class AnMgr : MonoBehaviour
             {
                 cache砲塔.transform.localPosition = hit.point;
             }
-            return;
         }
 
         if (Input.GetButtonUp("Fire1"))
