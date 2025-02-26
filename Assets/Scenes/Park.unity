@@ -8386,7 +8386,6 @@ GameObject:
   - component: {fileID: 1897634993}
   - component: {fileID: 1897634999}
   - component: {fileID: 1897635000}
-  - component: {fileID: 1897635001}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -8523,22 +8522,6 @@ MonoBehaviour:
   buy04: {fileID: 621081815}
   buy05: {fileID: 1017286579}
   activePanel: {fileID: 0}
---- !u!114 &1897635001
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1897634990}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79feaa1a5d89f094fa8c07f3ffbc3c65, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  anprefabs: {fileID: 6599955858010660625, guid: 4a74bfdadc6b5134988fa7e268a78739,
-    type: 3}
-  btnAn: {fileID: 0}
-  followAnImage: {fileID: 0}
 --- !u!1 &1913138688
 GameObject:
   m_ObjectHideFlags: 0

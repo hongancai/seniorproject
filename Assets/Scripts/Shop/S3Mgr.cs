@@ -22,6 +22,8 @@ public class S3Mgr : MonoBehaviour
     private bool isPanelOpen = false;
     void Start()
     {
+        GameDB.Load();
+        UpdateButtonVisibility();
         GameDB.Audio.PlayBgm(s3bgm);
         for (int i = 0; i < closegoodsPnlBtn.Count; i++)
         {
@@ -49,7 +51,18 @@ public class S3Mgr : MonoBehaviour
     {
         warningPnl.gameObject.SetActive(false);
     }
-
+    
+    private void UpdateButtonVisibility()
+    {
+        // 確保GameDB.Bought有足夠的元素
+        if (GameDB.BoughtTower.Count >= 4)
+        {
+            buy02.gameObject.SetActive(!GameDB.BoughtTower[0]);
+            buy03.gameObject.SetActive(!GameDB.BoughtTower[1]);
+            buy04.gameObject.SetActive(!GameDB.BoughtTower[2]);
+            buy05.gameObject.SetActive(!GameDB.BoughtTower[3]);
+        }
+    }
     void Update()
     {
         if (GameDB.Audio._bgmAudioSource.volume <=0.6f)

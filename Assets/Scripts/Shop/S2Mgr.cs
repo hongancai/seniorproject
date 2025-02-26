@@ -25,7 +25,9 @@ public class S2Mgr : MonoBehaviour
     public GameObject activePanel = null;
 
     void Start()
-    {
+    {   
+        GameDB.Load();
+        UpdateButtonVisibility();
         warningPnl.gameObject.SetActive(false);
         GameDB.Audio.PlayBgm(s2bgm);
         blackScreen.gameObject.SetActive(true);
@@ -72,7 +74,18 @@ public class S2Mgr : MonoBehaviour
         buy04.onClick.AddListener(OnBtnBuyItem4);
         buy05.onClick.AddListener(OnBtnBuyItem5);
     }
-   
+    private void UpdateButtonVisibility()
+    {
+        // 確保GameDB.Bought有足夠的元素
+        if (GameDB.Bought.Count >= 5)
+        {
+            buy01.gameObject.SetActive(!GameDB.Bought[0]);
+            buy02.gameObject.SetActive(!GameDB.Bought[1]);
+            buy03.gameObject.SetActive(!GameDB.Bought[2]);
+            buy04.gameObject.SetActive(!GameDB.Bought[3]);
+            buy05.gameObject.SetActive(!GameDB.Bought[4]);
+        }
+    }
     void Update()
     {
         if (GameDB.Audio._bgmAudioSource.volume <=0.6f)

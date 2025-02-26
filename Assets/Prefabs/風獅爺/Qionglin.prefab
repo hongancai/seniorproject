@@ -254,6 +254,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 100
   currentHP: 100
+--- !u!1 &5720703677791955133
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 485234043819813631}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &485234043819813631
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5720703677791955133}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.2588191, y: -0, z: -0, w: 0.9659258}
+  m_LocalPosition: {x: 0.125, y: 0.74109834, z: -0.042714834}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2103463208411336296}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5820707642298067822
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,6 +301,7 @@ GameObject:
   - component: {fileID: 1488768289815896195}
   - component: {fileID: 1654287319731587175}
   - component: {fileID: 1817827685788655403}
+  - component: {fileID: 7851850649361578234}
   m_Layer: 0
   m_Name: Qionglin
   m_TagString: Untagged
@@ -292,6 +324,7 @@ Transform:
   m_Children:
   - {fileID: 362845952625982798}
   - {fileID: 1152672186726319020}
+  - {fileID: 485234043819813631}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
 --- !u!33 &6750323110259113818
@@ -466,6 +499,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c12b24c14464b04295d1166a41a4ab0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7851850649361578234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5820707642298067822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b25521ff3cc320d4e93b458043d09c54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 446097948667377901, guid: a5bf579e38db1bf4d8b118e689e4114b,
+    type: 3}
+  firePoint: {fileID: 485234043819813631}
+  fireRate: 1
 --- !u!1 &7891361290860954499
 GameObject:
   m_ObjectHideFlags: 0
@@ -478,13 +527,14 @@ GameObject:
   - component: {fileID: 6359645704208975234}
   - component: {fileID: 5717004503114604011}
   - component: {fileID: 8322238727017793791}
+  - component: {fileID: 7885457885920159414}
   m_Layer: 0
   m_Name: "An\u653B\u64CA\u7BC4\u570D"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1152672186726319020
 Transform:
   m_ObjectHideFlags: 0
@@ -569,7 +619,20 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 2.6450043
-  m_Height: 75.57155
+  m_Radius: 2.8941956
+  m_Height: 82.6913
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0.11143494}
+  m_Center: {x: 0, y: 0, z: 0.21350098}
+--- !u!114 &7885457885920159414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7891361290860954499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed13334335e3a364daff643c79c474f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tower: {fileID: 7851850649361578234}

@@ -10,6 +10,8 @@ public class TowerAttack : MonoBehaviour
     private float fireCooldown = 0f; // 發射冷卻時間
     private Transform target; // 目標
 
+    private Animator animator;
+
     void Update()
     {
         if (target != null)
@@ -24,6 +26,7 @@ public class TowerAttack : MonoBehaviour
 
             if (fireCooldown <= 0f)
             {
+                
                 Fire();
                 fireCooldown = 1f / fireRate;
             }
