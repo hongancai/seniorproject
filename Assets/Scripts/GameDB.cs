@@ -8,8 +8,8 @@ public static class GameDB
     //Player
     public static float playerSpd = 0.0f;
     public static int money = 10000;
-    //Shop
     
+    //Shop
     public static List<bool> Bought = new List<bool>();
     public static List<bool> BoughtTower = new List<bool>();
     private static bool isInitialized = false;
@@ -66,7 +66,7 @@ public static class GameDB
     public static int towerHp;
     public static int towerAtk;
     public static int towerDef;
-    public static int towerAtkSpd;
+    public static float towerAtkSpd;
     
     //PauseMenu
     public static bool pausemenu = false;

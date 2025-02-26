@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2155518506914060519}
   - component: {fileID: 6872253969212471610}
   - component: {fileID: 5986318606031103019}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Hp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 4426789645682326083}
   - component: {fileID: 3964260025678572032}
   - component: {fileID: 2746466850394167342}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HpFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -272,7 +272,7 @@ GameObject:
   - component: {fileID: 5817714535765693119}
   - component: {fileID: 2757828048597760203}
   - component: {fileID: 1272830106204462492}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Storm
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -427,7 +427,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3

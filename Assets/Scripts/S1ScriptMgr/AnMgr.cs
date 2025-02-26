@@ -128,6 +128,7 @@ public class AnMgr : MonoBehaviour
             {
                 cache砲塔.transform.localPosition = hit.point;
             }
+            return;
         }
 
         if (Input.GetButtonUp("Fire1"))

@@ -269,6 +269,7 @@ GameObject:
   - component: {fileID: 2244014635184352593}
   - component: {fileID: 1488768289815896195}
   - component: {fileID: 1654287319731587175}
+  - component: {fileID: 9100767381283268881}
   m_Layer: 0
   m_Name: Qionglin
   m_TagString: Untagged
@@ -453,6 +454,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
+--- !u!114 &9100767381283268881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5820707642298067822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e7b7b1a35d1b3f408fb8f79008098d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gourdPrefab: {fileID: 446097948667377901, guid: a5bf579e38db1bf4d8b118e689e4114b,
+    type: 3}
+  attackPoint: {fileID: 2103463208411336296}
+  attackInterval: 2
 --- !u!1 &7891361290860954499
 GameObject:
   m_ObjectHideFlags: 0

@@ -128,6 +128,7 @@ public class HoushuiMgr : MonoBehaviour
             {
                 cache砲塔.transform.localPosition = hit.point;
             }
+            return;
         }
 
         if (Input.GetButtonUp("Fire1"))
@@ -135,6 +136,7 @@ public class HoushuiMgr : MonoBehaviour
             cache砲塔 = null;
             currentState = HoushuiState.Idle;
         }
+        
     }
 }
 
