@@ -112,6 +112,15 @@ public static class GameDB
         {
             BoughtTower[i] = PlayerPrefs.GetInt($"Tower_Bought_{i}", 0) == 1;
         }
+        Config.bgmAudioVolume = PlayerPrefs.GetFloat("BGM_Volume", 0.6f);
+        Config.sfxAudioVolume = PlayerPrefs.GetFloat("SFX_Volume", 0.8f);
+    
+        // 如果AudioMgr已經初始化，則立即應用音量設置
+        if (Audio != null)
+        {
+            Audio.SetBgmVolume(Config.bgmAudioVolume);
+            Audio.SetSfxVolume(Config.sfxAudioVolume);
+        }
     }
     public static void ResetAll()
     {

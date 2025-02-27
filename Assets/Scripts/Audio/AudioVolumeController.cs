@@ -10,7 +10,7 @@ public class AudioVolumeController : MonoBehaviour
     public Slider sfxVolumeSlider;
     
     
-    public bool saveOnValueChanged = true;
+    private bool saveOnValueChanged = true;
 
     private void Start()
     {

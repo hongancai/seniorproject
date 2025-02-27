@@ -1151,7 +1151,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bgmVolumeSlider: {fileID: 434271925}
   sfxVolumeSlider: {fileID: 1996315558}
-  saveOnValueChanged: 1
 --- !u!1 &619410003
 GameObject:
   m_ObjectHideFlags: 0
