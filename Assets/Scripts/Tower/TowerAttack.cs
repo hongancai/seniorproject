@@ -7,7 +7,7 @@ public class TowerAttack : MonoBehaviour
     public GameObject projectilePrefab; // 投射物預製件
     public Transform firePoint; // 投射物發射點
     public float fireRate = 1f; // 發射速率
-    private float fireCooldown = 0f; // 發射冷卻時間
+    private float fireCooldown = 1f; // 發射冷卻時間
     private Transform target; // 目標
 
     private Animator animator;

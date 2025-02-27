@@ -7,6 +7,7 @@ public class QionglinMgr : MonoBehaviour
 {
     public GameObject qionglinprefabs;
 
+    private bool drag = false;//
     public enum QionglinState
     {
         Idle,
@@ -68,11 +69,7 @@ public class QionglinMgr : MonoBehaviour
             followQionglinImage.transform.position = Input.mousePosition;
         }
     }
-
-    private void PAll()
-    {
-        
-    }
+    
 
     private void ProcessIdle()
     {

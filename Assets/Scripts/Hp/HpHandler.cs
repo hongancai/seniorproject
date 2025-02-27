@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class HpHandler : MonoBehaviour
-{  public float maxHP = 100f;
+{  
+    public float maxHP = 100f;
     public float currentHP = 100f;
     void Start()
     {
+        
     }
 
     void Update()

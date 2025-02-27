@@ -12,8 +12,8 @@ public class PlayerController : MonoBehaviour
     
 
     private string lastDirection = "L"; // 預設為左邊
-    private float normalSpeed = 3.0f;   // 正常移動速度
-    private float sprintSpeed = 4.0f; // 加速移動速度
+    private float normalSpeed = 4.0f;   // 正常移動速度
+    private float sprintSpeed = 7.0f; // 加速移動速度
 
     public AudioClip playerwaik;
     void Start()

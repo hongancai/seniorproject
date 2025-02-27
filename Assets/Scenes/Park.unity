@@ -8507,7 +8507,7 @@ MonoBehaviour:
   - {fileID: 75940398}
   - {fileID: 744183500}
   - {fileID: 375914772}
-  s3bgm: {fileID: 8300000, guid: fa00385d3c1461645aaead4e27c47f08, type: 3}
+  s3bgm: {fileID: 8300000, guid: 426711b1224c674429ae76b5a4554027, type: 3}
   blackScreen: {fileID: 859281982}
   closegoodsPnlBtn:
   - {fileID: 1147203706}
