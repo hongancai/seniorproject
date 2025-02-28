@@ -9,6 +9,8 @@ public class S3Mgr : MonoBehaviour
     public List<GameObject> tower;
     public List<GameObject> towerPnl; 
     public AudioClip s3bgm;
+    public AudioClip closesfx;
+    public AudioClip buysfx;
     public Image blackScreen;
     public List<Button> closegoodsPnlBtn;
     public GameObject warningPnl;
@@ -19,6 +21,7 @@ public class S3Mgr : MonoBehaviour
     public Button buy05;
     
     public GameObject activePanel = null;
+    public GameObject pauseMenu;
     private bool isPanelOpen = false;
     void Start()
     {
@@ -72,6 +75,10 @@ public class S3Mgr : MonoBehaviour
         // 當滑鼠左鍵點擊時
         if (Input.GetButtonDown("Fire1")&& !isPanelOpen)
         {
+            if (pauseMenu.activeSelf)
+            {
+                return;
+            }
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit))
@@ -109,6 +116,7 @@ public class S3Mgr : MonoBehaviour
     // 關閉面板
     private void ClosePanel(int index)
     {
+        GameDB.Audio.PlaySfx(closesfx);
         Time.timeScale = 1;
         towerPnl[index].SetActive(false);
         activePanel = null;
@@ -122,6 +130,7 @@ public class S3Mgr : MonoBehaviour
         {
             buy02.gameObject.SetActive(false);
             GameDB.money -= 300;
+            GameDB.Audio.PlaySfx(buysfx);
             GameDB.BoughtTower[0] = true;
             GameDB.Save();
             Debug.Log("你買了後水頭");
@@ -140,6 +149,7 @@ public class S3Mgr : MonoBehaviour
             buy03.gameObject.SetActive(false);
             GameDB.money -= 500;
             GameDB.BoughtTower[1] = true;
+            GameDB.Audio.PlaySfx(buysfx);
             GameDB.Save();
             Debug.Log("你買了劉澳");
         }
@@ -157,6 +167,7 @@ public class S3Mgr : MonoBehaviour
             buy04.gameObject.SetActive(false);
             GameDB.money -= 700;
             GameDB.BoughtTower[2] = true;
+            GameDB.Audio.PlaySfx(buysfx);
             GameDB.Save();
             Debug.Log("你買了安崎");
         }
@@ -174,6 +185,7 @@ public class S3Mgr : MonoBehaviour
             buy05.gameObject.SetActive(false);
             GameDB.money -= 1500;
             GameDB.BoughtTower[3] = true;
+            GameDB.Audio.PlaySfx(buysfx);
             GameDB.Save();
             Debug.Log("你買了塔后");
         }

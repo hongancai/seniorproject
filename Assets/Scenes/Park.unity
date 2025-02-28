@@ -3378,7 +3378,7 @@ Transform:
   m_GameObject: {fileID: 665558969}
   serializedVersion: 2
   m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
-  m_LocalPosition: {x: 2.139, y: 0.231, z: -0.015995145}
+  m_LocalPosition: {x: 2.321, y: 0.231, z: -0.015995145}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4848,7 +4848,7 @@ Transform:
   m_GameObject: {fileID: 968362468}
   serializedVersion: 2
   m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
-  m_LocalPosition: {x: 0.872, y: 0.31, z: -0.11}
+  m_LocalPosition: {x: 0.765, y: 0.31, z: -0.11}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6034,7 +6034,7 @@ Transform:
   m_GameObject: {fileID: 1243586179}
   serializedVersion: 2
   m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
-  m_LocalPosition: {x: -3.44, y: 1.79, z: 0.91}
+  m_LocalPosition: {x: -3.56, y: 1.79, z: 0.91}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8508,6 +8508,8 @@ MonoBehaviour:
   - {fileID: 744183500}
   - {fileID: 375914772}
   s3bgm: {fileID: 8300000, guid: 426711b1224c674429ae76b5a4554027, type: 3}
+  closesfx: {fileID: 8300000, guid: 42cb8fc809e54874d98f66872e74ec2b, type: 3}
+  buysfx: {fileID: 8300000, guid: e8c5a61bf0b5384448d83e676dc65aa1, type: 3}
   blackScreen: {fileID: 859281982}
   closegoodsPnlBtn:
   - {fileID: 1147203706}
@@ -8522,6 +8524,7 @@ MonoBehaviour:
   buy04: {fileID: 621081815}
   buy05: {fileID: 1017286579}
   activePanel: {fileID: 0}
+  pauseMenu: {fileID: 578731618}
 --- !u!1 &1913138688
 GameObject:
   m_ObjectHideFlags: 0
@@ -8552,8 +8555,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 621081814}
   - {fileID: 1879244163}
+  - {fileID: 621081814}
   m_Father: {fileID: 744183501}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
