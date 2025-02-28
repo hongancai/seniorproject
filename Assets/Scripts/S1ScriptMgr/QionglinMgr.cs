@@ -7,7 +7,7 @@ public class QionglinMgr : MonoBehaviour
 {
     public GameObject qionglinprefabs;
 
-    private bool drag = false;//
+    
     public enum QionglinState
     {
         Idle,
