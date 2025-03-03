@@ -32,7 +32,7 @@ public class HoushuiMgr : MonoBehaviour
         followHoushuiImage.gameObject.SetActive(true); 
         currentState = HoushuiState.Placing;
         btnHoushui.interactable = false;
-        Debug.Log("開始丟安崎風獅爺喔");
+        Debug.Log("開始丟后水頭風獅爺喔");
     }
 
 

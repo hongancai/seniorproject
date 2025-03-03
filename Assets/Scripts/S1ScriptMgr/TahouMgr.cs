@@ -24,15 +24,15 @@ public class TahouMgr : MonoBehaviour
     {
         cache砲塔 = null;
         currentState = TahouState.Idle;
-        btnTahou.onClick.AddListener(OnBtnLiuClick);
+        btnTahou.onClick.AddListener(OnBtnTahouClick);
     }
 
-    private void OnBtnLiuClick()
+    private void OnBtnTahouClick()
     {
         followTahouImage.gameObject.SetActive(true); 
         currentState = TahouState.Placing;
         btnTahou.interactable = false;
-        Debug.Log("開始丟劉澳風獅爺喔");
+        Debug.Log("開始丟塔后風獅爺喔");
     }
 
 
