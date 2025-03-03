@@ -6,12 +6,13 @@ using UnityEngine.UI;
 public class AnMgr : MonoBehaviour
 {
     public GameObject anprefabs;
+    public AudioClip placingsfx;
     public enum AnState
     {
         Idle,
-        丟砲塔,
+        Placing,
         Cancel,
-        拖砲塔,
+        Drag,
     }
     private AnState currentState;
     public Button btnAn;
@@ -29,7 +30,7 @@ public class AnMgr : MonoBehaviour
     private void OnBtnAnClick()
     {
         followAnImage.gameObject.SetActive(true); 
-        currentState = AnState.丟砲塔;
+        currentState = AnState. Placing;
         btnAn.interactable = false;
         Debug.Log("開始丟安崎風獅爺喔");
     }
@@ -42,7 +43,7 @@ public class AnMgr : MonoBehaviour
             case AnState.Idle:
                 ProcessIdle();
                 break;
-            case AnState.丟砲塔:
+            case AnState. Placing:
                 ProcessPlacingTower();
                 if (Input.GetMouseButtonDown(1))  // 按下右鍵
                 {
@@ -52,11 +53,11 @@ public class AnMgr : MonoBehaviour
             case AnState.Cancel:
                 ProcessCancel();
                 break;
-            case AnState.拖砲塔:
+            case AnState.Drag:
                 ProcessDargTower();
                 break;
         }
-        if (currentState == AnState.丟砲塔)
+        if (currentState == AnState. Placing)
         {
             followAnImage.transform.position = Input.mousePosition;
         }
@@ -76,7 +77,7 @@ public class AnMgr : MonoBehaviour
                     // cache 
                     cache砲塔 = hit.transform.gameObject;
                     //該狀態
-                    currentState = AnState.拖砲塔;
+                    currentState = AnState.Drag;
                 }
             }
         }
@@ -93,11 +94,14 @@ public class AnMgr : MonoBehaviour
             {
                 if (hit.transform.gameObject.GetComponent<RoadTag>() != null)
                 {
-                    Vector3 placePosition = hit.point;
+                    //Vector3 placePosition = hit.point;
+                    GameDB.Audio.PlaySfx(placingsfx);
                     GameObject temp = Instantiate(anprefabs);
                     temp.transform.localScale = Vector3.one;
                     temp.transform.localEulerAngles = new Vector3(30, 0, 0);
-                    temp.transform.localPosition = hit.point;
+                    Vector3 position = hit.point;
+                    position.y = 0;
+                    temp.transform.localPosition = position;
                     followAnImage.gameObject.SetActive(false);
                     currentState = AnState.Idle; //改變狀態!!!
                 }

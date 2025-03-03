@@ -6,12 +6,13 @@ using UnityEngine.UI;
 public class HoushuiMgr : MonoBehaviour
 {
     public GameObject houshuiprefabs;
+    public AudioClip placingsfx;
     public enum HoushuiState
     {
         Idle,
-        丟砲塔,
+        Placing,
         Cancel,
-        拖砲塔,
+        Drag,
     }
     private HoushuiState currentState;
     public Button btnHoushui;
@@ -29,7 +30,7 @@ public class HoushuiMgr : MonoBehaviour
     private void OnBtnHoushuiClick()
     {
         followHoushuiImage.gameObject.SetActive(true); 
-        currentState = HoushuiState.丟砲塔;
+        currentState = HoushuiState.Placing;
         btnHoushui.interactable = false;
         Debug.Log("開始丟安崎風獅爺喔");
     }
@@ -42,7 +43,7 @@ public class HoushuiMgr : MonoBehaviour
             case HoushuiState.Idle:
                 ProcessIdle();
                 break;
-            case HoushuiState.丟砲塔:
+            case HoushuiState.Placing:
                 ProcessPlacingTower();
                 if (Input.GetMouseButtonDown(1))  // 按下右鍵
                 {
@@ -52,11 +53,11 @@ public class HoushuiMgr : MonoBehaviour
             case HoushuiState.Cancel:
                 ProcessCancel();
                 break;
-            case HoushuiState.拖砲塔:
+            case HoushuiState.Drag:
                 ProcessDargTower();
                 break;
         }
-        if (currentState == HoushuiState.丟砲塔)
+        if (currentState == HoushuiState.Placing)
         {
             followHoushuiImage.transform.position = Input.mousePosition;
         }
@@ -76,7 +77,7 @@ public class HoushuiMgr : MonoBehaviour
                     // cache 
                     cache砲塔 = hit.transform.gameObject;
                     //該狀態
-                    currentState = HoushuiState.拖砲塔;
+                    currentState = HoushuiState.Drag;
                 }
             }
         }
@@ -93,11 +94,14 @@ public class HoushuiMgr : MonoBehaviour
             {
                 if (hit.transform.gameObject.GetComponent<RoadTag>() != null)
                 {
-                    Vector3 placePosition = hit.point;
+                    //Vector3 placePosition = hit.point;
+                    GameDB.Audio.PlaySfx(placingsfx);
                     GameObject temp = Instantiate(houshuiprefabs);
                     temp.transform.localScale = Vector3.one;
                     temp.transform.localEulerAngles = new Vector3(30, 0, 0);
-                    temp.transform.localPosition = hit.point;
+                    Vector3 position = hit.point;
+                    position.y = 0;
+                    temp.transform.localPosition = position;
                     followHoushuiImage.gameObject.SetActive(false);
                     currentState = HoushuiState.Idle; //改變狀態!!!
                 }

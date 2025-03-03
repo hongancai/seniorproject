@@ -6,32 +6,33 @@ using UnityEngine.UI;
 public class TahouMgr : MonoBehaviour
 {
    public GameObject tahouprefabs;
+   public AudioClip placingsfx;
     public enum TahouState
     {
         Idle,
-        丟砲塔,
+        Placing,
         Cancel,
-        拖砲塔,
+        Drag,
     }
     private TahouState currentState;
     public Button btnTahou;
     public GameObject followTahouImage;
-   
+    
     private GameObject cache砲塔;
     
     void Start()
     {
         cache砲塔 = null;
         currentState = TahouState.Idle;
-        btnTahou.onClick.AddListener(OnBtnTahouClick);
+        btnTahou.onClick.AddListener(OnBtnLiuClick);
     }
 
-    private void OnBtnTahouClick()
+    private void OnBtnLiuClick()
     {
         followTahouImage.gameObject.SetActive(true); 
-        currentState = TahouState.丟砲塔;
+        currentState = TahouState.Placing;
         btnTahou.interactable = false;
-        Debug.Log("開始丟塔后風獅爺喔");
+        Debug.Log("開始丟劉澳風獅爺喔");
     }
 
 
@@ -42,7 +43,7 @@ public class TahouMgr : MonoBehaviour
             case TahouState.Idle:
                 ProcessIdle();
                 break;
-            case TahouState.丟砲塔:
+            case TahouState.Placing:
                 ProcessPlacingTower();
                 if (Input.GetMouseButtonDown(1))  // 按下右鍵
                 {
@@ -52,11 +53,11 @@ public class TahouMgr : MonoBehaviour
             case TahouState.Cancel:
                 ProcessCancel();
                 break;
-            case TahouState.拖砲塔:
+            case TahouState.Drag:
                 ProcessDargTower();
                 break;
         }
-        if (currentState == TahouState.丟砲塔)
+        if (currentState == TahouState.Placing)
         {
             followTahouImage.transform.position = Input.mousePosition;
         }
@@ -76,7 +77,7 @@ public class TahouMgr : MonoBehaviour
                     // cache 
                     cache砲塔 = hit.transform.gameObject;
                     //該狀態
-                    currentState = TahouState.拖砲塔;
+                    currentState = TahouState.Drag;
                 }
             }
         }
@@ -93,11 +94,14 @@ public class TahouMgr : MonoBehaviour
             {
                 if (hit.transform.gameObject.GetComponent<RoadTag>() != null)
                 {
+                    GameDB.Audio.PlaySfx(placingsfx);
                     Vector3 placePosition = hit.point;
                     GameObject temp = Instantiate(tahouprefabs);
                     temp.transform.localScale = Vector3.one;
                     temp.transform.localEulerAngles = new Vector3(30, 0, 0);
-                    temp.transform.localPosition = hit.point;
+                    Vector3 position = hit.point;
+                    position.y = 0;
+                    temp.transform.localPosition = position;
                     followTahouImage.gameObject.SetActive(false);
                     currentState = TahouState.Idle; //改變狀態!!!
                 }

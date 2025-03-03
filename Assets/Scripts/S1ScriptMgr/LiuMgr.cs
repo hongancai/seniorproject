@@ -6,12 +6,13 @@ using UnityEngine.UI;
 public class LiuMgr : MonoBehaviour
 {
    public GameObject liuprefabs;
+   public AudioClip placingsfx;
     public enum LiuState
     {
         Idle,
-        丟砲塔,
+        Placing,
         Cancel,
-        拖砲塔,
+        Drag,
     }
     private LiuState currentState;
     public Button btnLiu;
@@ -29,7 +30,7 @@ public class LiuMgr : MonoBehaviour
     private void OnBtnLiuClick()
     {
         followLiuImage.gameObject.SetActive(true); 
-        currentState = LiuState.丟砲塔;
+        currentState = LiuState.Placing;
         btnLiu.interactable = false;
         Debug.Log("開始丟劉澳風獅爺喔");
     }
@@ -42,7 +43,7 @@ public class LiuMgr : MonoBehaviour
             case LiuState.Idle:
                 ProcessIdle();
                 break;
-            case LiuState.丟砲塔:
+            case LiuState.Placing:
                 ProcessPlacingTower();
                 if (Input.GetMouseButtonDown(1))  // 按下右鍵
                 {
@@ -52,11 +53,11 @@ public class LiuMgr : MonoBehaviour
             case LiuState.Cancel:
                 ProcessCancel();
                 break;
-            case LiuState.拖砲塔:
+            case LiuState.Drag:
                 ProcessDargTower();
                 break;
         }
-        if (currentState == LiuState.丟砲塔)
+        if (currentState == LiuState.Placing)
         {
             followLiuImage.transform.position = Input.mousePosition;
         }
@@ -76,7 +77,7 @@ public class LiuMgr : MonoBehaviour
                     // cache 
                     cache砲塔 = hit.transform.gameObject;
                     //該狀態
-                    currentState = LiuState.拖砲塔;
+                    currentState = LiuState.Drag;
                 }
             }
         }
@@ -93,11 +94,14 @@ public class LiuMgr : MonoBehaviour
             {
                 if (hit.transform.gameObject.GetComponent<RoadTag>() != null)
                 {
+                    GameDB.Audio.PlaySfx(placingsfx);
                     Vector3 placePosition = hit.point;
                     GameObject temp = Instantiate(liuprefabs);
                     temp.transform.localScale = Vector3.one;
                     temp.transform.localEulerAngles = new Vector3(30, 0, 0);
-                    temp.transform.localPosition = hit.point;
+                    Vector3 position = hit.point;
+                    position.y = 0;
+                    temp.transform.localPosition = position;
                     followLiuImage.gameObject.SetActive(false);
                     currentState = LiuState.Idle; //改變狀態!!!
                 }

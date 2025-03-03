@@ -254,7 +254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hpHandler: {fileID: 6619162779670826438}
-  maxHealth: 100
+  maxHealth: 1000
   currentHealth: 0
 --- !u!1 &6349471633465543169
 GameObject:

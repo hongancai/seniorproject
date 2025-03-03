@@ -6,14 +6,14 @@ using UnityEngine.UI;
 public class QionglinMgr : MonoBehaviour
 {
     public GameObject qionglinprefabs;
-
+    public AudioClip placingsfx;
     
     public enum QionglinState
     {
         Idle,
-        丟砲塔,
+        Placing,
         Cancel,
-        拖砲塔,
+        Drag,
     }
 
     private QionglinState currentState;
@@ -32,7 +32,7 @@ public class QionglinMgr : MonoBehaviour
     private void OnBtnQiongClick()
     {
         followQionglinImage.gameObject.SetActive(true);
-        currentState = QionglinState.丟砲塔;
+        currentState = QionglinState.Placing;
         btnQionglin.interactable = false;
         Debug.Log("開始丟瓊林風獅爺喔");
     }
@@ -45,7 +45,7 @@ public class QionglinMgr : MonoBehaviour
             case QionglinState.Idle:
                 ProcessIdle();
                 break;
-            case QionglinState.丟砲塔:
+            case QionglinState.Placing:
                 ProcessPlacingTower();
                 if (Input.GetMouseButtonDown(1)) // 按下右鍵
                 {
@@ -55,7 +55,7 @@ public class QionglinMgr : MonoBehaviour
             case QionglinState.Cancel:
                 ProcessCancel();
                 break;
-            case QionglinState.拖砲塔:
+            case QionglinState.Drag:
                 ProcessDargTower();
                 if (cache砲塔 != null)
                 {
@@ -64,7 +64,7 @@ public class QionglinMgr : MonoBehaviour
                 break;
         }
 
-        if (currentState == QionglinState.丟砲塔)
+        if (currentState == QionglinState.Placing)
         {
             followQionglinImage.transform.position = Input.mousePosition;
         }
@@ -85,7 +85,7 @@ public class QionglinMgr : MonoBehaviour
                     // cache 
                     cache砲塔 = hit.transform.gameObject;
                     //該狀態
-                    currentState = QionglinState.拖砲塔;
+                    currentState = QionglinState.Drag;
                 }
             }
         }
@@ -102,11 +102,14 @@ public class QionglinMgr : MonoBehaviour
             {
                 if (hit.transform.gameObject.GetComponent<RoadTag>() != null)
                 {
-                    Vector3 placePosition = hit.point;
+                    //Vector3 placePosition = hit.point;
+                    GameDB.Audio.PlaySfx(placingsfx);
                     GameObject temp = Instantiate(qionglinprefabs);
                     temp.transform.localScale = Vector3.one;
                     temp.transform.localEulerAngles = new Vector3(30, 0, 0);
-                    temp.transform.localPosition = hit.point;
+                    Vector3 position = hit.point;
+                    position.y = 0;
+                    temp.transform.localPosition = position;
                     followQionglinImage.gameObject.SetActive(false);
                     currentState = QionglinState.Idle; //改變狀態!!!
                 }
