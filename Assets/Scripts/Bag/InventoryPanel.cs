@@ -6,22 +6,26 @@ using UnityEngine.UI;
 
 public class InventoryPanel : MonoBehaviour
 {
-     [SerializeField] private RectTransform panelRectTransform;
-    [SerializeField] private Button expandButton; // 朝右箭頭按鈕
-    [SerializeField] private Button collapseButton; // 朝左箭頭按鈕
+    public RectTransform panelRectTransform;
+    public Button expandButton; // 朝右箭頭按鈕
+    public Button collapseButton; // 朝左箭頭按鈕
+
+    public float expandedPosX = 55f;
+    public float collapsedPosX = -58f;
+    public float animationDuration = 0.5f;
+    public Ease animationEase = Ease.OutQuad;
     
-    [SerializeField] private float expandedPosX = 55f;
-    [SerializeField] private float collapsedPosX = -55f;
-    [SerializeField] private float animationDuration = 0.5f;
-    [SerializeField] private Ease animationEase = Ease.OutQuad;
-    
-    private bool isExpanded = false;
-    
+    public bool startExpanded = true;
+    private bool isExpanded;
+
     private void Awake()
     {
-        // 確保一開始面板是收縮狀態
+        // 根據設定決定初始狀態
+        isExpanded = startExpanded;
+        
+        // 設置初始位置
         Vector3 initialPosition = panelRectTransform.anchoredPosition;
-        initialPosition.x = collapsedPosX;
+        initialPosition.x = isExpanded ? expandedPosX : collapsedPosX;
         panelRectTransform.anchoredPosition = initialPosition;
         
         // 設置按鈕事件監聽
