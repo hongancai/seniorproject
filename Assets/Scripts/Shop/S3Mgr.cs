@@ -100,6 +100,7 @@ public class S3Mgr : MonoBehaviour
     private void OpenPanel(int index)
     {
         Time.timeScale = 0;
+        GameDB.Audio._bgmAudioSource.pitch = 1; //開啟介面後bgm繼續
         // 如果有其他面板開著，先關閉
         if (activePanel != null)
         {
