@@ -27,6 +27,16 @@ public class Teach : MonoBehaviour
         GameDB.Audio.PlaySfx(btnsfx);
         teachPnl.gameObject.SetActive(true);
         Time.timeScale = 0f;
+        float currentVolume = GameDB.Audio._bgmAudioSource.volume;
+        if (GameDB.Audio._bgmAudioSource != null)
+        {
+            if (!GameDB.Audio._bgmAudioSource.isPlaying)
+            {
+                GameDB.Audio._bgmAudioSource.Play();
+            }
+            // 保持原有音量，不降低
+            GameDB.Audio._bgmAudioSource.volume = currentVolume;
+        }
     }
     public void OnCloseTeachBtn()
     {
