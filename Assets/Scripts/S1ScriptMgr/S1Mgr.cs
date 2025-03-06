@@ -32,11 +32,7 @@ public class S1Mgr : MonoBehaviour
             GameDB.ResetAll();
             UpdateDisplay();
         }
-
-        if (GameDB.Audio._bgmAudioSource.volume <= 0.6f)
-        {
-            GameDB.Audio._bgmAudioSource.volume += Time.deltaTime;
-        }
+        
     }
 
     private void UpdateDisplay()

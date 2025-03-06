@@ -68,10 +68,6 @@ public class S3Mgr : MonoBehaviour
     }
     void Update()
     {
-        if (GameDB.Audio._bgmAudioSource.volume <=0.6f)
-        {
-            GameDB.Audio._bgmAudioSource.volume += Time.deltaTime;
-        }  
         // 當滑鼠左鍵點擊時
         if (Input.GetButtonDown("Fire1")&& !isPanelOpen)
         {
@@ -100,7 +96,17 @@ public class S3Mgr : MonoBehaviour
     private void OpenPanel(int index)
     {
         Time.timeScale = 0;
-        GameDB.Audio._bgmAudioSource.pitch = 1; //開啟介面後bgm繼續
+        float currentVolume = GameDB.Audio._bgmAudioSource.volume;
+        if (GameDB.Audio._bgmAudioSource != null)
+        {
+            if (!GameDB.Audio._bgmAudioSource.isPlaying)
+            {
+                GameDB.Audio._bgmAudioSource.Play();
+            }
+            // 保持原有音量，不降低
+            GameDB.Audio._bgmAudioSource.volume = currentVolume;
+        }
+        
         // 如果有其他面板開著，先關閉
         if (activePanel != null)
         {
@@ -119,6 +125,10 @@ public class S3Mgr : MonoBehaviour
     {
         GameDB.Audio.PlaySfx(closesfx);
         Time.timeScale = 1;
+        if (GameDB.Audio._bgmAudioSource != null)
+        {
+            GameDB.Audio._bgmAudioSource.ignoreListenerPause = false;
+        }
         towerPnl[index].SetActive(false);
         activePanel = null;
         isPanelOpen = false; 

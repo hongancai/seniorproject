@@ -123,6 +123,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &179040390 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5900221047604788172, guid: b53380fa30342144ea8817ea92816dff,
+    type: 3}
+  m_PrefabInstance: {fileID: 3400003412672681566}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &242882696
 GameObject:
   m_ObjectHideFlags: 0
@@ -1229,6 +1235,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1781101019}
   m_CullTransparentMesh: 1
+--- !u!114 &1892750920 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5467425400103481459, guid: b53380fa30342144ea8817ea92816dff,
+    type: 3}
+  m_PrefabInstance: {fileID: 3400003412672681566}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2044079516
 GameObject:
   m_ObjectHideFlags: 0
@@ -1335,12 +1353,12 @@ MonoBehaviour:
   startsfx: {fileID: 8300000, guid: cf81bb1c8ec1fc54c86577e129a123aa, type: 3}
   btnsfx: {fileID: 8300000, guid: 42cb8fc809e54874d98f66872e74ec2b, type: 3}
   btnsetting: {fileID: 324004622}
-  btnsettingclose: {fileID: 0}
+  btnsettingclose: {fileID: 1892750920}
   btnstart: {fileID: 1381174484}
   btnexit: {fileID: 1781101021}
   pauseMenu: {fileID: 5900221047604788172, guid: b53380fa30342144ea8817ea92816dff,
     type: 3}
-  settingMenu: {fileID: 0}
+  settingMenu: {fileID: 179040390}
   blackScreen: {fileID: 242882697}
 --- !u!1001 &3400003412672681566
 PrefabInstance:
@@ -1354,6 +1372,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1692989865596747986, guid: b53380fa30342144ea8817ea92816dff,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2063996116868231923, guid: b53380fa30342144ea8817ea92816dff,
         type: 3}
@@ -1480,6 +1503,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6995000350262222692, guid: b53380fa30342144ea8817ea92816dff,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8467083466537455786, guid: b53380fa30342144ea8817ea92816dff,
         type: 3}
       propertyPath: m_IsActive
@@ -1493,6 +1521,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 8467083466537455786, guid: b53380fa30342144ea8817ea92816dff, type: 3}
+    - {fileID: 1692989865596747986, guid: b53380fa30342144ea8817ea92816dff, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b53380fa30342144ea8817ea92816dff, type: 3}

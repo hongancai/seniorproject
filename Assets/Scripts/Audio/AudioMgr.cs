@@ -55,6 +55,7 @@ public class AudioMgr : MonoBehaviour
         }
 
         _bgmAudioSource.loop = true;
+        _bgmAudioSource.ignoreListenerPause = true;
 
         // create SFX
         GameObject sfxGameObject = new GameObject("SFX")
@@ -71,6 +72,7 @@ public class AudioMgr : MonoBehaviour
         }
 
         _sfxAudioSource.loop = false;
+        _sfxAudioSource.ignoreListenerPause = true;
     }
 
     #region Play BGM or SFX

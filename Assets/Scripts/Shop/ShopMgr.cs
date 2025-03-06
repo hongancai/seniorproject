@@ -8,6 +8,7 @@ public class ShopMgr : MonoBehaviour
     public AudioClip openshopsfx;
     public AudioClip btnsfx;
     public GameObject shopPnl;
+    public GameObject pauseMenu;
     public Button closeshoBtn;
 
     void Start()
@@ -26,7 +27,7 @@ public class ShopMgr : MonoBehaviour
 
     void Update()
     {
-        if (shopPnl.activeSelf)
+        if (shopPnl.activeSelf || pauseMenu.activeSelf)
         {
             return;
         }
@@ -38,12 +39,24 @@ public class ShopMgr : MonoBehaviour
             {
                 if (hit.transform.gameObject.GetComponent<ShopTag>() != null)
                 {
-                    Time.timeScale = 0f;
+                    Time.timeScale = 0;
+                    float currentVolume = GameDB.Audio._bgmAudioSource.volume;
+                    if (GameDB.Audio._bgmAudioSource != null)
+                    {
+                        if (!GameDB.Audio._bgmAudioSource.isPlaying)
+                        {
+                            GameDB.Audio._bgmAudioSource.Play();
+                        }
+                        // 保持原有音量，不降低
+                        GameDB.Audio._bgmAudioSource.volume = currentVolume;
+                    }
                     GameDB.Audio.PlaySfx(openshopsfx);
                     shopPnl.gameObject.SetActive(true);
                     Debug.Log("測試開商店");
                 }
+                
             }
         }
     }
+    
 }

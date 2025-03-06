@@ -88,10 +88,7 @@ public class S2Mgr : MonoBehaviour
     }
     void Update()
     {
-        if (GameDB.Audio._bgmAudioSource.volume <=0.6f)
-        {
-            GameDB.Audio._bgmAudioSource.volume += Time.deltaTime;
-        }   
+        
     }
 
     private void OncCloseWarning()
