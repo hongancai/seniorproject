@@ -9,7 +9,7 @@ public class CameraZoom : MonoBehaviour
     public CinemachineVirtualCamera virtualCamera; // 連結到你的 Cinemachine Virtual Camera
     public float zoomSpeed = 20f;                 // 縮放速度
     public float minFOV = 18f;                    // 最小視角
-    public float maxFOV = 30f;                    // 最大視角
+    public float maxFOV = 60f;                    // 最大視角
     public float minOrthoSize = 5f;               // 正交模式最小大小
     public float maxOrthoSize = 50f;              // 正交模式最大大小
     

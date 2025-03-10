@@ -263,6 +263,7 @@ public class MainMenu : MonoBehaviour
 
     private void OnSettingClick()
     {
+        isStarting = true;
         GameDB.Audio.PlaySfx(btnsfx);
         settingMenu.SetActive(true);
         
@@ -313,6 +314,7 @@ public class MainMenu : MonoBehaviour
 
     private void OnExitClick()
     {
+        isStarting = true;
         GameDB.Audio.PlaySfx(btnsfx);
         Application.Quit();
         Debug.Log("Exit");
