@@ -36,15 +36,16 @@ public class CameraZoom : MonoBehaviour
         float scrollInput = Input.GetAxis("Mouse ScrollWheel");
         AdjustZoom(-scrollInput * zoomSpeed);
 
-        // 手把按鍵輸入
-        if (_inputMaster.Zoom.ZoomIn.WasPressedThisFrame())
+        // 手把按鍵輸入 - 檢查是否持續按住而不只是按下的瞬間
+        if (_inputMaster.Zoom.ZoomIn.IsPressed())  // 使用IsPressed()代替WasPressedThisFrame()
         {
             AdjustZoom(-zoomSpeed * Time.deltaTime);
         }
-        else if (_inputMaster.Zoom.ZoomOut.WasPressedThisFrame())
+        else if (_inputMaster.Zoom.ZoomOut.IsPressed())  // 使用IsPressed()代替WasPressedThisFrame()
         {
             AdjustZoom(zoomSpeed * Time.deltaTime);
         }
+        
     }
 
     private void AdjustZoom(float zoomAmount)
