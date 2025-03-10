@@ -25,7 +25,7 @@ public class PauseMenu : MonoBehaviour
         _inputMaster.Enable();
 
         // 綁定 PauseMenu 鍵
-        _inputMaster.Menu.PauseMenu.performed += context => TogglePauseMenu();
+       // _inputMaster.Menu.PauseMenu.performed += context => TogglePauseMenu(); //已經模擬ESC建
     }
 
     private void OnDisable()
@@ -77,6 +77,8 @@ public class PauseMenu : MonoBehaviour
     // 切換暫停選單顯示
     void TogglePauseMenu()
     {
+        Debug.Log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        
         isShow = !isShow;
         pausemenu.SetActive(isShow);
 

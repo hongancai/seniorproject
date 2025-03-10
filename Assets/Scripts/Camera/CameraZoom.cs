@@ -37,11 +37,11 @@ public class CameraZoom : MonoBehaviour
         AdjustZoom(-scrollInput * zoomSpeed);
 
         // 手把按鍵輸入 - 檢查是否持續按住而不只是按下的瞬間
-        if (_inputMaster.Zoom.ZoomIn.IsPressed())  // 使用IsPressed()代替WasPressedThisFrame()
+        if (_inputMaster.Zoom.ZoomIn.IsPressed()) 
         {
             AdjustZoom(-zoomSpeed * Time.deltaTime);
         }
-        else if (_inputMaster.Zoom.ZoomOut.IsPressed())  // 使用IsPressed()代替WasPressedThisFrame()
+        else if (_inputMaster.Zoom.ZoomOut.IsPressed())  
         {
             AdjustZoom(zoomSpeed * Time.deltaTime);
         }

@@ -21,7 +21,7 @@ public class MonsterSpawner : MonoBehaviour
     public float waveStartDelay = 10f;
     
     // 生成位置
-    private readonly Vector3 leftSpawnPos = new Vector3(493f, 0.5123333f, 499.73f);
+    private readonly Vector3 leftSpawnPos = new Vector3(478.3f, 0.4522033f, 504.4f);
     private readonly Vector3 rightSpawnPos = new Vector3(507.16f, 0.5123333f, 499.73f);
     
     private int currentWaveMonsters = 0;    // 當前波次存活的怪物數量

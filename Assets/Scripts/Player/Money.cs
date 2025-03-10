@@ -7,11 +7,7 @@ public class Money : MonoBehaviour
     void Start()
     {
     }
-
-
-    void Update()
-    {
-    }
+    
 
     private void OnTriggerEnter(Collider other)
     {

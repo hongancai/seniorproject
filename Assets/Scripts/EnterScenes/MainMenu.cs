@@ -42,6 +42,7 @@ public class MainMenu : MonoBehaviour
     private InputAction cancelAction; // 新增取消動作
 
     private bool bgmfadeout = false;
+    private bool isStarting = false;
 
     void Start()
     {
@@ -274,6 +275,12 @@ public class MainMenu : MonoBehaviour
     
     private void OnStartClick()
     {
+        if (isStarting )
+        {
+            return;
+        }
+
+        isStarting = true;
         GameDB.Audio.PlaySfx(startsfx);
         blackScreen.color = new Color(0,0,0,0);
         blackScreen.gameObject.SetActive(true);
