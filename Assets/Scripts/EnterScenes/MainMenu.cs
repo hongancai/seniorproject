@@ -102,7 +102,7 @@ public class MainMenu : MonoBehaviour
         if (submitAction != null)
             submitAction.performed += OnSubmit;
         if (cancelAction != null)
-            cancelAction.performed += OnCancel; // 註冊取消事件
+            cancelAction.performed += OnCancel; 
 
         // 檢測控制方式變更
         playerInput.onControlsChanged += OnControlsChanged;
@@ -125,10 +125,13 @@ public class MainMenu : MonoBehaviour
 
     private void OnCancel(InputAction.CallbackContext context)
     {
+        if (context.phase != InputActionPhase.Performed)
+            return;
         // 如果設定選單正在顯示，關閉它
         if (settingMenu.activeSelf)
         {
             OnSettingClickfalse();
+            context.ReadValue<float>();
         }
     }
 
@@ -240,6 +243,10 @@ public class MainMenu : MonoBehaviour
         if (settingMenu.activeSelf && EventSystem.current.currentSelectedGameObject == null && isUsingGamepad)
         {
             EventSystem.current.SetSelectedGameObject(btnsettingclose.gameObject);
+        }
+        if (settingMenu.activeSelf && Gamepad.current != null && Gamepad.current.bButton.wasPressedThisFrame)
+        {
+            OnSettingClickfalse();
         }
     }
     
