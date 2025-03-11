@@ -83,7 +83,7 @@
                 {
                     "name": "",
                     "id": "dac4a888-b254-4556-a1ab-9a1d9658cb45",
-                    "path": "<Gamepad>/rightShoulder",
+                    "path": "<Gamepad>/buttonNorth",
                     "interactions": "Press",
                     "processors": "",
                     "groups": "Xbox",
