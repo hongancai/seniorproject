@@ -159,10 +159,10 @@
                 {
                     "name": "",
                     "id": "2e1aefaf-14fd-4a9e-8286-9a8894e2d7a7",
-                    "path": "<Gamepad>/rightTrigger",
+                    "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Xbox",
                     "action": "Zoom In ",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -170,39 +170,11 @@
                 {
                     "name": "",
                     "id": "f22770aa-a31c-4928-9795-7bbc98a53a8b",
-                    "path": "<Gamepad>/leftTrigger",
+                    "path": "<Gamepad>/leftShoulder",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Xbox",
                     "action": "Zoom Out ",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "Mouse",
-            "id": "211bc4c9-ff70-41ce-8ad6-9e79979d2767",
-            "actions": [
-                {
-                    "name": "Control",
-                    "type": "Value",
-                    "id": "a5e579db-fae4-4f92-9914-2968f680001b",
-                    "expectedControlType": "Axis",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "a28da949-16d8-4015-a074-6ea1004cda93",
-                    "path": "<XInputController>/rightStick/x",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Control",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -282,6 +254,34 @@
                     "processors": "",
                     "groups": "Xbox",
                     "action": "Cancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Mouse",
+            "id": "81e09eca-b3b9-4542-86c4-413fd4f58d40",
+            "actions": [
+                {
+                    "name": "RightStick",
+                    "type": "Value",
+                    "id": "dde18335-f6bb-4618-9a30-326fdd2f1465",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "519397b8-5056-4079-90aa-fc0e6118f8b5",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Xbox",
+                    "action": "RightStick",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
