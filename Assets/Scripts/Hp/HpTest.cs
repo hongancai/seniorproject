@@ -5,7 +5,7 @@ using UnityEngine;
 public class HpTest : MonoBehaviour
 {
     public HpHandler hpHandler;
-    public int maxHealth = 100;
+    public int maxHealth = 3000;
     public int currentHealth;
 
     void Start()
@@ -19,7 +19,7 @@ public class HpTest : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.C))
         {
-            TakeDamage(20);
+            TakeDamage(200);
         }
     }
 

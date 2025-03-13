@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class HpHandler : MonoBehaviour
 {  
-    public float maxHP = 100f;
-    public float currentHP = 100f;
+    public float maxHP = 1000f;
+    public float currentHP = 1000f;
     void Start()
     {
         

@@ -5757,6 +5757,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transsfx: {fileID: 8300000, guid: bd12d747b6836cb42ba8171e84f2a451, type: 3}
   blackScreen: {fileID: 859281982}
+  sourceScene: Park
 --- !u!1 &1227695858
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,11 +9,15 @@ public class GoS1 : MonoBehaviour
 {
     public AudioClip transsfx;
     public Image blackScreen;
+    public string sourceScene;
     
     private bool bgmfadeout = false;
     void Start()
     {
-        
+        if (string.IsNullOrEmpty(sourceScene))
+        {
+            sourceScene = SceneManager.GetActiveScene().name;
+        }
     }
     
     void Update()
@@ -29,6 +33,8 @@ public class GoS1 : MonoBehaviour
         blackScreen.color = new Color(0,0,0,0);
         blackScreen.gameObject.SetActive(true);
         
+        PlayerPrefs.SetString("LastScene", sourceScene);
+        PlayerPrefs.Save();
         // 建立序列動畫
         Sequence sequence = DOTween.Sequence();
         

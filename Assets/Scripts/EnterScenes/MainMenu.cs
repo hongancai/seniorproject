@@ -285,7 +285,8 @@ public class MainMenu : MonoBehaviour
         GameDB.Audio.PlaySfx(startsfx);
         blackScreen.color = new Color(0,0,0,0);
         blackScreen.gameObject.SetActive(true);
-        
+        PlayerPrefs.SetString("LastScene", "MainMenu");
+        PlayerPrefs.Save();
         // 建立序列動畫
         Sequence sequence = DOTween.Sequence();
         
