@@ -27,6 +27,7 @@ public class EnterOrchard : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            DisablePlayerMovement(collision.gameObject);
             GameDB.Audio.PlaySfx(transsfx);
             blackScreen.color = new Color(0,0,0,0);
             blackScreen.gameObject.SetActive(true);
@@ -43,6 +44,14 @@ public class EnterOrchard : MonoBehaviour
             {
                 SceneManager.LoadScene("Park");
             });
+        }
+    }
+    private void DisablePlayerMovement(GameObject player)
+    {
+        PlayerController playerController = player.GetComponent<PlayerController>();
+        if (playerController != null)
+        {
+            playerController.enabled = false;
         }
     }
 }

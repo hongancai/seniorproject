@@ -27,6 +27,7 @@ public class EnterMarket : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            DisablePlayerMovement(collision.gameObject);
             GameDB.Audio.PlaySfx(transsfx);
             blackScreen.color = new Color(0,0,0,0);
             blackScreen.gameObject.SetActive(true);
@@ -43,6 +44,15 @@ public class EnterMarket : MonoBehaviour
             {
                 SceneManager.LoadScene("Market");
             });
+        }
+    }
+
+    private void DisablePlayerMovement(GameObject player)
+    {
+        PlayerController playerController = player.GetComponent<PlayerController>();
+        if (playerController != null)
+        {
+            playerController.enabled = false;
         }
     }
 }

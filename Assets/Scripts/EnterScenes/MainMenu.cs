@@ -263,7 +263,7 @@ public class MainMenu : MonoBehaviour
 
     private void OnSettingClick()
     {
-        isStarting = true;
+        
         GameDB.Audio.PlaySfx(btnsfx);
         settingMenu.SetActive(true);
         

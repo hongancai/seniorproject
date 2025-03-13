@@ -29,6 +29,7 @@ public class GoS1 : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
+        DisablePlayerMovement(collision.gameObject);
         GameDB.Audio.PlaySfx(transsfx);
         blackScreen.color = new Color(0,0,0,0);
         blackScreen.gameObject.SetActive(true);
@@ -47,5 +48,14 @@ public class GoS1 : MonoBehaviour
         {
             SceneManager.LoadScene("S1");
         });
+    }
+
+    private void DisablePlayerMovement(GameObject player)
+    {
+        PlayerController playerController = player.GetComponent<PlayerController>();
+        if (playerController != null)
+        {
+            playerController.enabled = false;
+        }
     }
 }
