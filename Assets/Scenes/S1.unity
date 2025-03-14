@@ -9263,7 +9263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f143c5f0dfc52f04184b67f21844ef0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  s1bgm: {fileID: 8300000, guid: 426711b1224c674429ae76b5a4554027, type: 3}
+  s1bgm: {fileID: 8300000, guid: 3b37b5a77d672c64d891e70aa5175977, type: 3}
   blackScreen: {fileID: 1151888199}
   buyedItems:
   - {fileID: 419230788}
