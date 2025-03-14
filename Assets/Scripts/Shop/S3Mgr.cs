@@ -23,6 +23,7 @@ public class S3Mgr : MonoBehaviour
     public GameObject activePanel = null;
     public GameObject pauseMenu;
     private bool isPanelOpen = false;
+    private bool isClosingPanel = false; 
     void Start()
     {
         GameDB.Load();
@@ -209,6 +210,20 @@ public class S3Mgr : MonoBehaviour
 
     public void CloseCurrentPanel()
     {
+        //if (activePanel == null || isClosingPanel) return;
         
+        //isClosingPanel = true;
+        //Time.timeScale = 1;
+        //activePanel.SetActive(false);
+        //activePanel = null;
+        //isPanelOpen = false;
+        
+        // 添加延遲，防止立即觸發其他面板
+        //StartCoroutine(ResetClosingFlag());
     }
+    //private IEnumerator ResetClosingFlag()
+    //{
+        //yield return new WaitForSecondsRealtime(0.2f);
+        //isClosingPanel = false;
+    //}
 }
