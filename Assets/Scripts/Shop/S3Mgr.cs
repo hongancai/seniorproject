@@ -206,4 +206,9 @@ public class S3Mgr : MonoBehaviour
             Debug.Log("你不夠1500塊");
         }
     }
+
+    public void CloseCurrentPanel()
+    {
+        throw new System.NotImplementedException();
+    }
 }
