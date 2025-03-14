@@ -209,6 +209,6 @@ public class S3Mgr : MonoBehaviour
 
     public void CloseCurrentPanel()
     {
-        throw new System.NotImplementedException();
+        
     }
 }
