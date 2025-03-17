@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     private float normalSpeed = 4.0f;   // 正常移動速度
     private float sprintSpeed = 7.0f; // 加速移動速度
 
-    public AudioClip playerwaik;
+    //public AudioClip playerwaik;
     void Start()
     {
         GameDB.playerSpd = normalSpeed;

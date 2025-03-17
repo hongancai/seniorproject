@@ -6,6 +6,7 @@ using DG.Tweening;
 
 public class WaveWarningSystem : MonoBehaviour
 {
+    //public AudioClip warningsfx;
     public CanvasGroup warningImageCanvasGroup;
     public Image warningImage;
     
@@ -33,7 +34,7 @@ public class WaveWarningSystem : MonoBehaviour
         if (warningImageCanvasGroup == null) yield break;
 
         warningImageCanvasGroup.gameObject.SetActive(true);
-
+        //GameDB.Audio.PlaySfx(warningsfx);
         float elapsedTime = 0f;
         bool isFadingIn = true;
 

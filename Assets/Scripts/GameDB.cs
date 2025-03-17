@@ -7,6 +7,9 @@ public static class GameDB
     
     //Player
     public static float playerSpd = 0.0f;
+    public static int playerAtk = 0;
+    public static int playerHp = 0;
+    public static int playerDef = 0;
     public static int money = 10000;
     
     //Shop
@@ -67,6 +70,8 @@ public static class GameDB
     public static int towerAtk;
     public static int towerDef;
     public static float towerAtkSpd;
+    public static int liuEffect = 30;
+    public static int anEffect = 30;
     
     //PauseMenu
     public static bool pausemenu = false;
