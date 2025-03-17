@@ -23,7 +23,7 @@ public class S3Mgr : MonoBehaviour
     public GameObject activePanel = null;
     public GameObject pauseMenu;
     private bool isPanelOpen = false;
-    private bool isClosingPanel = false; 
+    //private bool isClosingPanel = false; 
     void Start()
     {
         GameDB.Load();
