@@ -17,7 +17,7 @@ public class MonsterSpawner : MonoBehaviour
     
     public int totalWaves = 4;           
     public int monstersPerWave = 5;         
-    public float spawnInterval = 3.5f;
+    public float spawnInterval = 7.0f;
     public float waveStartDelay = 10f;
     
     // 生成位置
