@@ -7,6 +7,7 @@ public class QionglinMgr : MonoBehaviour
 {
     public GameObject qionglinprefabs;
     public AudioClip placingsfx;
+    public GridHighlightManager gridManager;
     
     public enum QionglinState
     {
@@ -34,6 +35,10 @@ public class QionglinMgr : MonoBehaviour
         followQionglinImage.gameObject.SetActive(true);
         currentState = QionglinState.Placing;
         btnQionglin.interactable = false;
+        if (gridManager != null)
+        {
+            gridManager.ShowAllValidAreas();
+        }
         Debug.Log("開始丟瓊林風獅爺喔");
     }
 
@@ -111,6 +116,10 @@ public class QionglinMgr : MonoBehaviour
                     position.y = 0;
                     temp.transform.localPosition = position;
                     followQionglinImage.gameObject.SetActive(false);
+                    if (gridManager != null)
+                    {
+                        gridManager.HideAllHighlights();
+                    }
                     currentState = QionglinState.Idle; //改變狀態!!!
                 }
             }
@@ -127,6 +136,11 @@ public class QionglinMgr : MonoBehaviour
 
         // 重置狀態
         currentState = QionglinState.Idle;
+        
+        if (gridManager != null)
+        {
+            gridManager.HideAllHighlights();
+        }
 
         Debug.Log("取消放置");
     }
