@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerPositioner : MonoBehaviour
 {
-    public Vector3 defaultPosition = new Vector3(499.99f, 0.1113546f, 498.68f);
+    public Vector3 defaultPosition = new Vector3(499.99f, 0.1113546f, 497.3f);
     private void Start()
     {
         // 獲取上一個場景的名稱
@@ -27,7 +27,7 @@ public class PlayerPositioner : MonoBehaviour
                 // 從Park回到S1的位置
                 player.transform.position = new Vector3(499.953f, 0.1113546f, 492.4973f);
             }
-            else if (lastScene == "MainMenu")
+            else if (lastScene == "MainMenu"|| string.IsNullOrEmpty(lastScene))
             {
                 player.transform.position = defaultPosition;
             }
