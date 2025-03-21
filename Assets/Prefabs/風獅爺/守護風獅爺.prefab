@@ -19,7 +19,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4031102556185169348
 Transform:
@@ -147,6 +147,7 @@ GameObject:
   - component: {fileID: 8452030406806971019}
   - component: {fileID: 4805428873959976105}
   - component: {fileID: 7570275080352915779}
+  - component: {fileID: 7856342090376874221}
   m_Layer: 0
   m_Name: "\u5B88\u8B77\u98A8\u7345\u723A"
   m_TagString: Untagged
@@ -256,6 +257,18 @@ MonoBehaviour:
   hpHandler: {fileID: 6619162779670826438}
   maxHealth: 1000
   currentHealth: 0
+--- !u!210 &7856342090376874221
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5448688292728953119}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 800
+  m_SortAtRoot: 0
 --- !u!1 &6349471633465543169
 GameObject:
   m_ObjectHideFlags: 0
@@ -274,7 +287,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6418959378421951635
 Transform:
