@@ -86,10 +86,7 @@ public class S2Mgr : MonoBehaviour
             buy05.gameObject.SetActive(!GameDB.Bought[4]);
         }
     }
-    void Update()
-    {
-        
-    }
+  
 
     private void OncCloseWarning()
     {

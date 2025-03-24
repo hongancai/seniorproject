@@ -15,8 +15,7 @@ public class QiongLinAtk : MonoBehaviour
 
     void Start()
     {
-        GameDB.towerAtk = attackDamage;
-        GameDB.towerAtkSpd = attackRate;
+        
     }
 
     void Update()

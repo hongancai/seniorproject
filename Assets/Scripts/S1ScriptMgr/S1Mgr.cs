@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
@@ -10,6 +11,12 @@ public class S1Mgr : MonoBehaviour
     public Image blackScreen;
     public List<GameObject> buyedItems;
     public List<GameObject> buyTowers;
+
+
+    private void Awake()
+    {
+        
+    }
 
     void Start()
     {
@@ -37,6 +44,8 @@ public class S1Mgr : MonoBehaviour
 
     private void UpdateDisplay()
     {
+        GameDB.Load();
+        
         // 根據 GameDB.Bought 的狀態更新物品顯示
         for (int i = 0; i < GameDB.Bought.Count; i++)
         {
