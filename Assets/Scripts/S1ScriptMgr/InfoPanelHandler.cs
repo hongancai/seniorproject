@@ -11,8 +11,16 @@ public class InfoPanelHandler : MonoBehaviour
     public TextMeshProUGUI Atk; 
     public TextMeshProUGUI Def;
     public TextMeshProUGUI SpeedRate;
-    //public Texture2D towerImg;
-    //public Texture2D towername;
+    
+    public RawImage imageDisplay1;  // 第一張圖
+    public RawImage imageDisplay2;  // 第二張圖
+    public RawImage imageDisplay3;  // 第三張圖
+    
+    public Texture2D[] npc1Images = new Texture2D[3]; // 按鈕 1 開啟的 3 張圖片
+    public Texture2D[] npc2Images = new Texture2D[3]; // 按鈕 2 開啟的 3 張圖片
+    public Texture2D[] npc3Images = new Texture2D[3]; // 按鈕 3 開啟的 3 張圖片
+    public Texture2D[] npc4Images = new Texture2D[3]; // 按鈕 3 開啟的 3 張圖片
+    public Texture2D[] npc35Images = new Texture2D[3]; // 按鈕 3 開啟的 3 張圖片
 
     public Button upgradebtn;
     public GameObject warningPnl;
