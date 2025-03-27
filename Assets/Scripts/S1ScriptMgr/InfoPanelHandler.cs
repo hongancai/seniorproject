@@ -16,21 +16,24 @@ public class InfoPanelHandler : MonoBehaviour
     public RawImage imageDisplay2;  // 第二張圖
     public RawImage imageDisplay3;  // 第三張圖
     
-    public Texture2D[] npc1Images = new Texture2D[3]; // 按鈕 1 開啟的 3 張圖片
-    public Texture2D[] npc2Images = new Texture2D[3]; // 按鈕 2 開啟的 3 張圖片
-    public Texture2D[] npc3Images = new Texture2D[3]; // 按鈕 3 開啟的 3 張圖片
-    public Texture2D[] npc4Images = new Texture2D[3]; // 按鈕 3 開啟的 3 張圖片
-    public Texture2D[] npc35Images = new Texture2D[3]; // 按鈕 3 開啟的 3 張圖片
-
-    public Button upgradebtn;
-    public GameObject warningPnl;
+    public Texture2D[] npc1Images = new Texture2D[3]; 
+    public Texture2D[] npc2Images = new Texture2D[3]; 
+    public Texture2D[] npc3Images = new Texture2D[3]; 
+    public Texture2D[] npc4Images = new Texture2D[3]; 
+    public Texture2D[] npc5Images = new Texture2D[3]; 
+    
+    private Npc currentNpc;
+    private string currentNpcType;
+    
+    //public Button upgradebtn;
+    //public GameObject warningPnl;
     //public AudioClip upgradesfx;
 
     private Npc npc; 
     void Start()
     {
-        upgradebtn.onClick.AddListener(OnUpgradeClick);
-        warningPnl.gameObject.SetActive(false);
+        //upgradebtn.onClick.AddListener(OnUpgradeClick);
+        //warningPnl.gameObject.SetActive(false);
     }
 
     private void OnUpgradeClick()
@@ -46,10 +49,10 @@ public class InfoPanelHandler : MonoBehaviour
             }
             else
             {
-                upgradebtn.gameObject.SetActive(false);
+                //upgradebtn.gameObject.SetActive(false);
             }
             {
-                warningPnl.gameObject.SetActive(true);
+                //warningPnl.gameObject.SetActive(true);
                 Debug.Log("你不夠200塊");
             }
 
@@ -61,28 +64,51 @@ public class InfoPanelHandler : MonoBehaviour
     {
         if (_isDirty)
         {
-            //
-            Lv.text = "Lv." + npc.Lv.ToString("D2"); //D2 ==>  1 => 01
+            if (currentNpc != null)
+            {
+                //Text
+                Lv.text = currentNpc.Lv.ToString("D2"); //D2 ==>  1 => 01
 
-            Buff buff = npc.GetFinalBuff();  //加權 過後的結果
+                Buff buff = currentNpc.GetFinalBuff();  //加權 過後的結果
             
-            SpeedRate.text = "SpeedRate: " + buff.HP;
-            
-            Atk.text = "ATK: " + buff.Atk;
-                
-            Def.text = "DEF: " + buff.Def;
-            
-            
-            
+                SpeedRate.text = buff.SpeedRate.ToString("F2");
+                Atk.text = "" + buff.Atk;
+                Def.text = "" + buff.Def;
+            }
             _isDirty = false;
         }
     }
 
-    public void Setup(Npc source)
+    public void Setup(Npc source, string npcType)
     {
         this.npc = source;
+        this.currentNpcType = npcType;
         this.gameObject.SetActive(true); //把自己打開
-        
+        UpdateImageDisplay(npcType);
         _isDirty = true; // 強迫用update 更新畫面
+    }
+    private void UpdateImageDisplay(string npcType)
+    {
+        Texture2D[] selectedImages = GetImageArrayForNpc(npcType);
+        
+        if (selectedImages != null)
+        {
+            imageDisplay1.texture = selectedImages[0];
+            imageDisplay2.texture = selectedImages[1];
+            imageDisplay3.texture = selectedImages[2];
+        }
+    }
+
+    private Texture2D[] GetImageArrayForNpc(string npcType)
+    {
+        switch (npcType)
+        {
+            case "qionglin": return npc1Images;
+            case "houshui": return npc2Images;
+            case "liu": return npc3Images;
+            case "an": return npc4Images;
+            case "tahou": return npc5Images;
+            default: return null;
+        }
     }
 }

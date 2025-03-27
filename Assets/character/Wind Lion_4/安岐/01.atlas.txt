@@ -1,146 +1,194 @@
 
 01.png
-size: 1024,512
+size: 1024,1024
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
 01
   rotate: true
-  xy: 735, 83
+  xy: 762, 767
   size: 52, 100
   orig: 52, 100
   offset: 0, 0
   index: -1
 02
-  rotate: false
-  xy: 825, 404
+  rotate: true
+  xy: 864, 767
   size: 52, 100
   orig: 52, 100
   offset: 0, 0
   index: -1
 03
   rotate: true
-  xy: 2, 227
+  xy: 2, 2
   size: 277, 560
   orig: 277, 560
   offset: 0, 0
   index: -1
 04
-  rotate: true
-  xy: 529, 80
+  rotate: false
+  xy: 341, 710
   size: 145, 71
   orig: 145, 71
   offset: 0, 0
   index: -1
 05
-  rotate: false
-  xy: 36, 18
+  rotate: true
+  xy: 2, 596
   size: 129, 207
   orig: 129, 207
   offset: 0, 0
   index: -1
 06
-  rotate: false
-  xy: 167, 20
+  rotate: true
+  xy: 138, 455
   size: 136, 205
   orig: 136, 205
   offset: 0, 0
   index: -1
 07
-  rotate: true
-  xy: 681, 254
+  rotate: false
+  xy: 480, 567
   size: 250, 120
   orig: 250, 120
   offset: 0, 0
   index: -1
 08
-  rotate: false
-  xy: 564, 237
+  rotate: true
+  xy: 211, 593
   size: 115, 267
   orig: 115, 267
   offset: 0, 0
   index: -1
 09
   rotate: false
-  xy: 781, 9
+  xy: 242, 713
   size: 97, 72
   orig: 97, 72
   offset: 0, 0
   index: -1
 10
-  rotate: false
-  xy: 803, 256
+  rotate: true
+  xy: 539, 770
   size: 49, 107
   orig: 49, 107
   offset: 0, 0
   index: -1
 11
   rotate: true
-  xy: 880, 365
+  xy: 648, 770
   size: 49, 112
   orig: 49, 112
   offset: 0, 0
   index: -1
 12
   rotate: false
-  xy: 305, 7
+  xy: 2, 727
   size: 238, 58
   orig: 238, 58
   offset: 0, 0
   index: -1
 13
-  rotate: true
-  xy: 464, 69
+  rotate: false
+  xy: 381, 783
   size: 156, 36
   orig: 156, 36
   offset: 0, 0
   index: -1
 14
-  rotate: true
-  xy: 502, 71
+  rotate: false
+  xy: 2, 794
   size: 154, 25
   orig: 154, 25
   offset: 0, 0
   index: -1
 15
-  rotate: true
-  xy: 735, 137
+  rotate: false
+  xy: 805, 677
   size: 115, 88
   orig: 115, 88
   offset: 0, 0
   index: -1
 16
-  rotate: false
-  xy: 305, 67
+  rotate: true
+  xy: 345, 408
   size: 157, 158
   orig: 157, 158
   offset: 0, 0
   index: -1
 17
   rotate: true
-  xy: 545, 2
+  xy: 569, 689
   size: 76, 234
   orig: 76, 234
   offset: 0, 0
   index: -1
 18
-  rotate: false
-  xy: 880, 416
+  rotate: true
+  xy: 922, 650
   size: 115, 88
   orig: 115, 88
   offset: 0, 0
   index: -1
 19
-  rotate: true
-  xy: 2, 4
+  rotate: false
+  xy: 158, 787
   size: 221, 32
   orig: 221, 32
   offset: 0, 0
   index: -1
 20
-  rotate: true
-  xy: 602, 101
+  rotate: false
+  xy: 2, 463
   size: 134, 131
   orig: 134, 131
+  offset: 0, 0
+  index: -1
+C01
+  rotate: false
+  xy: 488, 694
+  size: 79, 74
+  orig: 79, 74
+  offset: 0, 0
+  index: -1
+C02
+  rotate: false
+  xy: 732, 545
+  size: 167, 130
+  orig: 167, 130
+  offset: 0, 0
+  index: -1
+C03
+  rotate: false
+  xy: 505, 281
+  size: 349, 262
+  orig: 349, 262
+  offset: 0, 0
+  index: -1
+
+012.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+C04
+  rotate: false
+  xy: 408, 2
+  size: 499, 462
+  orig: 499, 462
+  offset: 0, 0
+  index: -1
+C05
+  rotate: false
+  xy: 408, 466
+  size: 516, 460
+  orig: 516, 460
+  offset: 0, 0
+  index: -1
+黑白
+  rotate: false
+  xy: 2, 340
+  size: 404, 586
+  orig: 404, 586
   offset: 0, 0
   index: -1

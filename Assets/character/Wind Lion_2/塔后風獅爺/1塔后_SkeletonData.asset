@@ -23,6 +23,8 @@ MonoBehaviour:
     additiveMaterials:
     - pageName: 1.png
       material: {fileID: 2100000, guid: a9b234c5ecb92994baa53f4a74ce0069, type: 2}
+    - pageName: 12.png
+      material: {fileID: 2100000, guid: 22daa83aee46d4649aa44af31faba574, type: 2}
     multiplyMaterials: []
     screenMaterials: []
   skeletonDataModifiers: []

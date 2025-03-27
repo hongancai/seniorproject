@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1b3b4b945939a54ea0b23d3396115fb, type: 3}
+  m_Name: "01\u74CA\u6797_SkeletonData"
+  m_EditorClassIdentifier: 
+  atlasAssets:
+  - {fileID: 11400000, guid: 29a0b094b36d9a34d9658b281c754bcb, type: 2}
+  scale: 0.01
+  skeletonJSON: {fileID: 4900000, guid: 6e61f7d0b5086e345bdcb0e7fa3370b4, type: 3}
+  isUpgradingBlendModeMaterials: 0
+  blendModeMaterials:
+    requiresBlendModeMaterials: 1
+    applyAdditiveMaterial: 1
+    additiveMaterials:
+    - pageName: 013.png
+      material: {fileID: 2100000, guid: c56b7e581e401284282866bceddc0a5a, type: 2}
+    - pageName: 014.png
+      material: {fileID: 2100000, guid: 09548902a88eac049a88317bb9ebe1f0, type: 2}
+    - pageName: 01.png
+      material: {fileID: 2100000, guid: b2ea820c6e25baa41af190268db8ff65, type: 2}
+    - pageName: 012.png
+      material: {fileID: 2100000, guid: 56cdbd20c001d28439d4ddf8cd1802d1, type: 2}
+    - pageName: 015.png
+      material: {fileID: 2100000, guid: d87a0c78662b69441b2002156bef6a44, type: 2}
+    multiplyMaterials: []
+    screenMaterials: []
+  skeletonDataModifiers: []
+  fromAnimation: []
+  toAnimation: []
+  duration: []
+  defaultMix: 0.2
+  controller: {fileID: 9100000, guid: c31486c4f0854c549ac1fe81444bbdd8, type: 2}

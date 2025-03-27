@@ -15,6 +15,7 @@ public class QionglinMgr : MonoBehaviour
         Placing,
         Cancel,
         Drag,
+        OpenPnl,
     }
 
     private QionglinState currentState;
@@ -61,6 +62,8 @@ public class QionglinMgr : MonoBehaviour
                 ProcessCancel();
                 break;
             case QionglinState.Drag:
+                
+                return;
                 ProcessDargTower();
                 if (cache砲塔 != null)
                 {
