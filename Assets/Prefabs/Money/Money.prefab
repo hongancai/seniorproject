@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 42861719b424ad948aabf13141652d76, type: 2}
+  - {fileID: 2100000, guid: ee902d059da91144381ba67c2ff9745a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -140,7 +140,7 @@ SortingGroup:
   m_Enabled: 1
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 600
+  m_SortingOrder: 801
   m_SortAtRoot: 0
 --- !u!114 &2665551176776527477
 MonoBehaviour:

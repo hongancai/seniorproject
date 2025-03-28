@@ -288,7 +288,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
   m_LocalPosition: {x: 496.11, y: 0.061, z: 499.742}
-  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4775723824033487890}
@@ -322,7 +322,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 752ef033e1189a247b1290ab14ffe580, type: 2}
+  - {fileID: 2100000, guid: 93fa46ff149e36e46a277c4d524b3963, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -354,7 +354,7 @@ Animator:
   m_GameObject: {fileID: 9146123231654538186}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6a68832909090a347902284fd867dee6, type: 2}
+  m_Controller: {fileID: 9100000, guid: bad689fadf311cc4cab71e8e0297975d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -377,7 +377,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9db98c60740638449864eb028fbe7ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: b4fff56ca41543b4992ecf8a1c6c3057, type: 2}
+  skeletonDataAsset: {fileID: 11400000, guid: cacbffe084883a249980e8b9556f188c, type: 2}
   initialSkinName: 
   initialFlipX: 0
   initialFlipY: 0
