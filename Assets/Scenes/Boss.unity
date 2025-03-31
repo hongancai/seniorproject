@@ -12251,6 +12251,16 @@ MonoBehaviour:
   closeBtn: {fileID: 2032065525}
   backmenuBtn: {fileID: 4636416955209383678}
   conBtn: {fileID: 1753716759686703874}
+  continueBtnSprites:
+  - {fileID: 21300000, guid: a4950a1302855f94cb6f0fab3e38568e, type: 3}
+  - {fileID: 21300000, guid: bfceba241dfea2243bc52ea862b6e39d, type: 3}
+  settingBtnSprites:
+  - {fileID: 21300000, guid: f60a089f429c1fe4db27ba30cb4efcf2, type: 3}
+  - {fileID: 21300000, guid: 5b330be637736cd4ba99a08111c5bbf6, type: 3}
+  backBtnSprites:
+  - {fileID: 21300000, guid: 17faaba08c5b0aa4b8b1f912ce2eb483, type: 3}
+  - {fileID: 21300000, guid: 1f843ea44f6b3da48a21fceed749053b, type: 3}
+  btnsfx: {fileID: 8300000, guid: 42cb8fc809e54874d98f66872e74ec2b, type: 3}
 --- !u!114 &1627028243
 MonoBehaviour:
   m_ObjectHideFlags: 0

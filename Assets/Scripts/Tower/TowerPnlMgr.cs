@@ -10,6 +10,8 @@ public class TowerPnlMgr : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject teachPnl;
     
+     
+    
     void Start()
     {
         // 初始隱藏資訊面板

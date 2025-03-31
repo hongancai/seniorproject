@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -47,6 +48,7 @@ public class MainMenu : MonoBehaviour
 
     private bool bgmfadeout = false;
     private bool isStarting = false;
+     
 
     void Start()
     {
@@ -81,6 +83,8 @@ public class MainMenu : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(btnstart.gameObject);
         UpdateButtonHighlight(btnstart);
     }
+
+    
 
     private void CheckContinueButtonStatus()
     {
@@ -257,6 +261,8 @@ public class MainMenu : MonoBehaviour
 
     void Update()
     {
+        //Mouse.current.WarpCursorPosition(new Vector2(0,0)  );
+        
         if (bgmfadeout == true)
         {
             GameDB.Audio._bgmAudioSource.volume -= Time.deltaTime;

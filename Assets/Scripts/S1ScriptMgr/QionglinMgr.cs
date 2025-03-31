@@ -8,7 +8,8 @@ public class QionglinMgr : MonoBehaviour
     public GameObject qionglinprefabs;
     public AudioClip placingsfx;
     public GridHighlightManager gridManager;
-    
+    public InfoPanelHandler infoPanelHandler;
+    public TowerPnlMgr towerPnlMgr;
     public enum QionglinState
     {
         Idle,
@@ -29,6 +30,11 @@ public class QionglinMgr : MonoBehaviour
         cache砲塔 = null;
         currentState = QionglinState.Idle;
         btnQionglin.onClick.AddListener(OnBtnQiongClick);
+        
+        if (towerPnlMgr == null)
+        {
+            towerPnlMgr = FindObjectOfType<TowerPnlMgr>();
+        }
     }
 
     private void OnBtnQiongClick()
@@ -62,7 +68,9 @@ public class QionglinMgr : MonoBehaviour
                 ProcessCancel();
                 break;
             case QionglinState.Drag:
-                
+            case QionglinState.OpenPnl:
+                ProcessOpenPanel();
+                break;
                 return;
                 ProcessDargTower();
                 if (cache砲塔 != null)
@@ -93,12 +101,24 @@ public class QionglinMgr : MonoBehaviour
                     // cache 
                     cache砲塔 = hit.transform.gameObject;
                     //該狀態
-                    currentState = QionglinState.Drag;
+                    currentState = QionglinState.OpenPnl;
+                    FindObjectOfType<TowerPnlMgr>().OnNpcClick("qionglin");
                 }
             }
         }
     }
-
+    private void ProcessOpenPanel()
+    {
+        // 這裡處理面板開啟後的邏輯
+        // 例如：等待面板關閉後將狀態設回Idle
+    
+        // 如果檢測到面板被關閉
+        if (!infoPanelHandler.isActiveAndEnabled)
+        {
+            currentState = QionglinState.Idle;
+        }
+    }
+    
     private void ProcessPlacingTower()
     {
         if (Input.GetButtonDown("Fire1"))
@@ -147,6 +167,7 @@ public class QionglinMgr : MonoBehaviour
 
         Debug.Log("取消放置");
     }
+    
 
     private void ProcessDargTower()
     {

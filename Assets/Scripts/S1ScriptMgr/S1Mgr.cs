@@ -32,15 +32,7 @@ public class S1Mgr : MonoBehaviour
         UpdateDisplay();
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            GameDB.ResetAll();
-            UpdateDisplay();
-        }
-        
-    }
+    
 
     private void UpdateDisplay()
     {

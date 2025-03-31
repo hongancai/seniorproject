@@ -8,9 +8,7 @@ using DG.Tweening;
 public class Video1Controller : MonoBehaviour
 {
     public VideoPlayer videoPlayer;
-    public GameObject blackScreen;
     
-    private bool bgmfadeout = false;
     void Start()
     {
         // 確保有VideoPlayer組件
