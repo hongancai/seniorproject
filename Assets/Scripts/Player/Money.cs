@@ -6,6 +6,7 @@ public class Money : MonoBehaviour
 {
     void Start()
     {
+        
     }
     
 
@@ -14,6 +15,7 @@ public class Money : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             GameDB.money += 10;
+            GameDB.Save();
             Destroy(gameObject);
         }
     }

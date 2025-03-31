@@ -6,6 +6,7 @@ using DG.Tweening;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.Video;
 
 public class MainMenu : MonoBehaviour
 {
@@ -15,10 +16,13 @@ public class MainMenu : MonoBehaviour
     public Button btnsetting;
     public Button btnsettingclose;
     public Button btnstart;
-    //public Button btncon;
+    public Button btncon; // 添加繼續按鈕
     public Button btnexit;
     public GameObject pauseMenu;
     public GameObject settingMenu;
+    public GameObject clearProgressPanel; // 新增清除進度確認面板
+    public Button clearYesBtn; // 新增確認按鈕
+    public Button clearNoBtn; // 新增取消按鈕
     public Image blackScreen;
 
     // 添加輸入系統資產引用
@@ -28,8 +32,8 @@ public class MainMenu : MonoBehaviour
     [Header("按鈕圖片設定")]
     public Sprite btnStartNormal;
     public Sprite btnStartHover;
-    //public Sprite btnConNormal;
-    //public Sprite btnConHover;
+    public Sprite btnConNormal; // 繼續遊戲按鈕正常圖片
+    public Sprite btnConHover; // 繼續遊戲按鈕懸停圖片
     public Sprite btnExitNormal;
     public Sprite btnExitHover;
 
@@ -48,11 +52,16 @@ public class MainMenu : MonoBehaviour
     {
         GameDB.Audio.PlayBgm(mainmenubgm);
         settingMenu.SetActive(false);
+        clearProgressPanel.SetActive(false); // 初始隱藏清除進度面板
+        
         btnsettingclose.onClick.AddListener(OnSettingClickfalse);
         btnsetting.onClick.AddListener(OnSettingClick);
         btnstart.onClick.AddListener(OnStartClick);
-        //btncon.onClick.AddListener(OnConClick);
+        btncon.onClick.AddListener(OnConClick);
         btnexit.onClick.AddListener(OnExitClick);
+        clearYesBtn.onClick.AddListener(OnClearYesClick);
+        clearNoBtn.onClick.AddListener(OnClearNoClick);
+        
         blackScreen.gameObject.SetActive(false);
         if (pauseMenu != null)
         {
@@ -65,9 +74,20 @@ public class MainMenu : MonoBehaviour
         // 為按鈕添加滑鼠懸停和離開事件
         SetupButtonEvents();
 
+        // 檢查是否有存檔，如果沒有則禁用繼續遊戲按鈕
+        CheckContinueButtonStatus();
+        
         // 設置初始選中按鈕
         EventSystem.current.SetSelectedGameObject(btnstart.gameObject);
         UpdateButtonHighlight(btnstart);
+    }
+
+    private void CheckContinueButtonStatus()
+    {
+        // 檢查是否有上次遊玩的場景記錄
+        string lastScene = PlayerPrefs.GetString("LastScene", "");
+        bool hasLastScene = !string.IsNullOrEmpty(lastScene) && lastScene != "MainMenu";
+        btncon.gameObject.SetActive(hasLastScene);
     }
 
     private void SetupInputSystem()
@@ -128,6 +148,15 @@ public class MainMenu : MonoBehaviour
     {
         if (context.phase != InputActionPhase.Performed)
             return;
+        
+        // 如果清除進度面板正在顯示，關閉它
+        if (clearProgressPanel.activeSelf)
+        {
+            OnClearNoClick();
+            context.ReadValue<float>();
+            return;
+        }
+        
         // 如果設定選單正在顯示，關閉它
         if (settingMenu.activeSelf)
         {
@@ -147,9 +176,9 @@ public class MainMenu : MonoBehaviour
         // 為開始遊戲按鈕添加事件
         AddPointerEvents(btnstart, btnStartNormal, btnStartHover);
         
-        // 為繼續遊戲按鈕添加事件 (如果啟用的話)
-        //if (btncon != null)
-        //    AddPointerEvents(btncon, btnConNormal, btnConHover);
+        // 為繼續遊戲按鈕添加事件
+        if (btncon != null)
+            AddPointerEvents(btncon, btnConNormal, btnConHover);
         
         // 為離開遊戲按鈕添加事件
         AddPointerEvents(btnexit, btnExitNormal, btnExitHover);
@@ -215,8 +244,8 @@ public class MainMenu : MonoBehaviour
         
         // 更新所有按鈕狀態
         UpdateButtonState(btnstart, btnStartNormal, btnStartHover);
-        //if (btncon != null)
-        //    UpdateButtonState(btncon, btnConNormal, btnConHover);
+        if (btncon != null && btncon.gameObject.activeSelf)
+            UpdateButtonState(btncon, btnConNormal, btnConHover);
         UpdateButtonState(btnexit, btnExitNormal, btnExitHover);
     }
 
@@ -245,9 +274,21 @@ public class MainMenu : MonoBehaviour
         {
             EventSystem.current.SetSelectedGameObject(btnsettingclose.gameObject);
         }
+        
+        // 如果打開了清除進度面板，確保有一個按鈕被選中
+        if (clearProgressPanel.activeSelf && EventSystem.current.currentSelectedGameObject == null && isUsingGamepad)
+        {
+            EventSystem.current.SetSelectedGameObject(clearYesBtn.gameObject);
+        }
+        
         if (settingMenu.activeSelf && Gamepad.current != null && Gamepad.current.bButton.wasPressedThisFrame)
         {
             OnSettingClickfalse();
+        }
+        
+        if (clearProgressPanel.activeSelf && Gamepad.current != null && Gamepad.current.bButton.wasPressedThisFrame)
+        {
+            OnClearNoClick();
         }
     }
     
@@ -263,7 +304,6 @@ public class MainMenu : MonoBehaviour
 
     private void OnSettingClick()
     {
-        
         GameDB.Audio.PlaySfx(btnsfx);
         settingMenu.SetActive(true);
         
@@ -276,7 +316,71 @@ public class MainMenu : MonoBehaviour
     
     private void OnStartClick()
     {
-        if (isStarting )
+        if (isStarting)
+        {
+            return;
+        }
+
+        GameDB.Audio.PlaySfx(btnsfx);
+        clearProgressPanel.SetActive(true);
+        
+        // 當顯示清除進度面板時，選擇確認按鈕
+        if (isUsingGamepad)
+        {
+            EventSystem.current.SetSelectedGameObject(clearYesBtn.gameObject);
+        }
+    }
+    
+    private void OnClearYesClick()
+    {
+        if (isStarting)
+        {
+            return;
+        }
+
+        // 清除遊戲進度
+        GameDB.ResetAll();
+        
+        isStarting = true;
+        GameDB.Audio.PlaySfx(startsfx);
+        blackScreen.color = new Color(0,0,0,0);
+        blackScreen.gameObject.SetActive(true);
+        
+        // 建立序列動畫
+        Sequence sequence = DOTween.Sequence();
+        
+        // 黑幕從透明慢慢變成不透明（淡入）
+        sequence.Append(blackScreen.DOColor(Color.black, 2f).SetEase(Ease.InOutSine));
+        sequence.AppendInterval(1f);
+        bgmfadeout = true;
+        
+        // 淡入完成後切換場景
+        sequence.OnComplete(() => 
+        {
+            SceneManager.LoadScene("Video1");
+        });
+        
+        if (pauseMenu != null)
+        {
+            pauseMenu.SetActive(false); // 在開始遊戲時關閉暫停介面
+        }
+        
+        Time.timeScale = 1f; // 確保遊戲時間正常運行
+    }
+    
+    private void OnClearNoClick()
+    {
+        GameDB.Audio.PlaySfx(btnsfx);
+        clearProgressPanel.SetActive(false);
+        
+        // 關閉面板後，重新選擇主選單中的按鈕
+        EventSystem.current.SetSelectedGameObject(btnstart.gameObject);
+        UpdateButtonHighlight(btnstart);
+    }
+    
+    private void OnConClick()
+    {
+        if (isStarting)
         {
             return;
         }
@@ -285,33 +389,34 @@ public class MainMenu : MonoBehaviour
         GameDB.Audio.PlaySfx(startsfx);
         blackScreen.color = new Color(0,0,0,0);
         blackScreen.gameObject.SetActive(true);
-        PlayerPrefs.SetString("LastScene", "MainMenu");
-        PlayerPrefs.Save();
+        
+        // 載入遊戲存檔
+        GameDB.Load();
+        
+        // 取得上次遊玩的場景
+        string lastScene = PlayerPrefs.GetString("LastScene", "S1");
+        
         // 建立序列動畫
         Sequence sequence = DOTween.Sequence();
         
         // 黑幕從透明慢慢變成不透明（淡入）
-        sequence.Append(blackScreen.DOColor(Color.black, 3f).SetEase(Ease.InOutSine));
-        sequence.AppendInterval(2f);
+        sequence.Append(blackScreen.DOColor(Color.black, 2f).SetEase(Ease.InOutSine));
+        sequence.AppendInterval(1f);
         bgmfadeout = true;
+        
         // 淡入完成後切換場景
         sequence.OnComplete(() => 
         {
-            SceneManager.LoadScene("S1");
+            SceneManager.LoadScene(lastScene);
         });
         
         if (pauseMenu != null)
         {
             pauseMenu.SetActive(false); // 在開始遊戲時關閉暫停介面
         }
+        
         Time.timeScale = 1f; // 確保遊戲時間正常運行
     }
-    
-    //private void OnConClick()
-    //{
-        //GameDB.Audio.PlaySfx(startsfx);
-        //GameDB.Load();
-    //}
 
     private void OnExitClick()
     {
