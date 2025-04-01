@@ -109,10 +109,6 @@ public class QionglinMgr : MonoBehaviour
     }
     private void ProcessOpenPanel()
     {
-        // 這裡處理面板開啟後的邏輯
-        // 例如：等待面板關閉後將狀態設回Idle
-    
-        // 如果檢測到面板被關閉
         if (!infoPanelHandler.isActiveAndEnabled)
         {
             currentState = QionglinState.Idle;
@@ -138,6 +134,7 @@ public class QionglinMgr : MonoBehaviour
                     Vector3 position = hit.point;
                     position.y = 0;
                     temp.transform.localPosition = position;
+                    GameDB.qionglinPos = temp.transform.localPosition;
                     followQionglinImage.gameObject.SetActive(false);
                     if (gridManager != null)
                     {

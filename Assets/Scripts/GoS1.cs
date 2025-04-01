@@ -11,9 +11,11 @@ public class GoS1 : MonoBehaviour
     public Image blackScreen;
     public string sourceScene;
     
+    
     private bool bgmfadeout = false;
     void Start()
     {
+        
         if (string.IsNullOrEmpty(sourceScene))
         {
             sourceScene = SceneManager.GetActiveScene().name;

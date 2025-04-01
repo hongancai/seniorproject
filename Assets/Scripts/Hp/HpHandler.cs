@@ -1,16 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class HpHandler : MonoBehaviour
 {  
-    public float maxHP = 1000f;
-    public float currentHP = 1000f;
+    public float maxHP = 3000f;
+    public float currentHP = 3000f;
+
+    
     void Start()
     {
         
     }
-
     void Update()
     {
         UpdateHPBar();

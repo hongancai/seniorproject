@@ -7,12 +7,16 @@ public class TahouMgr : MonoBehaviour
 {
    public GameObject tahouprefabs;
    public AudioClip placingsfx;
+   public GridHighlightManager gridManager;
+   public InfoPanelHandler infoPanelHandler;
+   public TowerPnlMgr towerPnlMgr;
     public enum TahouState
     {
         Idle,
         Placing,
         Cancel,
         Drag,
+        OpenPnl,
     }
     private TahouState currentState;
     public Button btnTahou;
@@ -25,6 +29,11 @@ public class TahouMgr : MonoBehaviour
         cache砲塔 = null;
         currentState = TahouState.Idle;
         btnTahou.onClick.AddListener(OnBtnTahouClick);
+        
+        if (towerPnlMgr == null)
+        {
+            towerPnlMgr = FindObjectOfType<TowerPnlMgr>();
+        }
     }
 
     private void OnBtnTahouClick()
@@ -32,6 +41,10 @@ public class TahouMgr : MonoBehaviour
         followTahouImage.gameObject.SetActive(true); 
         currentState = TahouState.Placing;
         btnTahou.interactable = false;
+        if (gridManager != null)
+        {
+            gridManager.ShowAllValidAreas();
+        }
         Debug.Log("開始丟塔后風獅爺喔");
     }
 
@@ -54,7 +67,16 @@ public class TahouMgr : MonoBehaviour
                 ProcessCancel();
                 break;
             case TahouState.Drag:
+            case TahouState.OpenPnl:
+                ProcessOpenPanel();
+                break;
+                return;
                 ProcessDargTower();
+                if (cache砲塔 != null)
+                {
+                    RacastAll();
+                }
+                break;
                 break;
         }
         if (currentState == TahouState.Placing)
@@ -77,12 +99,19 @@ public class TahouMgr : MonoBehaviour
                     // cache 
                     cache砲塔 = hit.transform.gameObject;
                     //該狀態
-                    currentState = TahouState.Drag;
+                    currentState = TahouState.OpenPnl;
+                    FindObjectOfType<TowerPnlMgr>().OnNpcClick("tahou");
                 }
             }
         }
     }
-
+    private void ProcessOpenPanel()
+    {
+        if (!infoPanelHandler.isActiveAndEnabled)
+        {
+            currentState = TahouState.Idle;
+        }
+    }
     private void ProcessPlacingTower()
     {
         if (Input.GetButtonDown("Fire1"))
@@ -95,14 +124,19 @@ public class TahouMgr : MonoBehaviour
                 if (hit.transform.gameObject.GetComponent<RoadTag>() != null)
                 {
                     GameDB.Audio.PlaySfx(placingsfx);
-                    Vector3 placePosition = hit.point;
+                    //Vector3 placePosition = hit.point;
                     GameObject temp = Instantiate(tahouprefabs);
                     temp.transform.localScale = Vector3.one;
                     temp.transform.localEulerAngles = new Vector3(30, 0, 0);
                     Vector3 position = hit.point;
                     position.y = 0;
                     temp.transform.localPosition = position;
+                    GameDB.tahouPos = temp.transform.localPosition;
                     followTahouImage.gameObject.SetActive(false);
+                    if (gridManager != null)
+                    {
+                        gridManager.HideAllHighlights();
+                    }
                     currentState = TahouState.Idle; //改變狀態!!!
                 }
             }
@@ -119,6 +153,10 @@ public class TahouMgr : MonoBehaviour
     
         // 重置狀態
         currentState = TahouState.Idle;
+        if (gridManager != null)
+        {
+            gridManager.HideAllHighlights();
+        }
     
         Debug.Log("取消放置");
     }
@@ -139,6 +177,33 @@ public class TahouMgr : MonoBehaviour
         {
             cache砲塔 = null;
             currentState = TahouState.Idle;
+        }
+    }
+    void RacastAll()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit[] hits;
+        hits = Physics.RaycastAll(ray);
+
+        for (int i = 0; i < hits.Length; i++)
+        {
+            RaycastHit hit = hits[i];
+            Debug.Log(hit.transform.gameObject.name);
+            hit.transform.gameObject.GetComponent<HoushuiTag>();
+            if (Physics.Raycast(ray, out hit))
+            {
+                if (hit.transform.gameObject.GetComponent<RoadTag>() != null)
+                {
+                    Debug.Log(hit.transform.gameObject.name);
+                    cache砲塔.transform.localPosition = hit.point;
+                }
+            }
+
+            if (Input.GetButtonUp("Fire1"))
+            {
+                cache砲塔 = null;
+                currentState = TahouState.Idle;
+            }
         }
     }
 }

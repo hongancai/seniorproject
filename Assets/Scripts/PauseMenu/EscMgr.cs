@@ -9,7 +9,8 @@ public class EscMgr : MonoBehaviour
     public enum ESCPanelState
     {
         None,
-        LionPanel,      // 風獅爺面板 (S1, S3)
+        LionPanel,      // 風獅爺面板 (S3)
+        TowerPanel,     // 風獅爺面板 (S1和Boss場景)
         ShopPanel,      // 商店面板 (S2)
         ProductInfo,    // 商品資訊面板 (S2)
         TutorialPanel,  // 教學面板 (所有場景)
@@ -24,7 +25,8 @@ public class EscMgr : MonoBehaviour
     public ESCPanelState CurrentState => panelStateStack.Count > 0 ? panelStateStack.Peek() : ESCPanelState.None;
 
     // 面板引用
-    public GameObject[] lionPanels;  // 風獅爺面板 (S1, S3)
+    
+    public GameObject[] lionPanels;  // 風獅爺面板 (S3)
     public GameObject shopPanel;     // 商店面板 (S2)
     public GameObject[] productPanels; // 商品資訊面板 (S2)
     public GameObject tutorialPanel; // 教學面板 (所有場景)
@@ -33,13 +35,14 @@ public class EscMgr : MonoBehaviour
 
     // 存放各面板控制器的引用
     private PauseMenu pauseMenuController;
+    private TowerPnlMgr towerPanelManager; // 新增：S1和Boss場景的風獅爺面板管理器
 
     // 記錄當前活動中的面板索引
     private int currentActiveLionPanelIndex = -1;
     private int currentActiveProductPanelIndex = -1;
 
     // 各場景的管理器引用
-    private S3Mgr s7Manager;
+    private S3Mgr s3Manager;
 
     // 單例模式
     public static EscMgr Instance { get; private set; }
@@ -68,7 +71,8 @@ public class EscMgr : MonoBehaviour
         currentActiveProductPanelIndex = -1;
         
         // 尋找當前場景的管理器
-        s7Manager = FindObjectOfType<S3Mgr>();
+        s3Manager = FindObjectOfType<S3Mgr>();
+        towerPanelManager = FindObjectOfType<TowerPnlMgr>(); // 新增：尋找S1和Boss場景的面板管理器
         
         // 尋找暫停選單控制器
         pauseMenuController = FindObjectOfType<PauseMenu>();
@@ -108,6 +112,12 @@ public class EscMgr : MonoBehaviour
         // 關閉暫停面板和設定面板
         if (pausePanel != null) pausePanel.SetActive(false);
         if (settingPanel != null) settingPanel.SetActive(false);
+        
+        // 確保S1和Boss場景的風獅爺面板關閉
+        if (towerPanelManager != null && towerPanelManager.infoPanelHandler != null)
+        {
+            towerPanelManager.infoPanelHandler.gameObject.SetActive(false);
+        }
     }
 
     private void OnDestroy()
@@ -191,6 +201,10 @@ public class EscMgr : MonoBehaviour
             case ESCPanelState.LionPanel:
                 CloseLionPanel(currentActiveLionPanelIndex);
                 break;
+                
+            case ESCPanelState.TowerPanel: // 新增：處理S1和Boss場景的風獅爺面板
+                CloseTowerPanel();
+                break;
 
             case ESCPanelState.TutorialPanel:
                 CloseTutorialPanel();
@@ -240,10 +254,10 @@ public class EscMgr : MonoBehaviour
 
     public void CloseLionPanel(int index)
     {
-        // S7 場景特殊處理
-        if (s7Manager != null)
+        // S3 場景特殊處理
+        if (s3Manager != null)
         {
-            s7Manager.CloseCurrentPanel();
+            s3Manager.CloseCurrentPanel();
             UnregisterPanel(ESCPanelState.LionPanel);
             currentActiveLionPanelIndex = -1;
             return;
@@ -261,6 +275,26 @@ public class EscMgr : MonoBehaviour
     public void CloseLionPanels()
     {
         CloseLionPanel(currentActiveLionPanelIndex);
+    }
+    
+    // S1和Boss場景風獅爺面板相關方法 (新增)
+    public void OpenTowerPanel()
+    {
+        if (towerPanelManager != null && towerPanelManager.infoPanelHandler != null)
+        {
+            // 這個方法是註冊，讓ESC可以關閉，但不是直接開啟
+            // 實際開啟由TowerPnlMgr處理
+            RegisterPanel(ESCPanelState.TowerPanel);
+        }
+    }
+
+    public void CloseTowerPanel()
+    {
+        if (towerPanelManager != null && towerPanelManager.infoPanelHandler != null)
+        {
+            towerPanelManager.CloseinfoPanel();
+            UnregisterPanel(ESCPanelState.TowerPanel);
+        }
     }
     
     // 商店面板相關方法

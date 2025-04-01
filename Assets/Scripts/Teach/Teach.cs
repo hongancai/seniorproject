@@ -12,6 +12,7 @@ public class Teach : MonoBehaviour
     public Button lBtn;
     public Button openTeachBtn;
     public Button closeTeachBtn;
+    //public EscMgr escManager;
     
     void Start()
     {
@@ -24,6 +25,7 @@ public class Teach : MonoBehaviour
     
     public void OnOpenTeachtn()
     {
+        //EscMgr.Instance.OpenTutorialPanel();
         GameDB.Audio.PlaySfx(btnsfx);
         teachPnl.gameObject.SetActive(true);
         Time.timeScale = 0f;
@@ -40,6 +42,7 @@ public class Teach : MonoBehaviour
     }
     public void OnCloseTeachBtn()
     {
+        //EscMgr.Instance.CloseTutorialPanel();
         GameDB.Audio.PlaySfx(btnsfx);
         teachPnl.gameObject.SetActive(false);
         Time.timeScale = 1f;

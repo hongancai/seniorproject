@@ -10,7 +10,7 @@ public class TowerPnlMgr : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject teachPnl;
     
-     
+    //private EscMgr escManager; 
     
     void Start()
     {
@@ -18,11 +18,17 @@ public class TowerPnlMgr : MonoBehaviour
         infoPanelHandler.gameObject.SetActive(false);
         
         closebtn.onClick.AddListener(CloseinfoPanel);
+        
+        //escManager = EscMgr.Instance;
     }
 
-    private void CloseinfoPanel()
+    public void CloseinfoPanel()
     {
         infoPanelHandler.gameObject.SetActive(false);
+        //if (escManager != null)
+        {
+            //escManager.UnregisterPanel(EscMgr.ESCPanelState.TowerPanel);
+        }
     }
 
     void Update()
@@ -84,6 +90,10 @@ public class TowerPnlMgr : MonoBehaviour
             case "tahou":
                 infoPanelHandler.Setup(GameDB.tahou, "tahou");
                 break;
+        }
+        //if (escManager != null)
+        {
+            //escManager.OpenTowerPanel();
         }
     }
 }

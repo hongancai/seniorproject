@@ -6561,6 +6561,8 @@ MonoBehaviour:
   transsfx: {fileID: 8300000, guid: bd12d747b6836cb42ba8171e84f2a451, type: 3}
   blackScreen: {fileID: 859281982}
   sourceScene: Park
+  qionglinprefabs: {fileID: 6445586940266981759, guid: 1636cc685b7b7834088015d3c2e6986c,
+    type: 3}
 --- !u!1 &1227695858
 GameObject:
   m_ObjectHideFlags: 0
@@ -9533,7 +9535,6 @@ MonoBehaviour:
   closeBtn: {fileID: 578731615}
   backmenuBtn: {fileID: 578731614}
   conBtn: {fileID: 578731612}
-  blackScreen: {fileID: 859281982}
   continueBtnSprites:
   - {fileID: 21300000, guid: a4950a1302855f94cb6f0fab3e38568e, type: 3}
   - {fileID: 21300000, guid: bfceba241dfea2243bc52ea862b6e39d, type: 3}

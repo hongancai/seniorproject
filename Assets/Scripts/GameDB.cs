@@ -266,6 +266,12 @@ public static class GameDB
     public static Npc liu;
     public static Npc an;
     public static Npc tahou;
+
+    public static Vector3 qionglinPos;
+    public static Vector3 houshuiPos;
+    public static Vector3 liuPos;
+    public static Vector3 anPos;
+    public static Vector3 tahouPos;
     
     public static int towerHp;
     public static int liuEffect = 30;

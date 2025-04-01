@@ -336,44 +336,46 @@ public class MainMenu : MonoBehaviour
             EventSystem.current.SetSelectedGameObject(clearYesBtn.gameObject);
         }
     }
-    
+
     private void OnClearYesClick()
     {
-        if (isStarting)
         {
-            return;
-        }
+            if (isStarting)
+            {
+                return;
+            }
 
-        // 清除遊戲進度
-        GameDB.ResetAll();
-        
-        isStarting = true;
-        GameDB.Audio.PlaySfx(startsfx);
-        blackScreen.color = new Color(0,0,0,0);
-        blackScreen.gameObject.SetActive(true);
-        
-        // 建立序列動畫
-        Sequence sequence = DOTween.Sequence();
-        
-        // 黑幕從透明慢慢變成不透明（淡入）
-        sequence.Append(blackScreen.DOColor(Color.black, 2f).SetEase(Ease.InOutSine));
-        sequence.AppendInterval(1f);
-        bgmfadeout = true;
-        
-        // 淡入完成後切換場景
-        sequence.OnComplete(() => 
-        {
-            SceneManager.LoadScene("Video1");
-        });
-        
-        if (pauseMenu != null)
-        {
-            pauseMenu.SetActive(false); // 在開始遊戲時關閉暫停介面
+            // 清除遊戲進度
+            GameDB.ResetAll();
+
+            // 設置新遊戲標記
+            PlayerPrefs.SetInt("IsNewGame", 1);
+
+            isStarting = true;
+            GameDB.Audio.PlaySfx(startsfx);
+            blackScreen.color = new Color(0, 0, 0, 0);
+            blackScreen.gameObject.SetActive(true);
+
+            // 建立序列動畫
+            Sequence sequence = DOTween.Sequence();
+
+            // 黑幕從透明慢慢變成不透明（淡入）
+            sequence.Append(blackScreen.DOColor(Color.black, 2f).SetEase(Ease.InOutSine));
+            sequence.AppendInterval(1f);
+            bgmfadeout = true;
+
+            // 淡入完成後切換場景
+            sequence.OnComplete(() => { SceneManager.LoadScene("Video1"); });
+
+            if (pauseMenu != null)
+            {
+                pauseMenu.SetActive(false); // 在開始遊戲時關閉暫停介面
+            }
+
+            Time.timeScale = 1f; // 確保遊戲時間正常運行
         }
-        
-        Time.timeScale = 1f; // 確保遊戲時間正常運行
     }
-    
+
     private void OnClearNoClick()
     {
         GameDB.Audio.PlaySfx(btnsfx);

@@ -243,6 +243,7 @@ public class PauseMenu : MonoBehaviour
             currentButtonIndex = 0;
             NavigateMenu(Vector2.zero); // 刷新導航狀態
         }
+        
     }
 }
 

@@ -35,6 +35,29 @@ public class InfoPanelHandler : MonoBehaviour
         //upgradebtn.onClick.AddListener(OnUpgradeClick);
         //warningPnl.gameObject.SetActive(false);
     }
+    private void OnUpgradeClick()
+    {
+        int upgradeCost = 100;
+        if (GameDB.money > upgradeCost)
+        {
+            if (GameDB.qionglin.Lv < 5)
+            {
+                GameDB.money -= upgradeCost;
+                //GameDB.UpgradeTower(GameDB.qionglin);
+                //GameDB.Audio.PlaySfx(upgradesfx);
+            }
+            else
+            {
+                //upgradebtn.gameObject.SetActive(false);
+            }
+            {
+                //warningPnl.gameObject.SetActive(true);
+                Debug.Log("你不夠200塊");
+            }
+
+            GameDB.Save();
+        }
+    }
         
     void Update()
     {

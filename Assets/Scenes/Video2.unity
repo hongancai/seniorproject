@@ -615,6 +615,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1119109594}
   - component: {fileID: 1119109593}
+  - component: {fileID: 1119109595}
   m_Layer: 5
   m_Name: Video Player
   m_TagString: Untagged
@@ -675,6 +676,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1920, y: 1020}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1119109595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1119109592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 113f960e6e113ee4b912e3b20a860d45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2044079516
 GameObject:
   m_ObjectHideFlags: 0
@@ -686,6 +699,7 @@ GameObject:
   - component: {fileID: 2044079519}
   - component: {fileID: 2044079518}
   - component: {fileID: 2044079521}
+  - component: {fileID: 2044079522}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -764,6 +778,20 @@ MonoBehaviour:
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
+--- !u!114 &2044079522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044079516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4c59e0d31cad3c4caea8a23948f2989, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioData: {fileID: 0}
+  _bgmAudioSource: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

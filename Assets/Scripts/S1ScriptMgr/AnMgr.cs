@@ -7,12 +7,16 @@ public class AnMgr : MonoBehaviour
 {
     public GameObject anprefabs;
     public AudioClip placingsfx;
+    public GridHighlightManager gridManager;
+    public InfoPanelHandler infoPanelHandler;
+    public TowerPnlMgr towerPnlMgr;
     public enum AnState
     {
         Idle,
         Placing,
         Cancel,
         Drag,
+        OpenPnl,
     }
     private AnState currentState;
     public Button btnAn;
@@ -25,6 +29,11 @@ public class AnMgr : MonoBehaviour
         cache砲塔 = null;
         currentState = AnState.Idle;
         btnAn.onClick.AddListener(OnBtnAnClick);
+        
+        if (towerPnlMgr == null)
+        {
+            towerPnlMgr = FindObjectOfType<TowerPnlMgr>();
+        }
     }
 
     private void OnBtnAnClick()
@@ -32,6 +41,10 @@ public class AnMgr : MonoBehaviour
         followAnImage.gameObject.SetActive(true); 
         currentState = AnState. Placing;
         btnAn.interactable = false;
+        if (gridManager != null)
+        {
+            gridManager.ShowAllValidAreas();
+        }
         Debug.Log("開始丟安崎風獅爺喔");
     }
 
@@ -54,7 +67,16 @@ public class AnMgr : MonoBehaviour
                 ProcessCancel();
                 break;
             case AnState.Drag:
+            case AnState.OpenPnl:
+                ProcessOpenPanel();
+                break;
+                return;
                 ProcessDargTower();
+                if (cache砲塔 != null)
+                {
+                    RacastAll();
+                }
+                break;
                 break;
         }
         if (currentState == AnState. Placing)
@@ -77,12 +99,19 @@ public class AnMgr : MonoBehaviour
                     // cache 
                     cache砲塔 = hit.transform.gameObject;
                     //該狀態
-                    currentState = AnState.Drag;
+                    currentState = AnState.OpenPnl;
+                    FindObjectOfType<TowerPnlMgr>().OnNpcClick("an");
                 }
             }
         }
     }
-
+    private void ProcessOpenPanel()
+    {
+        if (!infoPanelHandler.isActiveAndEnabled)
+        {
+            currentState = AnState.Idle;
+        }
+    }
     private void ProcessPlacingTower()
     {
         if (Input.GetButtonDown("Fire1"))
@@ -102,7 +131,12 @@ public class AnMgr : MonoBehaviour
                     Vector3 position = hit.point;
                     position.y = 0;
                     temp.transform.localPosition = position;
+                    GameDB.anPos = temp.transform.localPosition;
                     followAnImage.gameObject.SetActive(false);
+                    if (gridManager != null)
+                    {
+                        gridManager.HideAllHighlights();
+                    }
                     currentState = AnState.Idle; //改變狀態!!!
                 }
             }
@@ -119,7 +153,10 @@ public class AnMgr : MonoBehaviour
     
         // 重置狀態
         currentState = AnState.Idle;
-    
+        if (gridManager != null)
+        {
+            gridManager.HideAllHighlights();
+        }
         Debug.Log("取消放置");
     }
 
@@ -139,6 +176,33 @@ public class AnMgr : MonoBehaviour
         {
             cache砲塔 = null;
             currentState = AnState.Idle;
+        }
+    }
+    void RacastAll()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit[] hits;
+        hits = Physics.RaycastAll(ray);
+
+        for (int i = 0; i < hits.Length; i++)
+        {
+            RaycastHit hit = hits[i];
+            Debug.Log(hit.transform.gameObject.name);
+            hit.transform.gameObject.GetComponent<HoushuiTag>();
+            if (Physics.Raycast(ray, out hit))
+            {
+                if (hit.transform.gameObject.GetComponent<RoadTag>() != null)
+                {
+                    Debug.Log(hit.transform.gameObject.name);
+                    cache砲塔.transform.localPosition = hit.point;
+                }
+            }
+
+            if (Input.GetButtonUp("Fire1"))
+            {
+                cache砲塔 = null;
+                currentState = AnState.Idle;
+            }
         }
     }
 }

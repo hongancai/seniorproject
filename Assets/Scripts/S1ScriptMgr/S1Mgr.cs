@@ -11,11 +11,48 @@ public class S1Mgr : MonoBehaviour
     public Image blackScreen;
     public List<GameObject> buyedItems;
     public List<GameObject> buyTowers;
-
-
+    public GameObject qionglinprefabs;
+    public GameObject houshuiprefabs;
+    public GameObject liuprefabs;
+    public GameObject anprefabs;
+    public GameObject tahouprefabs;
     private void Awake()
     {
-        
+        if (GameDB.qionglinPos != Vector3.zero )
+        {
+            GameObject temp = Instantiate(qionglinprefabs);
+            temp.transform.localScale = Vector3.one;
+            temp.transform.localEulerAngles = new Vector3(30, 0, 0);
+            temp.transform.localPosition = GameDB.qionglinPos;
+        }
+        if (GameDB.houshuiPos != Vector3.zero )
+        {
+            GameObject temp = Instantiate(houshuiprefabs);
+            temp.transform.localScale = Vector3.one;
+            temp.transform.localEulerAngles = new Vector3(30, 0, 0);
+            temp.transform.localPosition = GameDB.houshuiPos;
+        }
+        if (GameDB.liuPos != Vector3.zero )
+        {
+            GameObject temp = Instantiate(liuprefabs);
+            temp.transform.localScale = Vector3.one;
+            temp.transform.localEulerAngles = new Vector3(30, 0, 0);
+            temp.transform.localPosition = GameDB.liuPos;
+        }
+        if (GameDB.anPos != Vector3.zero )
+        {
+            GameObject temp = Instantiate(anprefabs);
+            temp.transform.localScale = Vector3.one;
+            temp.transform.localEulerAngles = new Vector3(30, 0, 0);
+            temp.transform.localPosition = GameDB.anPos;
+        }
+        if (GameDB.tahouPos != Vector3.zero )
+        {
+            GameObject temp = Instantiate(tahouprefabs);
+            temp.transform.localScale = Vector3.one;
+            temp.transform.localEulerAngles = new Vector3(30, 0, 0);
+            temp.transform.localPosition = GameDB.tahouPos;
+        }
     }
 
     void Start()
@@ -57,4 +94,6 @@ public class S1Mgr : MonoBehaviour
             }
         }
     }
+
+   
 }
