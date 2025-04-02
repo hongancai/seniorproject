@@ -25,6 +25,11 @@ public class TowerPnlMgr : MonoBehaviour
     public void CloseinfoPanel()
     {
         infoPanelHandler.gameObject.SetActive(false);
+        Time.timeScale = 1;
+        if (GameDB.Audio._bgmAudioSource != null)
+        {
+            GameDB.Audio._bgmAudioSource.ignoreListenerPause = false;
+        }
         //if (escManager != null)
         {
             //escManager.UnregisterPanel(EscMgr.ESCPanelState.TowerPanel);
@@ -74,6 +79,17 @@ public class TowerPnlMgr : MonoBehaviour
         if (pauseMenu.activeSelf || infoPanelHandler.isActiveAndEnabled || teachPnl.activeSelf)
         {
             return;
+        }
+        Time.timeScale = 0;
+        float currentVolume = GameDB.Audio._bgmAudioSource.volume;
+        if (GameDB.Audio._bgmAudioSource != null)
+        {
+            if (!GameDB.Audio._bgmAudioSource.isPlaying)
+            {
+                GameDB.Audio._bgmAudioSource.Play();
+            }
+            // 保持原有音量，不降低
+            GameDB.Audio._bgmAudioSource.volume = currentVolume;
         }
         switch (npcType)
         {
