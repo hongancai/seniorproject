@@ -29,7 +29,7 @@ public class LiuMgr : MonoBehaviour
         cache砲塔 = null;
         currentState = LiuState.Idle;
         btnLiu.onClick.AddListener(OnBtnLiuClick);
-        
+        btnLiu.interactable = GameDB.liuBtnInteractable;
         if (towerPnlMgr == null)
         {
             towerPnlMgr = FindObjectOfType<TowerPnlMgr>();
@@ -41,6 +41,7 @@ public class LiuMgr : MonoBehaviour
         followLiuImage.gameObject.SetActive(true); 
         currentState = LiuState.Placing;
         btnLiu.interactable = false;
+        GameDB.liuBtnInteractable = false;
         if (gridManager != null)
         {
             gridManager.ShowAllValidAreas();
@@ -151,7 +152,7 @@ public class LiuMgr : MonoBehaviour
     
         // 重新啟用按鈕
         btnLiu.interactable = true;
-    
+        GameDB.liuBtnInteractable = true;
         // 重置狀態
         currentState = LiuState.Idle;
         if (gridManager != null)

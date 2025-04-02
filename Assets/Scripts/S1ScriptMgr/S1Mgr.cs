@@ -16,6 +16,12 @@ public class S1Mgr : MonoBehaviour
     public GameObject liuprefabs;
     public GameObject anprefabs;
     public GameObject tahouprefabs;
+    
+    public Button qionglinButton;
+    public Button houshuiButton;
+    public Button liuButton;
+    public Button anButton;
+    public Button tahouButton;
     private void Awake()
     {
         if (GameDB.qionglinPos != Vector3.zero )
@@ -57,6 +63,26 @@ public class S1Mgr : MonoBehaviour
 
     void Start()
     {
+        if (qionglinButton != null)
+        {
+            qionglinButton.interactable = GameDB.qionglinBtnInteractable;
+        }
+        if (houshuiButton != null)
+        {
+            houshuiButton.interactable = GameDB.houshuiBtnInteractable;
+        }
+        if (liuButton != null)
+        {
+            liuButton.interactable = GameDB.liuBtnInteractable;
+        }
+        if ( anButton != null)
+        {
+            anButton.interactable = GameDB.anBtnInteractable;
+        }
+        if (tahouButton != null)
+        {
+            tahouButton.interactable = GameDB.tahouBtnInteractable;
+        }
         GameDB.Audio.PlayBgm(s1bgm);
         blackScreen.gameObject.SetActive(true);
         blackScreen.color = new Color(0, 0, 0, 1);

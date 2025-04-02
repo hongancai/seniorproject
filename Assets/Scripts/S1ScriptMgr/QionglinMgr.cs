@@ -30,7 +30,7 @@ public class QionglinMgr : MonoBehaviour
         cache砲塔 = null;
         currentState = QionglinState.Idle;
         btnQionglin.onClick.AddListener(OnBtnQiongClick);
-        
+        btnQionglin.interactable = GameDB.qionglinBtnInteractable;
         if (towerPnlMgr == null)
         {
             towerPnlMgr = FindObjectOfType<TowerPnlMgr>();
@@ -42,6 +42,7 @@ public class QionglinMgr : MonoBehaviour
         followQionglinImage.gameObject.SetActive(true);
         currentState = QionglinState.Placing;
         btnQionglin.interactable = false;
+        GameDB.qionglinBtnInteractable = false;
         if (gridManager != null)
         {
             gridManager.ShowAllValidAreas();
@@ -153,6 +154,7 @@ public class QionglinMgr : MonoBehaviour
 
         // 重新啟用按鈕
         btnQionglin.interactable = true;
+        GameDB.qionglinBtnInteractable = true;
 
         // 重置狀態
         currentState = QionglinState.Idle;

@@ -29,7 +29,7 @@ public class TahouMgr : MonoBehaviour
         cache砲塔 = null;
         currentState = TahouState.Idle;
         btnTahou.onClick.AddListener(OnBtnTahouClick);
-        
+        btnTahou.interactable = GameDB.tahouBtnInteractable;
         if (towerPnlMgr == null)
         {
             towerPnlMgr = FindObjectOfType<TowerPnlMgr>();
@@ -41,6 +41,7 @@ public class TahouMgr : MonoBehaviour
         followTahouImage.gameObject.SetActive(true); 
         currentState = TahouState.Placing;
         btnTahou.interactable = false;
+        GameDB.tahouBtnInteractable = false;
         if (gridManager != null)
         {
             gridManager.ShowAllValidAreas();
@@ -150,7 +151,7 @@ public class TahouMgr : MonoBehaviour
     
         // 重新啟用按鈕
         btnTahou.interactable = true;
-    
+        GameDB.tahouBtnInteractable = true;
         // 重置狀態
         currentState = TahouState.Idle;
         if (gridManager != null)

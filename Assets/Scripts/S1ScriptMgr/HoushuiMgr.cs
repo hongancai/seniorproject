@@ -29,7 +29,7 @@ public class HoushuiMgr : MonoBehaviour
         cache砲塔 = null;
         currentState = HoushuiState.Idle;
         btnHoushui.onClick.AddListener(OnBtnHoushuiClick);
-        
+        btnHoushui.interactable = GameDB.houshuiBtnInteractable;
         if (towerPnlMgr == null)
         {
             towerPnlMgr = FindObjectOfType<TowerPnlMgr>();
@@ -41,6 +41,7 @@ public class HoushuiMgr : MonoBehaviour
         followHoushuiImage.gameObject.SetActive(true); 
         currentState = HoushuiState.Placing;
         btnHoushui.interactable = false;
+        GameDB.houshuiBtnInteractable = false;
         if (gridManager != null)
         {
             gridManager.ShowAllValidAreas();
@@ -150,7 +151,7 @@ public class HoushuiMgr : MonoBehaviour
     
         // 重新啟用按鈕
         btnHoushui.interactable = true;
-    
+        GameDB.houshuiBtnInteractable = true;
         // 重置狀態
         currentState = HoushuiState.Idle;
         if (gridManager != null)

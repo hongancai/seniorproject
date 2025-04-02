@@ -273,6 +273,12 @@ public static class GameDB
     public static Vector3 anPos;
     public static Vector3 tahouPos;
     
+    public static bool qionglinBtnInteractable = true;
+    public static bool houshuiBtnInteractable = true;
+    public static bool liuBtnInteractable = true;
+    public static bool anBtnInteractable = true;
+    public static bool tahouBtnInteractable = true;
+    
     public static int towerHp;
     public static int liuEffect = 30;
     public static int anEffect = 30;
@@ -299,6 +305,7 @@ public static class GameDB
         for (int i = 0; i < Bought.Count; i++)
         {
             PlayerPrefs.SetInt($"Shop_Bought_{i}", Bought[i] ? 1 : 0);
+            
         }
     
         // 塔防商店物品
@@ -347,7 +354,17 @@ public static class GameDB
         {
             BoughtTower[i] = false;
         }
-    
+        qionglinPos = Vector3.zero;
+        houshuiPos = Vector3.zero;
+        liuPos = Vector3.zero;
+        anPos = Vector3.zero;
+        tahouPos = Vector3.zero;
+        
+        qionglinBtnInteractable = true;
+        houshuiBtnInteractable = true;
+        liuBtnInteractable = true;
+        anBtnInteractable = true;
+        tahouBtnInteractable = true;
         // 儲存重置後的狀態
         Save();
     }

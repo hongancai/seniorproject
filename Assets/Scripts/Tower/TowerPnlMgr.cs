@@ -34,15 +34,12 @@ public class TowerPnlMgr : MonoBehaviour
     void Update()
     {
         // 當滑鼠左鍵被點擊時
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetButtonDown("Fire1"))
         {
-            if (pauseMenu.activeSelf || infoPanelHandler.isActiveAndEnabled || teachPnl.activeSelf)
-            {
-                return;
-            }
+            
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
+           
             if (Physics.Raycast(ray, out hit))
             {
                 // 依序檢查各種標籤
@@ -66,6 +63,7 @@ public class TowerPnlMgr : MonoBehaviour
                 {
                     OnNpcClick("tahou");
                 }
+                
             }
         }
     }
@@ -73,6 +71,10 @@ public class TowerPnlMgr : MonoBehaviour
     public void OnNpcClick(string npcType)
     {
         Debug.Log($"Click {npcType}");
+        if (pauseMenu.activeSelf || infoPanelHandler.isActiveAndEnabled || teachPnl.activeSelf)
+        {
+            return;
+        }
         switch (npcType)
         {
             case "qionglin":
@@ -91,6 +93,7 @@ public class TowerPnlMgr : MonoBehaviour
                 infoPanelHandler.Setup(GameDB.tahou, "tahou");
                 break;
         }
+       
         //if (escManager != null)
         {
             //escManager.OpenTowerPanel();

@@ -29,7 +29,7 @@ public class AnMgr : MonoBehaviour
         cache砲塔 = null;
         currentState = AnState.Idle;
         btnAn.onClick.AddListener(OnBtnAnClick);
-        
+        btnAn.interactable = GameDB.anBtnInteractable;
         if (towerPnlMgr == null)
         {
             towerPnlMgr = FindObjectOfType<TowerPnlMgr>();
@@ -41,6 +41,7 @@ public class AnMgr : MonoBehaviour
         followAnImage.gameObject.SetActive(true); 
         currentState = AnState. Placing;
         btnAn.interactable = false;
+        GameDB.anBtnInteractable = false;
         if (gridManager != null)
         {
             gridManager.ShowAllValidAreas();
@@ -150,7 +151,7 @@ public class AnMgr : MonoBehaviour
     
         // 重新啟用按鈕
         btnAn.interactable = true;
-    
+        GameDB.anBtnInteractable = true;
         // 重置狀態
         currentState = AnState.Idle;
         if (gridManager != null)
