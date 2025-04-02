@@ -13264,6 +13264,11 @@ MonoBehaviour:
     type: 3}
   tahouprefabs: {fileID: 3934151419306809092, guid: cf7bb3a887a2dba46888eeaf84d86c48,
     type: 3}
+  qionglinButton: {fileID: 0}
+  houshuiButton: {fileID: 0}
+  liuButton: {fileID: 0}
+  anButton: {fileID: 0}
+  tahouButton: {fileID: 0}
 --- !u!114 &1627028250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16408,10 +16413,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4031102556185169348, guid: 75bacd367aa8aa449b00670780ef2edc,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4054377063996588811, guid: 75bacd367aa8aa449b00670780ef2edc,
         type: 3}
       propertyPath: m_SortingOrder
-      value: 800
+      value: 801
       objectReference: {fileID: 0}
     - target: {fileID: 5448688292728953119, guid: 75bacd367aa8aa449b00670780ef2edc,
         type: 3}
@@ -16422,6 +16432,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6418959378421951635, guid: 75bacd367aa8aa449b00670780ef2edc,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6418959378421951635, guid: 75bacd367aa8aa449b00670780ef2edc,
         type: 3}
@@ -16436,7 +16451,7 @@ PrefabInstance:
     - target: {fileID: 6554652732210443537, guid: 75bacd367aa8aa449b00670780ef2edc,
         type: 3}
       propertyPath: m_SortingOrder
-      value: 800
+      value: 801
       objectReference: {fileID: 0}
     - target: {fileID: 6619162779670826438, guid: 75bacd367aa8aa449b00670780ef2edc,
         type: 3}
