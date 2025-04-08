@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6594544453249521273}
   - component: {fileID: 3510851741950271726}
   - component: {fileID: 2721064765056935203}
+  - component: {fileID: 5953095684284143978}
   m_Layer: 0
   m_Name: lightning
   m_TagString: Untagged
@@ -128,3 +129,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!210 &5953095684284143978
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2956043409449190319}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1200
+  m_SortAtRoot: 0

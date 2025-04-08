@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {  
         agent = GetComponent<NavMeshAgent>();
-        GameDB.enemyHp = 30;
+        GameDB.enemyHp = 50;
         animator = GetComponent<Animator>();
     }
 
@@ -29,8 +29,6 @@ public class Enemy : MonoBehaviour
         animator.Play("move");
         gameObject.transform.eulerAngles = new Vector3(30, 0, 0);
     }
-
- 
     
     private void DropCoins()
     {

@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 5951148973974263384}
   - component: {fileID: 3706668568570969360}
   - component: {fileID: 5072573066362396822}
+  - component: {fileID: 3025576623341400862}
   m_Layer: 0
   m_Name: Bird (R)
   m_TagString: Enemy
@@ -251,6 +252,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5258fc0a7ca22864c8da4454ce1de3a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3025576623341400862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 428902654191461391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95813afe390494344a6ce2cbc8bfb7d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rootMotionBoneName: root
+  transformPositionX: 1
+  transformPositionY: 1
+  rootMotionScaleX: 1
+  rootMotionScaleY: 1
+  rootMotionTranslateXPerY: 0
+  rootMotionTranslateYPerX: 0
+  rigidBody2D: {fileID: 0}
+  rigidBody: {fileID: 5951148973974263384}
+  mecanimLayerFlags: -1
 --- !u!1 &2396875982170881284
 GameObject:
   m_ObjectHideFlags: 0

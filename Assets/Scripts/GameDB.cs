@@ -10,7 +10,7 @@ public static class GameDB
     public static int playerAtk = 0;
     public static int playerHp = 0;
     public static int playerDef = 0;
-    public static int money = 10000;
+    public static int money = 100000;
     
     //Shop
     public static List<bool> Bought = new List<bool>();
@@ -343,7 +343,7 @@ public static class GameDB
     }
     public static void ResetAll()
     {
-        money = 10000;  // 重置金錢
+        money = 100000;  // 重置金錢
     
         // 重置所有商品購買狀態
         for (int i = 0; i < Bought.Count; i++)

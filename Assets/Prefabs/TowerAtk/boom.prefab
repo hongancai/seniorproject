@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 9110987870584373654}
   - component: {fileID: 5870441456598952462}
   - component: {fileID: 2638040647866550602}
+  - component: {fileID: 5428653154853773848}
   m_Layer: 0
   m_Name: boom
   m_TagString: Untagged
@@ -128,3 +129,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!210 &5428653154853773848
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8725401715352510163}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1200
+  m_SortAtRoot: 0

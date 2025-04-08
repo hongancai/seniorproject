@@ -8,6 +8,10 @@ public class MonsterSpawner : MonoBehaviour
     public GameObject rightBirdPrefab;
     public GameObject leftSoldierPrefab;
     public GameObject rightSoldierPrefab;
+    public GameObject leftFishmanPrefab;
+    public GameObject rightFishmanPrefab;
+    public GameObject leftGhostPrefab;
+    public GameObject rightGhostPrefab;
     
     public WaveWarningSystem warningSystem;
     

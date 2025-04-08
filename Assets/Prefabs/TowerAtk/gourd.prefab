@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8350274651155821495}
   - component: {fileID: -3956098130712016596}
   - component: {fileID: -4193196335039915642}
+  - component: {fileID: 8036095213030663077}
   m_Layer: 0
   m_Name: gourd
   m_TagString: Untagged
@@ -164,3 +165,15 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 6.1232336e-17}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!210 &8036095213030663077
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 446097948667377901}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1200
+  m_SortAtRoot: 0
