@@ -24,6 +24,8 @@ public class S1Mgr : MonoBehaviour
     public Button tahouButton;
     private void Awake()
     {
+        GameEngine.Instance.Initialization();
+        
         if (GameDB.qionglinPos != Vector3.zero )
         {
             GameObject temp = Instantiate(qionglinprefabs);
