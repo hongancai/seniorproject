@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class QionglinMgr : MonoBehaviour
+public class QionglinMgr : WindLionGodBaseMgr
 {
     public GameObject qionglinprefabs;
     public AudioClip placingsfx;
     public GridHighlightManager gridManager;
     public InfoPanelHandler infoPanelHandler;
     public TowerPnlMgr towerPnlMgr;
+   /*
     public enum QionglinState
     {
         Idle,
@@ -18,17 +19,19 @@ public class QionglinMgr : MonoBehaviour
         Drag,
         OpenPnl,
     }
+    */
 
-    private QionglinState currentState;
+   // private QionglinState currentState;
     public Button btnQionglin;
-    public GameObject followQionglinImage;
+    //public GameObject followImage;
 
     private GameObject cache砲塔;
 
-    void Start()
+    #region Life Cycle
+    private void Start()
     {
         cache砲塔 = null;
-        currentState = QionglinState.Idle;
+        currentState = Status.Idle;
         btnQionglin.onClick.AddListener(OnBtnQiongClick);
         btnQionglin.interactable = GameDB.qionglinBtnInteractable;
         if (towerPnlMgr == null)
@@ -37,39 +40,25 @@ public class QionglinMgr : MonoBehaviour
         }
     }
 
-    private void OnBtnQiongClick()
-    {
-        followQionglinImage.gameObject.SetActive(true);
-        currentState = QionglinState.Placing;
-        btnQionglin.interactable = false;
-        GameDB.qionglinBtnInteractable = false;
-        if (gridManager != null)
-        {
-            gridManager.ShowAllValidAreas();
-        }
-        Debug.Log("開始丟瓊林風獅爺喔");
-    }
-
-
-    void Update()
+    private  void Update()
     {
         switch (currentState)
         {
-            case QionglinState.Idle:
+            case Status.Idle:
                 ProcessIdle();
                 break;
-            case QionglinState.Placing:
+            case Status.Placing:
                 ProcessPlacingTower();
                 if (Input.GetMouseButtonDown(1)) // 按下右鍵
                 {
-                    currentState = QionglinState.Cancel; // 切換到取消狀態
+                    currentState = Status.Cancel; // 切換到取消狀態
                 }
                 break;
-            case QionglinState.Cancel:
+            case Status.Cancel:
                 ProcessCancel();
                 break;
-            case QionglinState.Drag:
-            case QionglinState.OpenPnl:
+            case Status.Drag:
+            case Status.OpenPnl:
                 ProcessOpenPanel();
                 break;
                 return;
@@ -81,13 +70,32 @@ public class QionglinMgr : MonoBehaviour
                 break;
         }
 
-        if (currentState == QionglinState.Placing)
+        if (currentState == Status.Placing)
         {
-            followQionglinImage.transform.position = Input.mousePosition;
+            followImage.transform.position = Input.mousePosition;
         }
     }
-    
 
+    #endregion
+
+    #region Event Function
+
+    private void OnBtnQiongClick()
+    {
+        followImage.gameObject.SetActive(true);
+        currentState = Status.Placing;
+        btnQionglin.interactable = false;
+        GameDB.qionglinBtnInteractable = false;
+        if (gridManager != null)
+        {
+            gridManager.ShowAllValidAreas();
+        }
+        Debug.Log("開始丟瓊林風獅爺喔");
+    }
+
+    #endregion
+    
+    #region  Private Function 
     private void ProcessIdle()
     {
         if (Input.GetButtonDown("Fire1"))
@@ -102,18 +110,20 @@ public class QionglinMgr : MonoBehaviour
                     // cache 
                     cache砲塔 = hit.transform.gameObject;
                     //該狀態
-                    currentState = QionglinState.OpenPnl;
+                    currentState = Status.OpenPnl;
                     FindObjectOfType<TowerPnlMgr>().OnNpcClick("qionglin");
                 }
             }
         }
     }
+    
     private void ProcessOpenPanel()
     {
         if (!infoPanelHandler.isActiveAndEnabled)
         {
-            currentState = QionglinState.Idle;
+            currentState = Status.Idle;
         }
+        _avatar.SetActive(false);  //
     }
     
     private void ProcessPlacingTower()
@@ -129,19 +139,26 @@ public class QionglinMgr : MonoBehaviour
                 {
                     //Vector3 placePosition = hit.point;
                     GameDB.Audio.PlaySfx(placingsfx);
-                    GameObject temp = Instantiate(qionglinprefabs);
-                    temp.transform.localScale = Vector3.one;
-                    temp.transform.localEulerAngles = new Vector3(30, 0, 0);
+                    
+                    //實例化只產生一次
+                    if (_avatar == null)
+                    {
+                        _avatar = Instantiate(qionglinprefabs);
+                        _avatar.transform.localScale = Vector3.one;
+                        _avatar.transform.localEulerAngles = new Vector3(30, 0, 0);
+                    }
                     Vector3 position = hit.point;
                     position.y = 0;
-                    temp.transform.localPosition = position;
-                    GameDB.qionglinPos = temp.transform.localPosition;
-                    followQionglinImage.gameObject.SetActive(false);
+                    _avatar.transform.localPosition = position;
+                    _avatar.SetActive(true);
+
+                    GameDB.qionglinPos = _avatar.transform.localPosition;
+                    followImage.gameObject.SetActive(false);
                     if (gridManager != null)
                     {
                         gridManager.HideAllHighlights();
                     }
-                    currentState = QionglinState.Idle; //改變狀態!!!
+                    currentState = Status.Idle; //改變狀態!!!
                 }
             }
         }
@@ -150,14 +167,14 @@ public class QionglinMgr : MonoBehaviour
     private void ProcessCancel()
     {
         // 隱藏跟隨圖片
-        followQionglinImage.gameObject.SetActive(false);
+        followImage.gameObject.SetActive(false);
 
         // 重新啟用按鈕
         btnQionglin.interactable = true;
         GameDB.qionglinBtnInteractable = true;
 
         // 重置狀態
-        currentState = QionglinState.Idle;
+        currentState = Status.Idle;
         
         if (gridManager != null)
         {
@@ -167,7 +184,6 @@ public class QionglinMgr : MonoBehaviour
         Debug.Log("取消放置");
     }
     
-
     private void ProcessDargTower()
     {
         RaycastHit hit;
@@ -184,11 +200,11 @@ public class QionglinMgr : MonoBehaviour
         if (Input.GetButtonUp("Fire1"))
         {
             cache砲塔 = null;
-            currentState = QionglinState.Idle;
+            currentState = Status.Idle;
         }
     }
 
-    void RacastAll()
+    private void RacastAll()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit[] hits;
@@ -211,8 +227,12 @@ public class QionglinMgr : MonoBehaviour
             if (Input.GetButtonUp("Fire1"))
             {
                 cache砲塔 = null;
-                currentState = QionglinState.Idle;
+                currentState = Status.Idle;
             }
         }
     }
+    
+    #endregion
+
+
 }

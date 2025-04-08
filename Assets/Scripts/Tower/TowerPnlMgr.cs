@@ -1,24 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class TowerPnlMgr : MonoBehaviour
-{ 
+{
     public InfoPanelHandler infoPanelHandler;
     public Button closebtn;
     public GameObject pauseMenu;
     public GameObject teachPnl;
-    
+
     //private EscMgr escManager; 
-    
+    public UnityEvent<NpcType> OnNpcClickEvent;
+
+
     void Start()
     {
         // 初始隱藏資訊面板
         infoPanelHandler.gameObject.SetActive(false);
-        
+
         closebtn.onClick.AddListener(CloseinfoPanel);
-        
+
         //escManager = EscMgr.Instance;
     }
 
@@ -30,6 +33,7 @@ public class TowerPnlMgr : MonoBehaviour
         {
             GameDB.Audio._bgmAudioSource.ignoreListenerPause = false;
         }
+
         //if (escManager != null)
         {
             //escManager.UnregisterPanel(EscMgr.ESCPanelState.TowerPanel);
@@ -41,10 +45,9 @@ public class TowerPnlMgr : MonoBehaviour
         // 當滑鼠左鍵被點擊時
         if (Input.GetButtonDown("Fire1"))
         {
-            
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-           
+
             if (Physics.Raycast(ray, out hit))
             {
                 // 依序檢查各種標籤
@@ -68,7 +71,6 @@ public class TowerPnlMgr : MonoBehaviour
                 {
                     OnNpcClick("tahou");
                 }
-                
             }
         }
     }
@@ -80,6 +82,7 @@ public class TowerPnlMgr : MonoBehaviour
         {
             return;
         }
+
         Time.timeScale = 0;
         float currentVolume = GameDB.Audio._bgmAudioSource.volume;
         if (GameDB.Audio._bgmAudioSource != null)
@@ -88,28 +91,35 @@ public class TowerPnlMgr : MonoBehaviour
             {
                 GameDB.Audio._bgmAudioSource.Play();
             }
+
             // 保持原有音量，不降低
             GameDB.Audio._bgmAudioSource.volume = currentVolume;
         }
+
         switch (npcType)
         {
             case "qionglin":
-                infoPanelHandler.Setup(GameDB.qionglin, "qionglin");
+                OnNpcClickEvent?.Invoke(NpcType.QiongLin);
+                // infoPanelHandler.Setup(GameDB.qionglin, "qionglin");
                 break;
             case "houshui":
-                infoPanelHandler.Setup(GameDB.houshui, "houshui");
+                OnNpcClickEvent?.Invoke(NpcType.HouShui);
+                //infoPanelHandler.Setup(GameDB.houshui, "houshui");
                 break;
             case "liu":
-                infoPanelHandler.Setup(GameDB.liu, "liu");
+                OnNpcClickEvent?.Invoke(NpcType.Liu);
+                // infoPanelHandler.Setup(GameDB.liu, "liu");
                 break;
             case "an":
-                infoPanelHandler.Setup(GameDB.an, "an");
+                OnNpcClickEvent?.Invoke(NpcType.An);
+                //  infoPanelHandler.Setup(GameDB.an, "an");
                 break;
             case "tahou":
-                infoPanelHandler.Setup(GameDB.tahou, "tahou");
+                OnNpcClickEvent?.Invoke(NpcType.TaHou);
+                //  infoPanelHandler.Setup(GameDB.tahou, "tahou");
                 break;
         }
-       
+
         //if (escManager != null)
         {
             //escManager.OpenTowerPanel();

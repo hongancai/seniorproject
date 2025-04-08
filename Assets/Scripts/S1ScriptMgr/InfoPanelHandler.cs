@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Events;
+using UnityEngine.Serialization;
 using UnityEngine.UI; 
 
 public class InfoPanelHandler : MonoBehaviour
@@ -29,10 +31,17 @@ public class InfoPanelHandler : MonoBehaviour
     //public GameObject warningPnl;
     //public AudioClip upgradesfx;
 
+
+    public Button btnUpgrade;
+    public Button btnReplace;
     private Npc npc; 
+
+    public UnityEvent OnPanelClosingEvent;
+
     void Start()
     {
-        //upgradebtn.onClick.AddListener(OnUpgradeClick);
+        btnUpgrade.onClick.AddListener(OnUpgradeClick);
+        btnReplace.onClick.AddListener(OnReplaceClick);
         //warningPnl.gameObject.SetActive(false);
     }
     private void OnUpgradeClick()
@@ -57,6 +66,13 @@ public class InfoPanelHandler : MonoBehaviour
 
             GameDB.Save();
         }
+    }
+
+    private void OnReplaceClick()
+    {
+        
+        OnPanelClosingEvent?.Invoke(); //通知準備關閉面板
+        gameObject.SetActive(false); //關閉面板
     }
         
     void Update()
