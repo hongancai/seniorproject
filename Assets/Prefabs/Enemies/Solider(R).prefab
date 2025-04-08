@@ -150,7 +150,8 @@ GameObject:
   - component: {fileID: 3453640816965420270}
   - component: {fileID: 8101906109753510166}
   - component: {fileID: 1882702014551781599}
-  - component: {fileID: 6170408305638827634}
+  - component: {fileID: 2841759193487684543}
+  - component: {fileID: 1152099599194244889}
   m_Layer: 0
   m_Name: Solider(R)
   m_TagString: Enemy
@@ -354,7 +355,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 16
   m_CollisionDetection: 0
---- !u!114 &6170408305638827634
+--- !u!114 &2841759193487684543
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -363,11 +364,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 7780072930388844869}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d77bbeb1dc852cc49bfe8412ce97fe0f, type: 3}
+  m_Script: {fileID: 11500000, guid: 6a4f104801eedf54eb72beb3aeb8d867, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  traget: {fileID: 6608093208908254025, guid: 42a20a0b1f7fb344c8d4976ed4e2adc9, type: 3}
+  traget: {fileID: 2263502838131984, guid: 75bacd367aa8aa449b00670780ef2edc, type: 3}
   agent: {fileID: 8101906109753510166}
+--- !u!114 &1152099599194244889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7780072930388844869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5258fc0a7ca22864c8da4454ce1de3a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8618742204798122491
 GameObject:
   m_ObjectHideFlags: 0

@@ -270,7 +270,7 @@ GameObject:
   - component: {fileID: 8847937025828904640}
   - component: {fileID: 8935594616581040857}
   - component: {fileID: 2966730485098496659}
-  - component: {fileID: 1490898035385149936}
+  - component: {fileID: 5471730084797130055}
   m_Layer: 0
   m_Name: Fishman(R)
   m_TagString: Enemy
@@ -474,7 +474,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 16
   m_CollisionDetection: 0
---- !u!114 &1490898035385149936
+--- !u!114 &5471730084797130055
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -483,8 +483,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 9146123231654538186}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d77bbeb1dc852cc49bfe8412ce97fe0f, type: 3}
+  m_Script: {fileID: 11500000, guid: 6a4f104801eedf54eb72beb3aeb8d867, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  traget: {fileID: 6608093208908254025, guid: 42a20a0b1f7fb344c8d4976ed4e2adc9, type: 3}
+  traget: {fileID: 2263502838131984, guid: 75bacd367aa8aa449b00670780ef2edc, type: 3}
   agent: {fileID: 8935594616581040857}

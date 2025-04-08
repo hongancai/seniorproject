@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {  
         agent = GetComponent<NavMeshAgent>();
-        GameDB.enemyHp = 50;
+        //GameDB.enemyHp = 50;
         animator = GetComponent<Animator>();
     }
 

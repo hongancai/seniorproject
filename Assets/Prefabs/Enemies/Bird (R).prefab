@@ -16,9 +16,9 @@ GameObject:
   - component: {fileID: 334563570186766243}
   - component: {fileID: 1330480539790740775}
   - component: {fileID: 5951148973974263384}
-  - component: {fileID: 3706668568570969360}
   - component: {fileID: 5072573066362396822}
   - component: {fileID: 3025576623341400862}
+  - component: {fileID: 6901855202486958619}
   m_Layer: 0
   m_Name: Bird (R)
   m_TagString: Enemy
@@ -102,7 +102,7 @@ Animator:
   m_GameObject: {fileID: 428902654191461391}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c7dab51f0e07b4d48a164088ff32fb11, type: 2}
+  m_Controller: {fileID: 9100000, guid: 91e8ea4172b41ff4aa5bf486e2c0dabb, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -222,24 +222,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
---- !u!114 &3706668568570969360
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 428902654191461391}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fb5c8a0e2b47ae4f9f1f287209fdde6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  traget: {fileID: 2263502838131984, guid: 75bacd367aa8aa449b00670780ef2edc, type: 3}
-  agent: {fileID: 1330480539790740775}
-  coinPrefab: {fileID: 22302317296963439, guid: 830c8f39631e2154386c46e8e8cbcc56,
-    type: 3}
-  minCoins: 1
-  maxCoins: 3
 --- !u!114 &5072573066362396822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -274,6 +256,20 @@ MonoBehaviour:
   rigidBody2D: {fileID: 0}
   rigidBody: {fileID: 5951148973974263384}
   mecanimLayerFlags: -1
+--- !u!114 &6901855202486958619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 428902654191461391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a4f104801eedf54eb72beb3aeb8d867, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  traget: {fileID: 2263502838131984, guid: 75bacd367aa8aa449b00670780ef2edc, type: 3}
+  agent: {fileID: 1330480539790740775}
 --- !u!1 &2396875982170881284
 GameObject:
   m_ObjectHideFlags: 0

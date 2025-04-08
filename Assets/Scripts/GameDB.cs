@@ -41,6 +41,7 @@ public static class GameDB
             BoughtTower.Add(false);
         }
         InitializeTowers();
+        InitializeEnemys();
     }
 
     public static void BuyItem(int index)
@@ -66,6 +67,29 @@ public static class GameDB
     public static int enemyAtk = 0;
     public static int enemyDef =0;
     
+    public static EnemyNpc storm;
+    public static EnemyNpc bird;
+    public static EnemyNpc fishman;
+    public static EnemyNpc soilder;
+    public static EnemyNpc ghost;
+
+    private static void InitializeEnemys()
+    {
+        storm = new EnemyNpc();
+        storm.enemybased = new EnemyBuff() { HP = 50, Atk = 10, Def = 2, Spd = 1.5f};
+        
+        bird = new EnemyNpc();
+        bird.enemybased = new EnemyBuff() { HP = 80, Atk = 15, Def = 5, Spd = 2.0f};
+        
+        fishman = new EnemyNpc();
+        fishman.enemybased = new EnemyBuff() { HP = 120, Atk = 25, Def = 8, Spd = 1.2f};
+        
+        soilder = new EnemyNpc();
+        soilder.enemybased = new EnemyBuff() { HP = 180, Atk = 30, Def = 10, Spd = 1.8f};
+        
+        ghost = new EnemyNpc();
+        ghost.enemybased = new EnemyBuff() { HP = 150, Atk = 20, Def = 5, Spd = 2.5f};
+    }
     //Tower
      private static void InitializeTowers()
     {
@@ -266,7 +290,7 @@ public static class GameDB
     public static Npc liu;
     public static Npc an;
     public static Npc tahou;
-
+    
     public static Vector3 qionglinPos;
     public static Vector3 houshuiPos;
     public static Vector3 liuPos;

@@ -270,8 +270,8 @@ GameObject:
   - component: {fileID: 4503877064828471645}
   - component: {fileID: 1669099157279168139}
   - component: {fileID: 2728146926452907371}
-  - component: {fileID: 511832666263214207}
   - component: {fileID: 7389609023799055422}
+  - component: {fileID: 5472796408188425835}
   m_Layer: 0
   m_Name: Bird (L)
   m_TagString: Enemy
@@ -475,24 +475,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
---- !u!114 &511832666263214207
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6328473952682231483}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fb5c8a0e2b47ae4f9f1f287209fdde6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  traget: {fileID: 2263502838131984, guid: 75bacd367aa8aa449b00670780ef2edc, type: 3}
-  agent: {fileID: 1669099157279168139}
-  coinPrefab: {fileID: 22302317296963439, guid: 830c8f39631e2154386c46e8e8cbcc56,
-    type: 3}
-  minCoins: 1
-  maxCoins: 3
 --- !u!114 &7389609023799055422
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -505,3 +487,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5258fc0a7ca22864c8da4454ce1de3a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5472796408188425835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6328473952682231483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7448149d772bc64408b274f2f6f1c6d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  traget: {fileID: 2263502838131984, guid: 75bacd367aa8aa449b00670780ef2edc, type: 3}
+  agent: {fileID: 1669099157279168139}

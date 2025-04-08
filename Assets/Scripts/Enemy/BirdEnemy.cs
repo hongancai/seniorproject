@@ -18,32 +18,18 @@ public class BirdEnemy : MonoBehaviour
     {  
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
-        UpdateEnemy1HealthSlider();
+        
     }
 
     
     void Update()
     {
         agent.SetDestination(traget.transform.position);
-        animator.Play("R_move");
+        
         gameObject.transform.eulerAngles = new Vector3(30, 0, 0);
     }
-
-    public void UpdateEnemy1HealthSlider()
-    {
-       
-    }
-    public void TakeDamage()
-    {
-        GameDB.enemyHp = Mathf.Max(GameDB.enemyHp - 10, 0); // 確保血量不低於0
-        UpdateEnemy1HealthSlider();
-
-        if (GameDB.enemyHp <= 0)
-        {
-            DropCoins();
-            Destroy(gameObject);
-        }
-    }
+    
+    
     private void DropCoins()
     {
         int coinCount = Random.Range(minCoins, maxCoins + 1); // 隨機掉落 1 到 3 個金幣

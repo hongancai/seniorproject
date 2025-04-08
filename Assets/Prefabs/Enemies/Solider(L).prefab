@@ -16,7 +16,8 @@ GameObject:
   - component: {fileID: 8277853090214733496}
   - component: {fileID: 2825182659847326535}
   - component: {fileID: 6188997118685494196}
-  - component: {fileID: 4077382331885514950}
+  - component: {fileID: 6264047709120380254}
+  - component: {fileID: 1216984881082056158}
   m_Layer: 0
   m_Name: Solider(L)
   m_TagString: Enemy
@@ -100,7 +101,7 @@ Animator:
   m_GameObject: {fileID: 1100696124806740788}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 74aba04fa28cfc94589e250579c0b587, type: 2}
+  m_Controller: {fileID: 9100000, guid: 339930ae617f4a5419a8742fbc3118a7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -220,7 +221,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 16
   m_CollisionDetection: 0
---- !u!114 &4077382331885514950
+--- !u!114 &6264047709120380254
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -229,11 +230,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 1100696124806740788}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d77bbeb1dc852cc49bfe8412ce97fe0f, type: 3}
+  m_Script: {fileID: 11500000, guid: 7448149d772bc64408b274f2f6f1c6d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  traget: {fileID: 6608093208908254025, guid: 42a20a0b1f7fb344c8d4976ed4e2adc9, type: 3}
+  traget: {fileID: 2263502838131984, guid: 75bacd367aa8aa449b00670780ef2edc, type: 3}
   agent: {fileID: 2825182659847326535}
+--- !u!114 &1216984881082056158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1100696124806740788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5258fc0a7ca22864c8da4454ce1de3a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1500279267021014260
 GameObject:
   m_ObjectHideFlags: 0
