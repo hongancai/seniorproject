@@ -40,6 +40,7 @@ public class WindLionGodBaseMgr : MonoBehaviour
                     followImage.gameObject.SetActive(true); //重新開啟
                 }
                 break;
+            
         }
 
         currentState = status; //更新目前狀態 (正式切換)

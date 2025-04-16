@@ -266,12 +266,13 @@ GameObject:
   - component: {fileID: 8011021356163863610}
   - component: {fileID: 8633959572941329842}
   - component: {fileID: 3426829257531116546}
-  - component: {fileID: 4739182379863495948}
   - component: {fileID: 4503877064828471645}
   - component: {fileID: 1669099157279168139}
   - component: {fileID: 2728146926452907371}
   - component: {fileID: 7389609023799055422}
   - component: {fileID: 5472796408188425835}
+  - component: {fileID: 2995106755816158548}
+  - component: {fileID: 3376901509441540827}
   m_Layer: 0
   m_Name: Bird (L)
   m_TagString: Enemy
@@ -366,45 +367,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &4739182379863495948
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6328473952682231483}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9db98c60740638449864eb028fbe7ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: 4e06696aa9b42a841b950e891b2079b0, type: 2}
-  initialSkinName: 
-  initialFlipX: 0
-  initialFlipY: 0
-  updateWhenInvisible: 3
-  separatorSlotNames: []
-  zSpacing: 0
-  useClipping: 1
-  immutableTriangles: 0
-  pmaVertexColors: 1
-  clearStateOnDisable: 0
-  tintBlack: 0
-  singleSubmesh: 0
-  fixDrawOrder: 0
-  addNormals: 0
-  calculateTangents: 0
-  maskInteraction: 0
-  maskMaterials:
-    materialsMaskDisabled: []
-    materialsInsideMask: []
-    materialsOutsideMask: []
-  disableRenderingOnOverride: 1
-  translator:
-    autoReset: 1
-    useCustomMixMode: 1
-    layerMixModes: 01000000
-    layerBlendModes: 01000000
 --- !u!65 &4503877064828471645
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -424,8 +386,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.9685364, y: 0.8972472, z: 0.09}
-  m_Center: {x: 0.108047485, y: 0.43820173, z: -0.0000007449773}
+  m_Size: {x: 0.98168945, y: 0.8972472, z: 0.09}
+  m_Center: {x: -0.10357666, y: 0.43820173, z: -0.0000007449773}
 --- !u!195 &1669099157279168139
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -501,3 +463,59 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   traget: {fileID: 2263502838131984, guid: 75bacd367aa8aa449b00670780ef2edc, type: 3}
   agent: {fileID: 1669099157279168139}
+--- !u!114 &2995106755816158548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6328473952682231483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skeletonDataAsset: {fileID: 11400000, guid: 4e06696aa9b42a841b950e891b2079b0, type: 2}
+  initialSkinName: 
+  initialFlipX: 0
+  initialFlipY: 0
+  updateWhenInvisible: 3
+  separatorSlotNames: []
+  zSpacing: 0
+  useClipping: 1
+  immutableTriangles: 0
+  pmaVertexColors: 1
+  clearStateOnDisable: 0
+  tintBlack: 0
+  singleSubmesh: 0
+  fixDrawOrder: 0
+  addNormals: 0
+  calculateTangents: 0
+  maskInteraction: 0
+  maskMaterials:
+    materialsMaskDisabled: []
+    materialsInsideMask: []
+    materialsOutsideMask: []
+  disableRenderingOnOverride: 1
+  _animationName: L_move
+  loop: 0
+  timeScale: 1
+--- !u!320 &3376901509441540827
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6328473952682231483}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: e0cb334b1ce5da04989573cfc8323e2d, type: 2}
+  m_InitialState: 1
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: 1629445977064707201, guid: e0cb334b1ce5da04989573cfc8323e2d, type: 2}
+    value: {fileID: 3426829257531116546}
+  m_ExposedReferences:
+    m_References: []

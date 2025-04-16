@@ -24,6 +24,8 @@ public class InfoPanelHandler : MonoBehaviour
     public Texture2D[] npc4Images = new Texture2D[3]; 
     public Texture2D[] npc5Images = new Texture2D[3]; 
     
+    public GridHighlightManager gridManager;
+    
     private Npc currentNpc;
     private string currentNpcType;
     
@@ -70,9 +72,13 @@ public class InfoPanelHandler : MonoBehaviour
 
     private void OnReplaceClick()
     {
-        
         OnPanelClosingEvent?.Invoke(); //通知準備關閉面板
         gameObject.SetActive(false); //關閉面板
+        Time.timeScale = 1;
+        if (gridManager != null)
+        {
+            gridManager.ShowAllValidAreas();
+        }
     }
         
     void Update()

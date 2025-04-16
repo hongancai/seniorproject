@@ -4826,7 +4826,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a5bcb33bcbc571042b1116a31d2fe994, type: 2}
+  - {fileID: 2100000, guid: 9d5145c0fe221e2468d0dd6fca39476c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5104,6 +5104,12 @@ PrefabInstance:
 --- !u!224 &825683015 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1503695252952728821, guid: 0fc5c16ed993062419399abd4ab8597f,
+    type: 3}
+  m_PrefabInstance: {fileID: 825683014}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &825683016 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1143461427427571729, guid: 0fc5c16ed993062419399abd4ab8597f,
     type: 3}
   m_PrefabInstance: {fileID: 825683014}
   m_PrefabAsset: {fileID: 0}
@@ -6561,8 +6567,6 @@ MonoBehaviour:
   transsfx: {fileID: 8300000, guid: bd12d747b6836cb42ba8171e84f2a451, type: 3}
   blackScreen: {fileID: 859281982}
   sourceScene: Park
-  qionglinprefabs: {fileID: 6445586940266981759, guid: 1636cc685b7b7834088015d3c2e6986c,
-    type: 3}
 --- !u!1 &1227695858
 GameObject:
   m_ObjectHideFlags: 0
@@ -7501,6 +7505,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1440343656}
   m_CullTransparentMesh: 1
+--- !u!1 &1441197805
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1441197806}
+  m_Layer: 0
+  m_Name: ===========================
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1441197806
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1441197805}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 494.54764, y: 6.585349, z: 495.04562}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1447593514
 GameObject:
   m_ObjectHideFlags: 0
@@ -9658,6 +9693,17 @@ MonoBehaviour:
   buy05: {fileID: 1017286579}
   activePanel: {fileID: 0}
   pauseMenu: {fileID: 578731618}
+  teachPnl: {fileID: 825683016}
+  originalMaterials:
+  - {fileID: 2100000, guid: 54ac451e422486746b4c008d65413baf, type: 2}
+  - {fileID: 2100000, guid: 6c31c7d86b8112f418c1326b8a548651, type: 2}
+  - {fileID: 2100000, guid: 0671e26595fb88f4a9dc6c437721104a, type: 2}
+  - {fileID: 2100000, guid: d5d7a369a4c7aa5448502c0dc0e90480, type: 2}
+  towerNewMaterials:
+  - {fileID: 2100000, guid: 300311a4b8fc1824e820e02cb0c0b5bf, type: 2}
+  - {fileID: 2100000, guid: 45c89d07dc1b19345b6b60f2ea84c186, type: 2}
+  - {fileID: 2100000, guid: b3694e767f682b34f823acbaddf82c4e, type: 2}
+  - {fileID: 2100000, guid: 5da99f78dca825942acfb2e335ff156f, type: 2}
 --- !u!1 &1913138688
 GameObject:
   m_ObjectHideFlags: 0
@@ -9980,4 +10026,5 @@ SceneRoots:
   - {fileID: 904532712}
   - {fileID: 1795969355}
   - {fileID: 1227695862}
+  - {fileID: 1441197806}
   - {fileID: 1897634996}

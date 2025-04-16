@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
@@ -22,12 +23,24 @@ public class S3Mgr : MonoBehaviour
     
     public GameObject activePanel = null;
     public GameObject pauseMenu;
+    public GameObject teachPnl;
     private bool isPanelOpen = false;
+    
+    public List<Material> originalMaterials;
+    public List<Material> towerNewMaterials;
+
     //private bool isClosingPanel = false; 
+
+    private void Awake()
+    {
+        GameEngine.Instance.Initialization();
+    }
+    
     void Start()
     {
         GameDB.Load();
         UpdateButtonVisibility();
+        InitializeTowerMaterials();
         GameDB.Audio.PlayBgm(s3bgm);
         for (int i = 0; i < closegoodsPnlBtn.Count; i++)
         {
@@ -51,6 +64,29 @@ public class S3Mgr : MonoBehaviour
                 blackScreen.gameObject.SetActive(false);
             });
     }
+    void InitializeTowerMaterials()
+    {
+        for (int i = 1; i < tower.Count; i++)
+        {
+            // 計算BoughtTower中的索引 (比tower索引少1)
+            int buyIndex = i - 1;
+        
+            if (buyIndex < GameDB.BoughtTower.Count && GameDB.BoughtTower[buyIndex] && GameDB.TowerMaterialsChanged[buyIndex])
+            {
+                // 應用新材質
+                MeshRenderer renderer = tower[i].GetComponent<MeshRenderer>();
+                if (renderer != null && buyIndex < towerNewMaterials.Count)
+                {
+                    Material[] materials = renderer.materials;
+                    for (int j = 0; j < materials.Length; j++)
+                    {
+                        materials[j] = towerNewMaterials[buyIndex];
+                    }
+                    renderer.materials = materials;
+                }
+            }
+        }
+    }
      private void OncCloseWarning()
     {
         warningPnl.gameObject.SetActive(false);
@@ -72,7 +108,7 @@ public class S3Mgr : MonoBehaviour
         // 當滑鼠左鍵點擊時
         if (Input.GetButtonDown("Fire1")&& !isPanelOpen)
         {
-            if (pauseMenu.activeSelf)
+            if (pauseMenu.activeSelf || teachPnl.activeSelf)
             {
                 return;
             }
@@ -144,6 +180,7 @@ public class S3Mgr : MonoBehaviour
             GameDB.money -= 300;
             GameDB.Audio.PlaySfx(buysfx);
             GameDB.BoughtTower[0] = true;
+            ChangeTowerMaterial(1);
             GameDB.Save();
             Debug.Log("你買了後水頭");
         }
@@ -153,7 +190,7 @@ public class S3Mgr : MonoBehaviour
             Debug.Log("你不夠300塊");
         }
     }
-
+    
     private void OnBtnBuyItem3()
     {
         if (GameDB.money > 500 && !GameDB.BoughtTower[1])
@@ -162,6 +199,7 @@ public class S3Mgr : MonoBehaviour
             GameDB.money -= 500;
             GameDB.BoughtTower[1] = true;
             GameDB.Audio.PlaySfx(buysfx);
+            ChangeTowerMaterial(2);
             GameDB.Save();
             Debug.Log("你買了劉澳");
         }
@@ -180,6 +218,7 @@ public class S3Mgr : MonoBehaviour
             GameDB.money -= 700;
             GameDB.BoughtTower[2] = true;
             GameDB.Audio.PlaySfx(buysfx);
+            ChangeTowerMaterial(3);
             GameDB.Save();
             Debug.Log("你買了安崎");
         }
@@ -197,6 +236,7 @@ public class S3Mgr : MonoBehaviour
             buy05.gameObject.SetActive(false);
             GameDB.money -= 1500;
             GameDB.BoughtTower[3] = true;
+            ChangeTowerMaterial(4);
             GameDB.Audio.PlaySfx(buysfx);
             GameDB.Save();
             Debug.Log("你買了塔后");
@@ -205,6 +245,32 @@ public class S3Mgr : MonoBehaviour
         {
             warningPnl.gameObject.SetActive(true);
             Debug.Log("你不夠1500塊");
+        }
+    }
+    private void ChangeTowerMaterial(int towerIndex)
+    {
+        if (towerIndex > 0 && towerIndex < tower.Count)
+        {
+            // 計算BoughtTower中的索引 (比tower索引少1)
+            int buyIndex = towerIndex - 1;
+        
+            if (buyIndex < towerNewMaterials.Count)
+            {
+                MeshRenderer renderer = tower[towerIndex].GetComponent<MeshRenderer>();
+                if (renderer != null)
+                {
+                    // 替換所有材質
+                    Material[] materials = renderer.materials;
+                    for (int i = 0; i < materials.Length; i++)
+                    {
+                        materials[i] = towerNewMaterials[buyIndex];
+                    }
+                    renderer.materials = materials;
+                
+                    // 記錄材質已變更
+                    GameDB.TowerMaterialsChanged[buyIndex] = true;
+                }
+            }
         }
     }
 

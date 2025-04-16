@@ -257,7 +257,7 @@ public class EscMgr : MonoBehaviour
         // S3 場景特殊處理
         if (s3Manager != null)
         {
-            s3Manager.CloseCurrentPanel();
+            //s3Manager.CloseCurrentPanel();
             UnregisterPanel(ESCPanelState.LionPanel);
             currentActiveLionPanelIndex = -1;
             return;

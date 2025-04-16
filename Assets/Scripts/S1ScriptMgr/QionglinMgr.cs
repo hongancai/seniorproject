@@ -23,6 +23,7 @@ public class QionglinMgr : WindLionGodBaseMgr
 
    // private QionglinState currentState;
     public Button btnQionglin;
+    public Button closebtn;
     //public GameObject followImage;
 
     private GameObject cache砲塔;
@@ -38,6 +39,7 @@ public class QionglinMgr : WindLionGodBaseMgr
         {
             towerPnlMgr = FindObjectOfType<TowerPnlMgr>();
         }
+        
     }
 
     private  void Update()
@@ -75,6 +77,8 @@ public class QionglinMgr : WindLionGodBaseMgr
             followImage.transform.position = Input.mousePosition;
         }
     }
+
+   
 
     #endregion
 
@@ -123,8 +127,12 @@ public class QionglinMgr : WindLionGodBaseMgr
         {
             currentState = Status.Idle;
         }
+        
         _avatar.SetActive(false);  //
+       
     }
+    
+  
     
     private void ProcessPlacingTower()
     {

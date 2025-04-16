@@ -17,7 +17,7 @@ RenderSettings:
   m_Fog: 1
   m_FogColor: {r: 1, g: 1, b: 1, a: 1}
   m_FogMode: 2
-  m_FogDensity: 0.06
+  m_FogDensity: 0.03
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -4312,7 +4312,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 388653196}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.000030517578}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4320,7 +4320,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 640.6, y: 415.3}
+  m_AnchoredPosition: {x: 640.6, y: 415.30005}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &388653198
@@ -6745,8 +6745,8 @@ RectTransform:
   - {fileID: 963000574}
   - {fileID: 1065093842077054560}
   - {fileID: 347494967}
-  - {fileID: 1151888201}
   - {fileID: 2547540540920323110}
+  - {fileID: 1151888201}
   - {fileID: 3061333035405560592}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13931,6 +13931,7 @@ MonoBehaviour:
   infoPanelHandler: {fileID: 9073639648378441943}
   towerPnlMgr: {fileID: 1627028252}
   btnQionglin: {fileID: 1522321827}
+  closebtn: {fileID: 0}
 --- !u!114 &1627028248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18492,6 +18493,7 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 9def17edf153df0419d367678041407e, type: 3}
   - {fileID: 2800000, guid: 89e3c9d3da4c42443a08a98dc19dc1fe, type: 3}
   - {fileID: 2800000, guid: 305dc458f19b7f34391e37dc22714e23, type: 3}
+  gridManager: {fileID: 1627028251}
   btnUpgrade: {fileID: 6041429692423790864}
   btnReplace: {fileID: 1948419899}
   OnPanelClosingEvent:

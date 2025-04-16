@@ -15,6 +15,7 @@ public static class GameDB
     //Shop
     public static List<bool> Bought = new List<bool>();
     public static List<bool> BoughtTower = new List<bool>();
+    public static List<bool> TowerMaterialsChanged = new List<bool>();
     private static bool isInitialized = false;
     
     static GameDB()
@@ -36,9 +37,11 @@ public static class GameDB
             Bought.Add(false);
         }
         BoughtTower.Clear();
+        TowerMaterialsChanged.Clear();
         for (int i = 0; i < 4; i++)
         {
             BoughtTower.Add(false);
+            TowerMaterialsChanged.Add(false);
         }
         InitializeTowers();
         InitializeEnemys();
@@ -336,6 +339,7 @@ public static class GameDB
         for (int i = 0; i < BoughtTower.Count; i++)
         {
             PlayerPrefs.SetInt($"Tower_Bought_{i}", BoughtTower[i] ? 1 : 0);
+            PlayerPrefs.SetInt($"Tower_Material_Changed_{i}", TowerMaterialsChanged[i] ? 1 : 0);
         }
     }
     
@@ -352,6 +356,7 @@ public static class GameDB
         for (int i = 0; i < BoughtTower.Count; i++)
         {
             BoughtTower[i] = PlayerPrefs.GetInt($"Tower_Bought_{i}", 0) == 1;
+            TowerMaterialsChanged[i] = PlayerPrefs.GetInt($"Tower_Material_Changed_{i}", 0) == 1;
         }
         
         
@@ -377,6 +382,7 @@ public static class GameDB
         for (int i = 0; i < BoughtTower.Count; i++)
         {
             BoughtTower[i] = false;
+            TowerMaterialsChanged[i] = false;
         }
         qionglinPos = Vector3.zero;
         houshuiPos = Vector3.zero;

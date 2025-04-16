@@ -23,7 +23,10 @@ public class S2Mgr : MonoBehaviour
     public Button buy05;
 
     public GameObject activePanel = null;
-
+    private void Awake()
+    {
+        GameEngine.Instance.Initialization();
+    }
     void Start()
     {   
         GameDB.Load();

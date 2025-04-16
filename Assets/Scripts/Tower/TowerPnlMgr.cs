@@ -38,6 +38,7 @@ public class TowerPnlMgr : MonoBehaviour
         {
             //escManager.UnregisterPanel(EscMgr.ESCPanelState.TowerPanel);
         }
+        
     }
 
     void Update()
