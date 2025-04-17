@@ -23,7 +23,6 @@ public class QionglinMgr : WindLionGodBaseMgr
 
    // private QionglinState currentState;
     public Button btnQionglin;
-    public Button closebtn;
     //public GameObject followImage;
 
     private GameObject cache砲塔;

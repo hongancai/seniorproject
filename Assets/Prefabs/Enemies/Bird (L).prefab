@@ -272,7 +272,8 @@ GameObject:
   - component: {fileID: 7389609023799055422}
   - component: {fileID: 5472796408188425835}
   - component: {fileID: 2995106755816158548}
-  - component: {fileID: 3376901509441540827}
+  - component: {fileID: 1350818236505665504}
+  - component: {fileID: 5759057377107244743}
   m_Layer: 0
   m_Name: Bird (L)
   m_TagString: Enemy
@@ -497,10 +498,10 @@ MonoBehaviour:
     materialsInsideMask: []
     materialsOutsideMask: []
   disableRenderingOnOverride: 1
-  _animationName: L_move
-  loop: 0
+  _animationName: L_att
+  loop: 1
   timeScale: 1
---- !u!320 &3376901509441540827
+--- !u!320 &1350818236505665504
 PlayableDirector:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -515,7 +516,22 @@ PlayableDirector:
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
   m_SceneBindings:
-  - key: {fileID: 1629445977064707201, guid: e0cb334b1ce5da04989573cfc8323e2d, type: 2}
+  - key: {fileID: 1863873392933503683, guid: e0cb334b1ce5da04989573cfc8323e2d, type: 2}
     value: {fileID: 3426829257531116546}
   m_ExposedReferences:
     m_References: []
+--- !u!114 &5759057377107244743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6328473952682231483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals: []
+    m_Events: []

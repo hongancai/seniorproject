@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AudioVolumeController : MonoBehaviour
+public class AudioVolumeControl : MonoBehaviour
 {
-   
+     
     public Slider bgmVolumeSlider;
     public Slider sfxVolumeSlider;
     

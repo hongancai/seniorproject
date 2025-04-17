@@ -8729,7 +8729,17 @@ PrefabInstance:
     - target: {fileID: 3703655329282328411, guid: e9ea77b4350cbc148b1a6f1611e9e950,
         type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4124413578107102012, guid: e9ea77b4350cbc148b1a6f1611e9e950,
+        type: 3}
+      propertyPath: loop
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4124413578107102012, guid: e9ea77b4350cbc148b1a6f1611e9e950,
+        type: 3}
+      propertyPath: _animationName
+      value: L_idle
       objectReference: {fileID: 0}
     - target: {fileID: 5293514585498710226, guid: e9ea77b4350cbc148b1a6f1611e9e950,
         type: 3}
@@ -13931,7 +13941,6 @@ MonoBehaviour:
   infoPanelHandler: {fileID: 9073639648378441943}
   towerPnlMgr: {fileID: 1627028252}
   btnQionglin: {fileID: 1522321827}
-  closebtn: {fileID: 0}
 --- !u!114 &1627028248
 MonoBehaviour:
   m_ObjectHideFlags: 0

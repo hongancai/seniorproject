@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyNpc : MonoBehaviour
+public class EnemyNpc 
 {
     public EnemyBuff enemybased;
 
@@ -22,7 +22,7 @@ public class EnemyNpc : MonoBehaviour
         EnemyBuff result = new EnemyBuff();
         
         result.HP = enemybased.HP;
-        result.Atk =enemybased.Atk;
+        result.Atk = enemybased.Atk;
         result.Def = enemybased.Def;
         result.Spd = enemybased.Spd;
         return result;
