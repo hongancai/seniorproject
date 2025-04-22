@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LiuMgr : MonoBehaviour
+public class LiuMgr : WindLionGodBaseMgr
 {
    public GameObject liuprefabs;
    public AudioClip placingsfx;
    public GridHighlightManager gridManager;
    public InfoPanelHandler infoPanelHandler;
    public TowerPnlMgr towerPnlMgr;
-    public enum LiuState
+   /*
+    public enum QionglinState
     {
         Idle,
         Placing,
@@ -18,57 +19,40 @@ public class LiuMgr : MonoBehaviour
         Drag,
         OpenPnl,
     }
-    private LiuState currentState;
+    */
+    //private LiuState currentState;
     public Button btnLiu;
-    public GameObject followLiuImage;
+    //public GameObject followLiuImage;
    
     private GameObject cache砲塔;
     
-    void Start()
+   #region Life Cycle
+    private void Start()
     {
         cache砲塔 = null;
-        currentState = LiuState.Idle;
+        currentState = Status.Idle;
         btnLiu.onClick.AddListener(OnBtnLiuClick);
-        btnLiu.interactable = GameDB.liuBtnInteractable;
+        btnLiu.interactable = GameDB.qionglinBtnInteractable;
         if (towerPnlMgr == null)
         {
             towerPnlMgr = FindObjectOfType<TowerPnlMgr>();
         }
+        
     }
 
-    private void OnBtnLiuClick()
+    private  void Update()
     {
-        followLiuImage.gameObject.SetActive(true); 
-        currentState = LiuState.Placing;
-        btnLiu.interactable = false;
-        GameDB.liuBtnInteractable = false;
-        if (gridManager != null)
-        {
-            gridManager.ShowAllValidAreas();
-        }
-        Debug.Log("開始丟劉澳風獅爺喔");
-    }
-
-
-    void Update()
-    {
+        Debug.Log ("============>"+currentState);
         switch (currentState)
         {
-            case LiuState.Idle:
+            case Status.Idle:
                 ProcessIdle();
                 break;
-            case LiuState.Placing:
+            case Status.Placing:
                 ProcessPlacingTower();
-                if (Input.GetMouseButtonDown(1))  // 按下右鍵
-                {
-                    currentState = LiuState.Cancel;  // 切換到取消狀態
-                }
                 break;
-            case LiuState.Cancel:
-                ProcessCancel();
-                break;
-            case LiuState.Drag:
-            case LiuState.OpenPnl:
+            case Status.Drag:
+            case Status.OpenPnl:
                 ProcessOpenPanel();
                 break;
                 return;
@@ -78,14 +62,36 @@ public class LiuMgr : MonoBehaviour
                     RacastAll();
                 }
                 break;
-                break;
         }
-        if (currentState == LiuState.Placing)
+
+        if (currentState == Status.Placing)
         {
-            followLiuImage.transform.position = Input.mousePosition;
+            followImage.transform.position = Input.mousePosition;
         }
     }
 
+   
+
+    #endregion
+
+    #region Event Function
+
+    private void OnBtnLiuClick()
+    {
+        followImage.gameObject.SetActive(true);
+        currentState = Status.Placing;
+        btnLiu.interactable = false;
+        GameDB.liuBtnInteractable = false;
+        if (gridManager != null)
+        {
+            gridManager.ShowAllValidAreas();
+        }
+        Debug.Log("開始丟瓊林風獅爺喔");
+    }
+
+    #endregion
+    
+    #region  Private Function 
     private void ProcessIdle()
     {
         if (Input.GetButtonDown("Fire1"))
@@ -95,29 +101,32 @@ public class LiuMgr : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit))
             {
-                if (hit.transform.gameObject.GetComponent<LiuTag>()!= null)
+                if (hit.transform.gameObject.GetComponent<LiuTag>() != null)
                 {
                     // cache 
                     cache砲塔 = hit.transform.gameObject;
                     //該狀態
-                    currentState = LiuState.OpenPnl;
+                    currentState = Status.OpenPnl;
                     FindObjectOfType<TowerPnlMgr>().OnNpcClick("liu");
                 }
             }
         }
     }
+    
     private void ProcessOpenPanel()
     {
         if (!infoPanelHandler.isActiveAndEnabled)
         {
-            currentState =  LiuState.Idle;
+            currentState = Status.Idle;
         }
+        
+        _avatar.SetActive(false);  //
+       
     }
-
     private void ProcessPlacingTower()
     {
         if (Input.GetButtonDown("Fire1"))
-        {   
+        {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -125,44 +134,33 @@ public class LiuMgr : MonoBehaviour
             {
                 if (hit.transform.gameObject.GetComponent<RoadTag>() != null)
                 {
-                    GameDB.Audio.PlaySfx(placingsfx);
                     //Vector3 placePosition = hit.point;
-                    GameObject temp = Instantiate(liuprefabs);
-                    temp.transform.localScale = Vector3.one;
-                    temp.transform.localEulerAngles = new Vector3(30, 0, 0);
+                    GameDB.Audio.PlaySfx(placingsfx);
+                    
+                    //實例化只產生一次
+                    if (_avatar == null)
+                    {
+                        _avatar = Instantiate(liuprefabs);
+                        _avatar.transform.localScale = Vector3.one;
+                        _avatar.transform.localEulerAngles = new Vector3(30, 0, 0);
+                    }
                     Vector3 position = hit.point;
                     position.y = 0;
-                    temp.transform.localPosition = position;
-                    GameDB.liuPos = temp.transform.localPosition;
-                    followLiuImage.gameObject.SetActive(false);
+                    _avatar.transform.localPosition = position;
+                    _avatar.SetActive(true);
+                    GameDB.liuPos = _avatar.transform.localPosition;
+                    followImage.gameObject.SetActive(false);
                     if (gridManager != null)
                     {
                         gridManager.HideAllHighlights();
                     }
-                    currentState = LiuState.Idle; //改變狀態!!!
+                    currentState = Status.Idle; //改變狀態!!!
                 }
             }
         }
     }
 
-    private void ProcessCancel()
-    {
-        // 隱藏跟隨圖片
-        followLiuImage.gameObject.SetActive(false);
     
-        // 重新啟用按鈕
-        btnLiu.interactable = true;
-        GameDB.liuBtnInteractable = true;
-        // 重置狀態
-        currentState = LiuState.Idle;
-        if (gridManager != null)
-        {
-            gridManager.HideAllHighlights();
-        }
-    
-        Debug.Log("取消放置");
-    }
-
     private void ProcessDargTower()
     {
         RaycastHit hit;
@@ -171,6 +169,7 @@ public class LiuMgr : MonoBehaviour
         {
             if (hit.transform.gameObject.GetComponent<RoadTag>() != null)
             {
+                Debug.Log(hit.transform.gameObject.name);
                 cache砲塔.transform.localPosition = hit.point;
             }
         }
@@ -178,10 +177,11 @@ public class LiuMgr : MonoBehaviour
         if (Input.GetButtonUp("Fire1"))
         {
             cache砲塔 = null;
-            currentState = LiuState.Idle;
+            currentState = Status.Idle;
         }
     }
-    void RacastAll()
+
+    private void RacastAll()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit[] hits;
@@ -191,7 +191,7 @@ public class LiuMgr : MonoBehaviour
         {
             RaycastHit hit = hits[i];
             Debug.Log(hit.transform.gameObject.name);
-            hit.transform.gameObject.GetComponent<HoushuiTag>();
+            hit.transform.gameObject.GetComponent<LiuTag>();
             if (Physics.Raycast(ray, out hit))
             {
                 if (hit.transform.gameObject.GetComponent<RoadTag>() != null)
@@ -204,8 +204,12 @@ public class LiuMgr : MonoBehaviour
             if (Input.GetButtonUp("Fire1"))
             {
                 cache砲塔 = null;
-                currentState = LiuState.Idle;
+                currentState = Status.Idle;
             }
         }
     }
+    
+    #endregion
+
+
 }

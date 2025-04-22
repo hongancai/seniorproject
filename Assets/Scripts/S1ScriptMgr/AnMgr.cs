@@ -3,72 +3,57 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AnMgr : MonoBehaviour
+public class AnMgr : WindLionGodBaseMgr
 {
     public GameObject anprefabs;
     public AudioClip placingsfx;
     public GridHighlightManager gridManager;
     public InfoPanelHandler infoPanelHandler;
     public TowerPnlMgr towerPnlMgr;
-    public enum AnState
-    {
-        Idle,
-        Placing,
-        Cancel,
-        Drag,
-        OpenPnl,
-    }
-    private AnState currentState;
+    /*
+     public enum QionglinState
+     {
+         Idle,
+         Placing,
+         Cancel,
+         Drag,
+         OpenPnl,
+     }
+     
+     */
+    //private AnState currentState;
     public Button btnAn;
-    public GameObject followAnImage;
+    //public GameObject followAnImage;
    
     private GameObject cache砲塔;
     
-    void Start()
+    #region Life Cycle
+     private void Start()
     {
         cache砲塔 = null;
-        currentState = AnState.Idle;
+        currentState = Status.Idle;
         btnAn.onClick.AddListener(OnBtnAnClick);
         btnAn.interactable = GameDB.anBtnInteractable;
         if (towerPnlMgr == null)
         {
             towerPnlMgr = FindObjectOfType<TowerPnlMgr>();
         }
+        
     }
 
-    private void OnBtnAnClick()
+    private  void Update()
     {
-        followAnImage.gameObject.SetActive(true); 
-        currentState = AnState. Placing;
-        btnAn.interactable = false;
-        GameDB.anBtnInteractable = false;
-        if (gridManager != null)
-        {
-            gridManager.ShowAllValidAreas();
-        }
-        Debug.Log("開始丟安崎風獅爺喔");
-    }
-
-
-    void Update()
-    {
+        Debug.Log ("============>"+currentState);
         switch (currentState)
         {
-            case AnState.Idle:
+            case Status.Idle:
                 ProcessIdle();
                 break;
-            case AnState. Placing:
+            case Status.Placing:
                 ProcessPlacingTower();
-                if (Input.GetMouseButtonDown(1))  // 按下右鍵
-                {
-                    currentState = AnState.Cancel;  // 切換到取消狀態
-                }
                 break;
-            case AnState.Cancel:
-                ProcessCancel();
-                break;
-            case AnState.Drag:
-            case AnState.OpenPnl:
+            case Status.Drag:
+            case Status.OpenPnl:
                 ProcessOpenPanel();
                 break;
                 return;
@@ -78,14 +63,36 @@ public class AnMgr : MonoBehaviour
                     RacastAll();
                 }
                 break;
-                break;
         }
-        if (currentState == AnState. Placing)
+
+        if (currentState == Status.Placing)
         {
-            followAnImage.transform.position = Input.mousePosition;
+            followImage.transform.position = Input.mousePosition;
         }
     }
 
+   
+
+    #endregion
+
+    #region Event Function
+
+    private void OnBtnAnClick()
+    {
+        followImage.gameObject.SetActive(true);
+        currentState = Status.Placing;
+        btnAn.interactable = false;
+        GameDB.anBtnInteractable = false;
+        if (gridManager != null)
+        {
+            gridManager.ShowAllValidAreas();
+        }
+        Debug.Log("開始丟瓊林風獅爺喔");
+    }
+
+    #endregion
+    
+    #region  Private Function 
     private void ProcessIdle()
     {
         if (Input.GetButtonDown("Fire1"))
@@ -95,28 +102,32 @@ public class AnMgr : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit))
             {
-                if (hit.transform.gameObject.GetComponent<AnTag>()!= null)
+                if (hit.transform.gameObject.GetComponent<AnTag>() != null)
                 {
                     // cache 
                     cache砲塔 = hit.transform.gameObject;
                     //該狀態
-                    currentState = AnState.OpenPnl;
+                    currentState = Status.OpenPnl;
                     FindObjectOfType<TowerPnlMgr>().OnNpcClick("an");
                 }
             }
         }
     }
+    
     private void ProcessOpenPanel()
     {
         if (!infoPanelHandler.isActiveAndEnabled)
         {
-            currentState = AnState.Idle;
+            currentState = Status.Idle;
         }
+        
+        _avatar.SetActive(false);  //
+       
     }
     private void ProcessPlacingTower()
     {
         if (Input.GetButtonDown("Fire1"))
-        {   
+        {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -126,41 +137,31 @@ public class AnMgr : MonoBehaviour
                 {
                     //Vector3 placePosition = hit.point;
                     GameDB.Audio.PlaySfx(placingsfx);
-                    GameObject temp = Instantiate(anprefabs);
-                    temp.transform.localScale = Vector3.one;
-                    temp.transform.localEulerAngles = new Vector3(30, 0, 0);
+                    
+                    //實例化只產生一次
+                    if (_avatar == null)
+                    {
+                        _avatar = Instantiate(anprefabs);
+                        _avatar.transform.localScale = Vector3.one;
+                        _avatar.transform.localEulerAngles = new Vector3(30, 0, 0);
+                    }
                     Vector3 position = hit.point;
                     position.y = 0;
-                    temp.transform.localPosition = position;
-                    GameDB.anPos = temp.transform.localPosition;
-                    followAnImage.gameObject.SetActive(false);
+                    _avatar.transform.localPosition = position;
+                    _avatar.SetActive(true);
+                    GameDB.anPos = _avatar.transform.localPosition;
+                    followImage.gameObject.SetActive(false);
                     if (gridManager != null)
                     {
                         gridManager.HideAllHighlights();
                     }
-                    currentState = AnState.Idle; //改變狀態!!!
+                    currentState = Status.Idle; //改變狀態!!!
                 }
             }
         }
     }
 
-    private void ProcessCancel()
-    {
-        // 隱藏跟隨圖片
-        followAnImage.gameObject.SetActive(false);
     
-        // 重新啟用按鈕
-        btnAn.interactable = true;
-        GameDB.anBtnInteractable = true;
-        // 重置狀態
-        currentState = AnState.Idle;
-        if (gridManager != null)
-        {
-            gridManager.HideAllHighlights();
-        }
-        Debug.Log("取消放置");
-    }
-
     private void ProcessDargTower()
     {
         RaycastHit hit;
@@ -169,6 +170,7 @@ public class AnMgr : MonoBehaviour
         {
             if (hit.transform.gameObject.GetComponent<RoadTag>() != null)
             {
+                Debug.Log(hit.transform.gameObject.name);
                 cache砲塔.transform.localPosition = hit.point;
             }
         }
@@ -176,10 +178,11 @@ public class AnMgr : MonoBehaviour
         if (Input.GetButtonUp("Fire1"))
         {
             cache砲塔 = null;
-            currentState = AnState.Idle;
+            currentState = Status.Idle;
         }
     }
-    void RacastAll()
+
+    private void RacastAll()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit[] hits;
@@ -189,7 +192,7 @@ public class AnMgr : MonoBehaviour
         {
             RaycastHit hit = hits[i];
             Debug.Log(hit.transform.gameObject.name);
-            hit.transform.gameObject.GetComponent<HoushuiTag>();
+            hit.transform.gameObject.GetComponent<AnTag>();
             if (Physics.Raycast(ray, out hit))
             {
                 if (hit.transform.gameObject.GetComponent<RoadTag>() != null)
@@ -202,8 +205,12 @@ public class AnMgr : MonoBehaviour
             if (Input.GetButtonUp("Fire1"))
             {
                 cache砲塔 = null;
-                currentState = AnState.Idle;
+                currentState = Status.Idle;
             }
         }
     }
+    
+    #endregion
+
+
 }

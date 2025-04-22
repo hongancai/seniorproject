@@ -20,5 +20,8 @@ public class LEenemyMove : MonoBehaviour
         agent.SetDestination(traget.transform.position);
         animator.Play("L_move");
         gameObject.transform.eulerAngles = new Vector3(30, 0, 0);
+        var vector3 = gameObject.transform.position;
+        vector3.y = 0.061f; //強制更新高度
+        gameObject.transform.position = vector3;
     }
 }

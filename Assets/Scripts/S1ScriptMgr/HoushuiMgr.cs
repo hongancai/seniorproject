@@ -3,31 +3,34 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HoushuiMgr : MonoBehaviour
+public class HoushuiMgr : WindLionGodBaseMgr
 {
     public GameObject houshuiprefabs;
     public AudioClip placingsfx;
     public GridHighlightManager gridManager;
     public InfoPanelHandler infoPanelHandler;
+
     public TowerPnlMgr towerPnlMgr;
-    public enum HoushuiState
-    {
-        Idle,
-        Placing,
-        Cancel,
-        Drag,
-        OpenPnl,
-    }
-    private HoushuiState currentState;
+
+/*
+public enum HoushuiState
+{
+    Idle,
+    Placing,
+    Drag,
+    OpenPnl,
+}
+ */
+//private HoushuiState currentState;
     public Button btnHoushui;
-    public GameObject followHoushuiImage;
-   
+    //public GameObject followHoushuiImage;
+
     private GameObject cache砲塔;
-    
+
     void Start()
     {
         cache砲塔 = null;
-        currentState = HoushuiState.Idle;
+        currentState = Status.Idle;
         btnHoushui.onClick.AddListener(OnBtnHoushuiClick);
         btnHoushui.interactable = GameDB.houshuiBtnInteractable;
         if (towerPnlMgr == null)
@@ -38,14 +41,15 @@ public class HoushuiMgr : MonoBehaviour
 
     private void OnBtnHoushuiClick()
     {
-        followHoushuiImage.gameObject.SetActive(true); 
-        currentState = HoushuiState.Placing;
+        followImage.gameObject.SetActive(true);
+        currentState = Status.Placing;
         btnHoushui.interactable = false;
         GameDB.houshuiBtnInteractable = false;
         if (gridManager != null)
         {
             gridManager.ShowAllValidAreas();
         }
+
         Debug.Log("開始丟后水頭風獅爺喔");
     }
 
@@ -54,22 +58,14 @@ public class HoushuiMgr : MonoBehaviour
     {
         switch (currentState)
         {
-            case HoushuiState.Idle:
+            case Status.Idle:
                 ProcessIdle();
                 break;
-            case HoushuiState.Placing:
+            case Status.Placing:
                 ProcessPlacingTower();
-                if (Input.GetMouseButtonDown(1)) // 按下右鍵
-                {
-                    currentState = HoushuiState.Cancel; // 切換到取消狀態
-                }
-
                 break;
-            case HoushuiState.Cancel:
-                ProcessCancel();
-                break;
-            case HoushuiState.Drag:
-            case HoushuiState.OpenPnl:
+            case Status.Drag:
+            case Status.OpenPnl:
                 ProcessOpenPanel();
                 break;
                 return;
@@ -80,9 +76,10 @@ public class HoushuiMgr : MonoBehaviour
                 }
                 break;
         }
-        if (currentState == HoushuiState.Placing)
+
+        if (currentState == Status.Placing)
         {
-            followHoushuiImage.transform.position = Input.mousePosition;
+            followImage.transform.position = Input.mousePosition;
         }
     }
 
@@ -95,28 +92,32 @@ public class HoushuiMgr : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit))
             {
-                if (hit.transform.gameObject.GetComponent<HoushuiTag>()!= null)
+                if (hit.transform.gameObject.GetComponent<HoushuiTag>() != null)
                 {
-                    // cache 
+                    // cache
                     cache砲塔 = hit.transform.gameObject;
                     //該狀態
-                    currentState = HoushuiState.OpenPnl;
+                    currentState = Status.OpenPnl;
                     FindObjectOfType<TowerPnlMgr>().OnNpcClick("houshui");
                 }
             }
         }
     }
+
     private void ProcessOpenPanel()
     {
         if (!infoPanelHandler.isActiveAndEnabled)
         {
-            currentState =  HoushuiState.Idle;
+            currentState = Status.Idle;
         }
+        
+        _avatar.SetActive(false);
     }
+
     private void ProcessPlacingTower()
     {
         if (Input.GetButtonDown("Fire1"))
-        {   
+        {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -126,41 +127,31 @@ public class HoushuiMgr : MonoBehaviour
                 {
                     //Vector3 placePosition = hit.point;
                     GameDB.Audio.PlaySfx(placingsfx);
-                    GameObject temp = Instantiate(houshuiprefabs);
-                    temp.transform.localScale = Vector3.one;
-                    temp.transform.localEulerAngles = new Vector3(30, 0, 0);
+                    
+                    //實例化只產生一次
+                    if (_avatar == null)
+                    {
+                        _avatar = Instantiate(houshuiprefabs);
+                        _avatar.transform.localScale = Vector3.one;
+                        _avatar.transform.localEulerAngles = new Vector3(30, 0, 0);
+                    }
                     Vector3 position = hit.point;
                     position.y = 0;
-                    temp.transform.localPosition = position;
-                    GameDB.houshuiPos = temp.transform.localPosition;
-                    followHoushuiImage.gameObject.SetActive(false);
+                    _avatar.transform.localPosition = position;
+                    _avatar.SetActive(true);
+                    GameDB.houshuiPos = _avatar.transform.localPosition;
+                    followImage.gameObject.SetActive(false);
                     if (gridManager != null)
                     {
                         gridManager.HideAllHighlights();
                     }
-                    currentState = HoushuiState.Idle; //改變狀態!!!
+                    currentState = Status.Idle; //改變狀態!!!
                 }
             }
         }
     }
 
-    private void ProcessCancel()
-    {
-        // 隱藏跟隨圖片
-        followHoushuiImage.gameObject.SetActive(false);
     
-        // 重新啟用按鈕
-        btnHoushui.interactable = true;
-        GameDB.houshuiBtnInteractable = true;
-        // 重置狀態
-        currentState = HoushuiState.Idle;
-        if (gridManager != null)
-        {
-            gridManager.HideAllHighlights();
-        }
-    
-        Debug.Log("取消放置");
-    }
 
     private void ProcessDargTower()
     {
@@ -177,10 +168,10 @@ public class HoushuiMgr : MonoBehaviour
         if (Input.GetButtonUp("Fire1"))
         {
             cache砲塔 = null;
-            currentState = HoushuiState.Idle;
+            currentState = Status.Idle;
         }
-        
     }
+
     void RacastAll()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -204,9 +195,8 @@ public class HoushuiMgr : MonoBehaviour
             if (Input.GetButtonUp("Fire1"))
             {
                 cache砲塔 = null;
-                currentState = HoushuiState.Idle;
+                currentState = Status.Idle;
             }
         }
     }
 }
-

@@ -10,10 +10,10 @@ public class TowerPnlMgr : MonoBehaviour
     public Button closebtn;
     public GameObject pauseMenu;
     public GameObject teachPnl;
-
+    public AudioClip btnsfx;
     //private EscMgr escManager; 
     public UnityEvent<NpcType> OnNpcClickEvent;
-
+    //public UnityEvent<NpcType>OnNpcCloseEvent;
 
     void Start()
     {
@@ -27,17 +27,14 @@ public class TowerPnlMgr : MonoBehaviour
 
     public void CloseinfoPanel()
     {
+        GameDB.Audio.PlaySfx(btnsfx);
         infoPanelHandler.gameObject.SetActive(false);
         Time.timeScale = 1;
         if (GameDB.Audio._bgmAudioSource != null)
         {
             GameDB.Audio._bgmAudioSource.ignoreListenerPause = false;
         }
-
-        //if (escManager != null)
-        {
-            //escManager.UnregisterPanel(EscMgr.ESCPanelState.TowerPanel);
-        }
+        
         
     }
 
@@ -121,9 +118,6 @@ public class TowerPnlMgr : MonoBehaviour
                 break;
         }
 
-        //if (escManager != null)
-        {
-            //escManager.OpenTowerPanel();
-        }
+      
     }
 }

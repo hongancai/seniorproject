@@ -39,7 +39,7 @@ public class Projectile : MonoBehaviour
     void HitTarget()
     {
         // 攻擊目標
-        Enemy enemy = target.GetComponent<Enemy>();
+        EnemyTag enemy = target.GetComponent<EnemyTag>();
         if (enemy != null)
         {
             //enemy.TakeDamage();

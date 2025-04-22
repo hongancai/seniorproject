@@ -11,11 +11,15 @@ public class WindLionGodBaseMgr : MonoBehaviour
 
     protected GameObject _avatar;
 
+
+    public void SetAvatar(GameObject avatar)
+    {
+        _avatar = avatar;
+    }
     public enum Status
     {
         Idle,
         Placing,
-        Cancel,
         Drag,
         OpenPnl,
     }

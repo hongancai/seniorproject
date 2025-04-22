@@ -26,7 +26,7 @@ public class MonsterSpawner : MonoBehaviour
     
     // 生成位置
     private readonly Vector3 leftSpawnPos = new Vector3(478.3f, 0.4522033f, 504.4f);
-    private readonly Vector3 rightSpawnPos = new Vector3(507.16f, 0.5123333f, 499.73f);
+    private readonly Vector3 rightSpawnPos = new Vector3(522.83f, 0.4522033f, 493.23f);
     
     private int currentWaveMonsters = 0;    // 當前波次存活的怪物數量
 
@@ -86,11 +86,11 @@ public class MonsterSpawner : MonoBehaviour
                     break;
                     
                 case 3:  // 第三波：左右側生成不同的Bird
-                    yield return SpawnWaveMonsters(leftBirdPrefab, rightBirdPrefab);
+                    yield return SpawnWaveMonsters(rightBirdPrefab, leftBirdPrefab);
                     break;
-                    
+                      
                 case 4:  // 第四波：左右側生成不同的Soldier
-                    yield return SpawnWaveMonsters(leftSoldierPrefab, rightSoldierPrefab);
+                    yield return SpawnWaveMonsters(rightSoldierPrefab, leftSoldierPrefab);
                     break;
             }
 

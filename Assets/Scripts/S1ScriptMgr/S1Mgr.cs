@@ -27,6 +27,11 @@ public class S1Mgr : MonoBehaviour
 
     private WindLionGodBaseMgr _cacheWindLionGod; //暫存，
     private QionglinMgr _qionglinMgr;
+    private HoushuiMgr _houshuiMgr;
+    private LiuMgr _liuMgr;
+    private AnMgr _anMgr;
+    private TahouMgr _tahouMgr;
+    
     private TowerPnlMgr _towerPnlMgr;
     
 
@@ -49,6 +54,7 @@ public class S1Mgr : MonoBehaviour
             temp.transform.localScale = Vector3.one;
             temp.transform.localEulerAngles = new Vector3(30, 0, 0);
             temp.transform.localPosition = GameDB.qionglinPos;
+            _qionglinMgr.SetAvatar(temp);
         }
 
         if (GameDB.houshuiPos != Vector3.zero)
@@ -57,6 +63,7 @@ public class S1Mgr : MonoBehaviour
             temp.transform.localScale = Vector3.one;
             temp.transform.localEulerAngles = new Vector3(30, 0, 0);
             temp.transform.localPosition = GameDB.houshuiPos;
+            _houshuiMgr.SetAvatar(temp);
         }
 
         if (GameDB.liuPos != Vector3.zero)
@@ -65,6 +72,7 @@ public class S1Mgr : MonoBehaviour
             temp.transform.localScale = Vector3.one;
             temp.transform.localEulerAngles = new Vector3(30, 0, 0);
             temp.transform.localPosition = GameDB.liuPos;
+            _liuMgr.SetAvatar(temp);
         }
 
         if (GameDB.anPos != Vector3.zero)
@@ -73,6 +81,7 @@ public class S1Mgr : MonoBehaviour
             temp.transform.localScale = Vector3.one;
             temp.transform.localEulerAngles = new Vector3(30, 0, 0);
             temp.transform.localPosition = GameDB.anPos;
+            _anMgr.SetAvatar(temp);
         }
 
         if (GameDB.tahouPos != Vector3.zero)
@@ -81,6 +90,7 @@ public class S1Mgr : MonoBehaviour
             temp.transform.localScale = Vector3.one;
             temp.transform.localEulerAngles = new Vector3(30, 0, 0);
             temp.transform.localPosition = GameDB.tahouPos;
+            _tahouMgr.SetAvatar(temp);
         }
     }
     
@@ -157,6 +167,10 @@ public class S1Mgr : MonoBehaviour
     private void ScanObject()
     {
         _qionglinMgr = this.gameObject.GetComponent<QionglinMgr>();
+        _houshuiMgr  = this.gameObject.GetComponent<HoushuiMgr>();
+        _liuMgr = this.gameObject.GetComponent<LiuMgr>();
+        _anMgr = this.gameObject.GetComponent<AnMgr>();
+        _tahouMgr = this.gameObject.GetComponent<TahouMgr>();
        // _infoPanelHandler = this.gameObject.GetComponent<InfoPanelHandler>();
         _towerPnlMgr  = this.gameObject.GetComponent<TowerPnlMgr>();
         _towerPnlMgr.OnNpcClickEvent.AddListener(CallBackOnNpcClick);
@@ -171,10 +185,38 @@ public class S1Mgr : MonoBehaviour
         switch (type)
         {
             case  NpcType.QiongLin:
-
+                
                 _cacheWindLionGod = (WindLionGodBaseMgr)_qionglinMgr; //封箱處理
                 _qionglinMgr.ChangeState(WindLionGodBaseMgr.Status.OpenPnl);  //切換狀態
                 _infoPanelHandler.Setup(GameDB.qionglin, "qionglin"); //開啟面板
+                break;
+            
+            case  NpcType.HouShui:
+                
+                _cacheWindLionGod = (WindLionGodBaseMgr)_houshuiMgr; //封箱處理
+                _houshuiMgr.ChangeState(WindLionGodBaseMgr.Status.OpenPnl);  //切換狀態
+                _infoPanelHandler.Setup(GameDB.houshui, "houshui"); //開啟面板
+                break;
+            
+            case  NpcType.Liu:
+                
+                _cacheWindLionGod = (WindLionGodBaseMgr)_liuMgr; //封箱處理
+                _liuMgr.ChangeState(WindLionGodBaseMgr.Status.OpenPnl);  //切換狀態
+                _infoPanelHandler.Setup(GameDB.liu, "liu"); //開啟面板
+                break;
+            
+            case  NpcType.An:
+                
+                _cacheWindLionGod = (WindLionGodBaseMgr)_anMgr; //封箱處理
+                _anMgr.ChangeState(WindLionGodBaseMgr.Status.OpenPnl);  //切換狀態
+                _infoPanelHandler.Setup(GameDB.an, "an"); //開啟面板
+                break;
+            
+            case  NpcType.TaHou:
+                
+                _cacheWindLionGod = (WindLionGodBaseMgr)_tahouMgr; //封箱處理
+                _tahouMgr.ChangeState(WindLionGodBaseMgr.Status.OpenPnl);  //切換狀態
+                _infoPanelHandler.Setup(GameDB.tahou, "tahou"); //開啟面板
                 break;
         }
     }

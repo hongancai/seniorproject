@@ -43,6 +43,7 @@ public class QionglinMgr : WindLionGodBaseMgr
 
     private  void Update()
     {
+        Debug.Log ("============>"+currentState);
         switch (currentState)
         {
             case Status.Idle:
@@ -50,13 +51,6 @@ public class QionglinMgr : WindLionGodBaseMgr
                 break;
             case Status.Placing:
                 ProcessPlacingTower();
-                if (Input.GetMouseButtonDown(1)) // 按下右鍵
-                {
-                    currentState = Status.Cancel; // 切換到取消狀態
-                }
-                break;
-            case Status.Cancel:
-                ProcessCancel();
                 break;
             case Status.Drag:
             case Status.OpenPnl:
@@ -130,9 +124,6 @@ public class QionglinMgr : WindLionGodBaseMgr
         _avatar.SetActive(false);  //
        
     }
-    
-  
-    
     private void ProcessPlacingTower()
     {
         if (Input.GetButtonDown("Fire1"))
@@ -158,7 +149,6 @@ public class QionglinMgr : WindLionGodBaseMgr
                     position.y = 0;
                     _avatar.transform.localPosition = position;
                     _avatar.SetActive(true);
-
                     GameDB.qionglinPos = _avatar.transform.localPosition;
                     followImage.gameObject.SetActive(false);
                     if (gridManager != null)
@@ -171,25 +161,6 @@ public class QionglinMgr : WindLionGodBaseMgr
         }
     }
 
-    private void ProcessCancel()
-    {
-        // 隱藏跟隨圖片
-        followImage.gameObject.SetActive(false);
-
-        // 重新啟用按鈕
-        btnQionglin.interactable = true;
-        GameDB.qionglinBtnInteractable = true;
-
-        // 重置狀態
-        currentState = Status.Idle;
-        
-        if (gridManager != null)
-        {
-            gridManager.HideAllHighlights();
-        }
-
-        Debug.Log("取消放置");
-    }
     
     private void ProcessDargTower()
     {

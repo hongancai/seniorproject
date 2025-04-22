@@ -29,11 +29,12 @@ public class InfoPanelHandler : MonoBehaviour
     private Npc currentNpc;
     private string currentNpcType;
     
-    //public Button upgradebtn;
-    //public GameObject warningPnl;
+    
+    public GameObject warningPnl;
     //public AudioClip upgradesfx;
+    public AudioClip btnsfx;
 
-
+    public Button btnCloseWarning;
     public Button btnUpgrade;
     public Button btnReplace;
     private Npc npc; 
@@ -44,16 +45,16 @@ public class InfoPanelHandler : MonoBehaviour
     {
         btnUpgrade.onClick.AddListener(OnUpgradeClick);
         btnReplace.onClick.AddListener(OnReplaceClick);
-        //warningPnl.gameObject.SetActive(false);
+        btnCloseWarning.onClick.AddListener(OnCloseWarningClick);
+        warningPnl.gameObject.SetActive(false);
     }
     private void OnUpgradeClick()
     {
-        int upgradeCost = 100;
-        if (GameDB.money > upgradeCost)
+        if (GameDB.money > 100)
         {
             if (GameDB.qionglin.Lv < 5)
             {
-                GameDB.money -= upgradeCost;
+                GameDB.money -= 100;
                 //GameDB.UpgradeTower(GameDB.qionglin);
                 //GameDB.Audio.PlaySfx(upgradesfx);
             }
@@ -63,7 +64,7 @@ public class InfoPanelHandler : MonoBehaviour
             }
             {
                 //warningPnl.gameObject.SetActive(true);
-                Debug.Log("你不夠200塊");
+                Debug.Log("你不夠100塊");
             }
 
             GameDB.Save();
@@ -72,13 +73,27 @@ public class InfoPanelHandler : MonoBehaviour
 
     private void OnReplaceClick()
     {
-        OnPanelClosingEvent?.Invoke(); //通知準備關閉面板
-        gameObject.SetActive(false); //關閉面板
-        Time.timeScale = 1;
-        if (gridManager != null)
+        if (GameDB.money > 50)
         {
-            gridManager.ShowAllValidAreas();
+            GameDB.money -= 50;
+            OnPanelClosingEvent?.Invoke(); //通知準備關閉面板
+            gameObject.SetActive(false); //關閉面板
+            Time.timeScale = 1;
+            if (gridManager != null)
+            {
+                gridManager.ShowAllValidAreas();
+            }
         }
+        else
+        {
+            warningPnl.SetActive(true);
+            Debug.Log("你沒50塊!!!!!!!!!");
+        }
+    }
+    private void OnCloseWarningClick()
+    {
+        warningPnl.SetActive(false);
+        GameDB.Audio.PlaySfx(btnsfx);
     }
         
     void Update()
