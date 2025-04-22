@@ -16,6 +16,10 @@ public class WindLionGodBaseMgr : MonoBehaviour
     {
         _avatar = avatar;
     }
+    public GameObject GetAvatar()
+    {
+        return _avatar;
+    }
     public enum Status
     {
         Idle,

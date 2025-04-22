@@ -47,6 +47,11 @@ public class S1Mgr : MonoBehaviour
         {
             _infoPanelHandler.OnPanelClosingEvent.AddListener(CallBackOnPanelClosingEvent);
         }
+        if (_towerPnlMgr != null)
+        {
+            _towerPnlMgr.OnNpcBtnCloseEvent.AddListener(CallBackOnNpcBtnCloseEvent);
+        }
+
 
         if (GameDB.qionglinPos != Vector3.zero)
         {
@@ -91,6 +96,39 @@ public class S1Mgr : MonoBehaviour
             temp.transform.localEulerAngles = new Vector3(30, 0, 0);
             temp.transform.localPosition = GameDB.tahouPos;
             _tahouMgr.SetAvatar(temp);
+        }
+    }
+    private void CallBackOnNpcBtnCloseEvent(NpcType type)
+    {
+        WindLionGodBaseMgr targetMgr = null;
+    
+        switch (type)
+        {
+            case NpcType.QiongLin:
+                targetMgr = _qionglinMgr;
+                break;
+            case NpcType.HouShui:
+                targetMgr = _houshuiMgr;
+                break;
+            case NpcType.Liu:
+                targetMgr = _liuMgr;
+                break;
+            case NpcType.An:
+                targetMgr = _anMgr;
+                break;
+            case NpcType.TaHou:
+                targetMgr = _tahouMgr;
+                break;
+        }
+    
+        if (targetMgr != null)
+        {
+            GameObject avatar = targetMgr.GetAvatar();
+            if (avatar != null)
+            {
+                avatar.SetActive(true);
+            }
+            targetMgr.ChangeState(WindLionGodBaseMgr.Status.Idle);
         }
     }
     

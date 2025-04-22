@@ -86,7 +86,7 @@ public class LiuMgr : WindLionGodBaseMgr
         {
             gridManager.ShowAllValidAreas();
         }
-        Debug.Log("開始丟瓊林風獅爺喔");
+        Debug.Log("開始丟劉澳風獅爺喔");
     }
 
     #endregion

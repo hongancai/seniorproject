@@ -37,12 +37,15 @@ public class InfoPanelHandler : MonoBehaviour
     public Button btnCloseWarning;
     public Button btnUpgrade;
     public Button btnReplace;
+    //public Button btnRebirth;
     private Npc npc; 
 
     public UnityEvent OnPanelClosingEvent;
 
     void Start()
     {
+        //btnRebirth.gameObject.SetActive(false);
+        //btnRebirth.onClick.AddListener(OnReBirthClick);
         btnUpgrade.onClick.AddListener(OnUpgradeClick);
         btnReplace.onClick.AddListener(OnReplaceClick);
         btnCloseWarning.onClick.AddListener(OnCloseWarningClick);
@@ -71,6 +74,11 @@ public class InfoPanelHandler : MonoBehaviour
         }
     }
 
+    //private void OnReBirthClick()
+    //{
+        
+    
+    //}
     private void OnReplaceClick()
     {
         if (GameDB.money > 50)

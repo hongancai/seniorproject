@@ -14125,6 +14125,9 @@ MonoBehaviour:
   OnNpcClickEvent:
     m_PersistentCalls:
       m_Calls: []
+  OnNpcBtnCloseEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1630943227
 GameObject:
   m_ObjectHideFlags: 0

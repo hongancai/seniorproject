@@ -13,7 +13,10 @@ public class TowerPnlMgr : MonoBehaviour
     public AudioClip btnsfx;
     //private EscMgr escManager; 
     public UnityEvent<NpcType> OnNpcClickEvent;
-    //public UnityEvent<NpcType>OnNpcCloseEvent;
+    public UnityEvent<NpcType> OnNpcBtnCloseEvent;
+    
+    // 保存當前選中的NPC類型
+    private NpcType currentNpcType;
 
     void Start()
     {
@@ -35,7 +38,8 @@ public class TowerPnlMgr : MonoBehaviour
             GameDB.Audio._bgmAudioSource.ignoreListenerPause = false;
         }
         
-        
+        // 使用事件系統通知關閉按鈕被點擊，並傳遞當前NPC類型
+        OnNpcBtnCloseEvent?.Invoke(currentNpcType);
     }
 
     void Update()
@@ -97,27 +101,25 @@ public class TowerPnlMgr : MonoBehaviour
         switch (npcType)
         {
             case "qionglin":
+                currentNpcType = NpcType.QiongLin;
                 OnNpcClickEvent?.Invoke(NpcType.QiongLin);
-                // infoPanelHandler.Setup(GameDB.qionglin, "qionglin");
                 break;
             case "houshui":
+                currentNpcType = NpcType.HouShui;
                 OnNpcClickEvent?.Invoke(NpcType.HouShui);
-                //infoPanelHandler.Setup(GameDB.houshui, "houshui");
                 break;
             case "liu":
+                currentNpcType = NpcType.Liu;
                 OnNpcClickEvent?.Invoke(NpcType.Liu);
-                // infoPanelHandler.Setup(GameDB.liu, "liu");
                 break;
             case "an":
+                currentNpcType = NpcType.An;
                 OnNpcClickEvent?.Invoke(NpcType.An);
-                //  infoPanelHandler.Setup(GameDB.an, "an");
                 break;
             case "tahou":
+                currentNpcType = NpcType.TaHou;
                 OnNpcClickEvent?.Invoke(NpcType.TaHou);
-                //  infoPanelHandler.Setup(GameDB.tahou, "tahou");
                 break;
         }
-
-      
     }
 }
