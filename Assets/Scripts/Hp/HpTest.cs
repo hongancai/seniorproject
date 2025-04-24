@@ -29,11 +29,14 @@ public class HpTest : MonoBehaviour
         {
             TakeDamage(200);
         }
+
         if (currentHealth <= 0)
         {
             losePnl.SetActive(true);
         }
     }
+
+    
     private void BackMenuOnClick()
     {
         SceneManager.LoadScene("MainMenu");

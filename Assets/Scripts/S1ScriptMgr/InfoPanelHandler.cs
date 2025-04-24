@@ -31,21 +31,20 @@ public class InfoPanelHandler : MonoBehaviour
     
     
     public GameObject warningPnl;
-    //public AudioClip upgradesfx;
+    public AudioClip upgradesfx;
     public AudioClip btnsfx;
 
     public Button btnCloseWarning;
     public Button btnUpgrade;
     public Button btnReplace;
-    //public Button btnRebirth;
-    private Npc npc; 
-
+    public Button btnRebirth;
+    private Npc npc;
     public UnityEvent OnPanelClosingEvent;
 
     void Start()
     {
-        //btnRebirth.gameObject.SetActive(false);
-        //btnRebirth.onClick.AddListener(OnReBirthClick);
+        btnRebirth.gameObject.SetActive(false);
+        btnRebirth.onClick.AddListener(OnReBirthClick);
         btnUpgrade.onClick.AddListener(OnUpgradeClick);
         btnReplace.onClick.AddListener(OnReplaceClick);
         btnCloseWarning.onClick.AddListener(OnCloseWarningClick);
@@ -53,32 +52,53 @@ public class InfoPanelHandler : MonoBehaviour
     }
     private void OnUpgradeClick()
     {
-        if (GameDB.money > 100)
+        if (GameDB.money >= 100)
         {
-            if (GameDB.qionglin.Lv < 5)
+            if (currentNpc != null && currentNpc.Lv < 5)
             {
                 GameDB.money -= 100;
-                //GameDB.UpgradeTower(GameDB.qionglin);
-                //GameDB.Audio.PlaySfx(upgradesfx);
+                GameDB.UpgradeTower(currentNpc);
+                GameDB.Audio.PlaySfx(upgradesfx);
+                if (currentNpc.Lv >= 5)
+                {
+                    DisableUpgradeButton(currentNpcType);
+                    btnUpgrade.interactable = false;
+                }
+                // 更新介面顯示
+                _isDirty = true;
             }
-            else
-            {
-                //upgradebtn.gameObject.SetActive(false);
-            }
-            {
-                //warningPnl.gameObject.SetActive(true);
-                Debug.Log("你不夠100塊");
-            }
-
-            GameDB.Save();
+        }
+        else
+        {
+            warningPnl.SetActive(true);
+            Debug.Log("你沒100塊升級!!!!!!!");
         }
     }
-
-    //private void OnReBirthClick()
-    //{
-        
+    private void DisableUpgradeButton(string npcType)
+    {
+        switch (npcType)
+        {
+            case "qionglin":
+                GameDB.qionglinUpgradeBtnInteractable = false;
+                break;
+            case "houshui":
+                GameDB.houshuiUpgradeBtnInteractable = false;
+                break;
+            case "liu":
+                GameDB.liuUpgradeBtnInteractable = false;
+                break;
+            case "an":
+                GameDB.anUpgradeBtnInteractable = false;
+                break;
+            case "tahou":
+                GameDB.tahouUpgradeBtnInteractable = false;
+                break;
+        }
     
-    //}
+        // 儲存變更
+        GameDB.Save();
+    }
+    
     private void OnReplaceClick()
     {
         if (GameDB.money > 50)
@@ -96,6 +116,18 @@ public class InfoPanelHandler : MonoBehaviour
         {
             warningPnl.SetActive(true);
             Debug.Log("你沒50塊!!!!!!!!!");
+        }
+    }
+    private void OnReBirthClick()
+    {
+        if (GameDB.money > 200)
+        {
+            GameDB.money -= 200;
+        }
+        else
+        {
+            warningPnl.SetActive(true);
+            Debug.Log("你沒200塊!!!!!!!!!");
         }
     }
     private void OnCloseWarningClick()
@@ -129,8 +161,46 @@ public class InfoPanelHandler : MonoBehaviour
         this.currentNpc = source;
         this.currentNpcType = npcType;
         this.gameObject.SetActive(true); //把自己打開
+        // 檢查當前角色的升級按鈕狀態
+        CheckUpgradeButtonInteractable(npcType);
+
         UpdateImageDisplay(npcType);
         _isDirty = true; // 強迫用update 更新畫面
+    }
+    private void CheckUpgradeButtonInteractable(string npcType)
+    {
+        bool interactable = true;
+    
+        // 檢查角色是否已達最高等級
+        if (currentNpc.Lv >= 5)
+        {
+            interactable = false;
+        }
+        else
+        {
+            // 從GameDB檢查該類型角色的按鈕互動狀態
+            switch (npcType)
+            {
+                case "qionglin":
+                    interactable = GameDB.qionglinUpgradeBtnInteractable;
+                    break;
+                case "houshui":
+                    interactable = GameDB.houshuiUpgradeBtnInteractable;
+                    break;
+                case "liu":
+                    interactable = GameDB.liuUpgradeBtnInteractable;
+                    break;
+                case "an":
+                    interactable = GameDB.anUpgradeBtnInteractable;
+                    break;
+                case "tahou":
+                    interactable = GameDB.tahouUpgradeBtnInteractable;
+                    break;
+            }
+        }
+    
+        // 設置升級按鈕的互動狀態
+        btnUpgrade.interactable = interactable;
     }
     private void UpdateImageDisplay(string npcType)
     {

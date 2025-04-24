@@ -288,6 +288,7 @@ public static class GameDB
         return stats;
     }
     
+    
     public static Npc qionglin;
     public static Npc houshui;
     public static Npc liu;
@@ -305,6 +306,12 @@ public static class GameDB
     public static bool liuBtnInteractable = true;
     public static bool anBtnInteractable = true;
     public static bool tahouBtnInteractable = true;
+    
+    public static bool qionglinUpgradeBtnInteractable = true;
+    public static bool houshuiUpgradeBtnInteractable = true;
+    public static bool liuUpgradeBtnInteractable = true;
+    public static bool anUpgradeBtnInteractable = true;
+    public static bool tahouUpgradeBtnInteractable = true;
     
     public static int towerHp;
     public static int liuEffect = 30;
@@ -395,6 +402,15 @@ public static class GameDB
         liuBtnInteractable = true;
         anBtnInteractable = true;
         tahouBtnInteractable = true;
+        
+        // 重置升級按鈕互動狀態
+        qionglinUpgradeBtnInteractable = true;
+        houshuiUpgradeBtnInteractable = true;
+        liuUpgradeBtnInteractable = true;
+        anUpgradeBtnInteractable = true;
+        tahouUpgradeBtnInteractable = true;
+        //重置等級
+        InitializeTowers();
         // 儲存重置後的狀態
         Save();
     }

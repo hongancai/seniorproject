@@ -51,6 +51,10 @@ public class S1Mgr : MonoBehaviour
         {
             _towerPnlMgr.OnNpcBtnCloseEvent.AddListener(CallBackOnNpcBtnCloseEvent);
         }
+        if (_towerPnlMgr != null)
+        {
+            _towerPnlMgr.OnNpcBtnCloseEvent.AddListener(CallBackOnNpcBtnCloseEvent);
+        }
 
 
         if (GameDB.qionglinPos != Vector3.zero)

@@ -5191,79 +5191,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &462893502
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 446097948667377901, guid: a5bf579e38db1bf4d8b118e689e4114b,
-        type: 3}
-      propertyPath: m_Name
-      value: gourd
-      objectReference: {fileID: 0}
-    - target: {fileID: 446097948667377901, guid: a5bf579e38db1bf4d8b118e689e4114b,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8841701535637185877, guid: a5bf579e38db1bf4d8b118e689e4114b,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 500.99
-      objectReference: {fileID: 0}
-    - target: {fileID: 8841701535637185877, guid: a5bf579e38db1bf4d8b118e689e4114b,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.38
-      objectReference: {fileID: 0}
-    - target: {fileID: 8841701535637185877, guid: a5bf579e38db1bf4d8b118e689e4114b,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 503.91
-      objectReference: {fileID: 0}
-    - target: {fileID: 8841701535637185877, guid: a5bf579e38db1bf4d8b118e689e4114b,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9659258
-      objectReference: {fileID: 0}
-    - target: {fileID: 8841701535637185877, guid: a5bf579e38db1bf4d8b118e689e4114b,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.2588191
-      objectReference: {fileID: 0}
-    - target: {fileID: 8841701535637185877, guid: a5bf579e38db1bf4d8b118e689e4114b,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8841701535637185877, guid: a5bf579e38db1bf4d8b118e689e4114b,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8841701535637185877, guid: a5bf579e38db1bf4d8b118e689e4114b,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 8841701535637185877, guid: a5bf579e38db1bf4d8b118e689e4114b,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8841701535637185877, guid: a5bf579e38db1bf4d8b118e689e4114b,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: a5bf579e38db1bf4d8b118e689e4114b, type: 3}
 --- !u!1 &470033542
 GameObject:
   m_ObjectHideFlags: 0
@@ -18709,10 +18636,12 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 305dc458f19b7f34391e37dc22714e23, type: 3}
   gridManager: {fileID: 1627028251}
   warningPnl: {fileID: 1524200247}
+  upgradesfx: {fileID: 8300000, guid: 9faade11a13c182468a882f5f9bdf8bc, type: 3}
   btnsfx: {fileID: 8300000, guid: 42cb8fc809e54874d98f66872e74ec2b, type: 3}
   btnCloseWarning: {fileID: 1630943229}
   btnUpgrade: {fileID: 6041429692423790864}
   btnReplace: {fileID: 1948419899}
+  btnRebirth: {fileID: 938484886}
   OnPanelClosingEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -18744,6 +18673,5 @@ SceneRoots:
   - {fileID: 985430943}
   - {fileID: 1553024079}
   - {fileID: 1583554984}
-  - {fileID: 462893502}
   - {fileID: 536813571}
   - {fileID: 1627028236}
