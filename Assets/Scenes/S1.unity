@@ -5758,6 +5758,7 @@ GameObject:
   - component: {fileID: 496950707}
   - component: {fileID: 496950709}
   - component: {fileID: 496950708}
+  - component: {fileID: 496950710}
   m_Layer: 5
   m_Name: TimeCount
   m_TagString: Untagged
@@ -5822,6 +5823,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 496950706}
   m_CullTransparentMesh: 1
+--- !u!114 &496950710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 496950706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46c8931ba789ec14080b5374342e2bdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerFillImage: {fileID: 496950708}
+  waveNumberText: {fileID: 1373522832}
+  timeBetweenWaves: 25
 --- !u!1 &508535243
 GameObject:
   m_ObjectHideFlags: 0
@@ -13757,7 +13773,6 @@ GameObject:
   - component: {fileID: 1627028250}
   - component: {fileID: 1627028251}
   - component: {fileID: 1627028252}
-  - component: {fileID: 1627028253}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -14058,21 +14073,6 @@ MonoBehaviour:
   OnNpcBtnCloseEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1627028253
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1627028233}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bddf9e04bd3fa814b8242be3aeaf05da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coinPrefab: {fileID: 22302317296963439, guid: 830c8f39631e2154386c46e8e8cbcc56,
-    type: 3}
-  spawnKey: 32
 --- !u!1 &1630943227
 GameObject:
   m_ObjectHideFlags: 0

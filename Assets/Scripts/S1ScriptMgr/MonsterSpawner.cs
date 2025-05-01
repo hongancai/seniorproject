@@ -1,4 +1,5 @@
 using System.Collections;
+using System;
 using UnityEngine;
 
 public class MonsterSpawner : MonoBehaviour
@@ -29,6 +30,11 @@ public class MonsterSpawner : MonoBehaviour
     private readonly Vector3 rightSpawnPos = new Vector3(522.83f, 0.4522033f, 493.23f);
     
     private int currentWaveMonsters = 0;    // 當前波次存活的怪物數量
+    private int currentWave = 0;            // 當前波數
+    
+    // 新增事件
+    public event Action OnWaveCompleted;    // 當一波完成時觸發
+    public event Action OnWaveStarted;      // 當一波開始時觸發
 
     void Start()
     {
@@ -41,6 +47,7 @@ public class MonsterSpawner : MonoBehaviour
         nextLevelEntrance.SetActive(false);
         shopObject.SetActive(true);
         parkEntrance.SetActive(true);
+        currentWave = 1;  // 初始化為第一波
     }
 
     private IEnumerator DelayedStart()
@@ -65,6 +72,11 @@ public class MonsterSpawner : MonoBehaviour
     {
         for (int wave = 1; wave <= totalWaves; wave++)
         {
+            currentWave = wave;
+            
+            // 觸發波次開始事件
+            OnWaveStarted?.Invoke();
+            
             // 顯示警告
             warningSystem.ShowWarning();
             yield return new WaitForSeconds(3f);  // 等待警告顯示完成
@@ -100,6 +112,9 @@ public class MonsterSpawner : MonoBehaviour
             // 開啟場景物件
             EnableSceneObjects();
             
+            // 觸發波次完成事件
+            OnWaveCompleted?.Invoke();
+            
             // 最後一波結束後開啟下一關入口
             if (wave == totalWaves)
             {
@@ -123,7 +138,7 @@ public class MonsterSpawner : MonoBehaviour
                // MonsterHealth health = monster.GetComponent<MonsterHealth>();
                 //if (health != null)
                 {
-                    //health.OnMonsterDeath += OnMonsterKilled;
+                   // health.OnMonsterDeath += OnMonsterKilled;
                 }
             }
             
@@ -145,5 +160,11 @@ public class MonsterSpawner : MonoBehaviour
     private void OnMonsterKilled()
     {
         currentWaveMonsters--;
+    }
+    
+    // 獲取當前波數的公共方法
+    public int GetCurrentWave()
+    {
+        return currentWave;
     }
 }
