@@ -32,7 +32,7 @@ public class LiuMgr : WindLionGodBaseMgr
         cache砲塔 = null;
         currentState = Status.Idle;
         btnLiu.onClick.AddListener(OnBtnLiuClick);
-        btnLiu.interactable = GameDB.qionglinBtnInteractable;
+        btnLiu.interactable = GameDB.liuBtnInteractable;
         if (towerPnlMgr == null)
         {
             towerPnlMgr = FindObjectOfType<TowerPnlMgr>();

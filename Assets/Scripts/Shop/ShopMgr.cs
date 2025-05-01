@@ -9,6 +9,7 @@ public class ShopMgr : MonoBehaviour
     public AudioClip btnsfx;
     public GameObject shopPnl;
     public GameObject pauseMenu;
+    public GameObject teachPnl;
     public Button closeshoBtn;
 
     void Start()
@@ -27,7 +28,7 @@ public class ShopMgr : MonoBehaviour
 
     void Update()
     {
-        if (shopPnl.activeSelf || pauseMenu.activeSelf)
+        if (shopPnl.activeSelf || pauseMenu.activeSelf ||teachPnl.activeSelf)
         {
             return;
         }

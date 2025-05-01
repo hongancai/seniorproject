@@ -29,7 +29,7 @@ public class RightStickMouseControl : MonoBehaviour
         if (stickInput.magnitude >= deadZone)
         {
             Vector3 mousePosition = Mouse.current.position.ReadValue();
-            mousePosition += new Vector3(stickInput.x, stickInput.y, 0) * sensitivity * Time.deltaTime;
+            mousePosition += new Vector3(stickInput.x, stickInput.y, 0) * sensitivity * Time.unscaledDeltaTime;
             mousePosition.x = Mathf.Clamp(mousePosition.x, 0, Screen.width);
             mousePosition.y = Mathf.Clamp(mousePosition.y, 0, Screen.height);
             Mouse.current.WarpCursorPosition(mousePosition);
