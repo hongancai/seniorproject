@@ -15,6 +15,7 @@ public class S1Mgr : MonoBehaviour
     public GameObject liuprefabs;
     public GameObject anprefabs;
     public GameObject tahouprefabs;
+    public GameObject coinprefabs;
 
     public Button qionglinButton;
     public Button houshuiButton;
@@ -101,6 +102,27 @@ public class S1Mgr : MonoBehaviour
             temp.transform.localPosition = GameDB.tahouPos;
             _tahouMgr.SetAvatar(temp);
         }
+        if (GameDB.coinPos != Vector3.zero)
+        {
+            GameObject temp = Instantiate(coinprefabs);
+            temp.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f); // 設置為 0.5 的縮放
+            temp.transform.position = GameDB.coinPos;
+            // 如果預製體上還沒有 Money 組件，您可能需要添加它
+            if (temp.GetComponent<Money>() == null)
+            {
+                temp.AddComponent<Money>();
+            }
+        }
+    }
+    public void SpawnCoin(Vector3 position)
+    {
+        GameObject temp = Instantiate(coinprefabs);
+        temp.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f); // 設置為 0.5 的縮放
+        temp.transform.position = position;
+    
+        // 保存位置
+        GameDB.coinPos = position;
+        GameDB.Save();
     }
     private void CallBackOnNpcBtnCloseEvent(NpcType type)
     {

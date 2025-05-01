@@ -15,6 +15,7 @@ public class Money : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             GameDB.money += 10;
+            GameDB.coinPos = Vector3.zero;// 在GameDB中重置金幣位置
             GameDB.Save();
             Destroy(gameObject);
         }

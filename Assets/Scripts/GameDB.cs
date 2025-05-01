@@ -11,6 +11,7 @@ public static class GameDB
     public static int playerHp = 0;
     public static int playerDef = 0;
     public static int money = 100000;
+    public static Vector3 coinPos;
     
     //Shop
     public static List<bool> Bought = new List<bool>();
@@ -323,7 +324,8 @@ public static class GameDB
     // Audio
     public static AudioMgr Audio;
     public static ConfigData Config = new ConfigData();
-    
+   
+
 
     public class ConfigData
     {
@@ -396,6 +398,8 @@ public static class GameDB
         liuPos = Vector3.zero;
         anPos = Vector3.zero;
         tahouPos = Vector3.zero;
+        
+        coinPos = Vector3.zero;
         
         qionglinBtnInteractable = true;
         houshuiBtnInteractable = true;

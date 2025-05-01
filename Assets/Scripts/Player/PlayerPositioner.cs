@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerPositioner : MonoBehaviour
 {
-    public Vector3 defaultPosition = new Vector3(499.99f, 0.1113546f, 497.3f);
+    public Vector3 defaultPosition = new Vector3(499.99f, 0f, 497.3f);
     
     private void Start()
     {
