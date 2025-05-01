@@ -34,25 +34,24 @@ public class PauseMenu : MonoBehaviour
     private bool isInputLocked = false;
     private float inputCooldown = 0.2f;
     private float lastInputTime = 0f;
+    private System.Action<InputAction.CallbackContext> _pauseMenuHandler;
 
-   
     private void OnEnable()
     {
         _inputMaster = new InputMaster();
         _inputMaster.Enable();
 
-        // 綁定 PauseMenu 鍵
-       // _inputMaster.Menu.PauseMenu.performed += context => TogglePauseMenu(); //已經模擬ESC建
-       
-       _inputMaster.Menu.Navigate.performed += context => NavigateMenu(context.ReadValue<Vector2>());
-       _inputMaster.Menu.Confirm.performed += context => ConfirmSelection();
-       _inputMaster.Menu.Back.performed += context => BackAction();
+        _pauseMenuHandler = context => TogglePauseMenu();
+        _inputMaster.Menu.PauseMenu.performed += _pauseMenuHandler;
+
+        _inputMaster.Menu.Navigate.performed += context => NavigateMenu(context.ReadValue<Vector2>());
+        _inputMaster.Menu.Confirm.performed += context => ConfirmSelection();
+        _inputMaster.Menu.Back.performed += context => BackAction();
     }
 
     private void OnDisable()
     {
-        // 取消綁定 PauseMenu 鍵
-        _inputMaster.Menu.PauseMenu.performed -= context => TogglePauseMenu();
+        _inputMaster.Menu.PauseMenu.performed -= _pauseMenuHandler;
         _inputMaster.Menu.Navigate.performed -= context => NavigateMenu(context.ReadValue<Vector2>());
         _inputMaster.Menu.Confirm.performed -= context => ConfirmSelection();
         _inputMaster.Menu.Back.performed -= context => BackAction();
