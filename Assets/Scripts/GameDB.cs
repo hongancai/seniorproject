@@ -19,6 +19,7 @@ public static class GameDB
     public static List<bool> TowerMaterialsChanged = new List<bool>();
     private static bool isInitialized = false;
     
+    public static bool hasClosedTeachPanel = false;
     static GameDB()
     {
         if (!isInitialized)
@@ -350,6 +351,8 @@ public static class GameDB
             PlayerPrefs.SetInt($"Tower_Bought_{i}", BoughtTower[i] ? 1 : 0);
             PlayerPrefs.SetInt($"Tower_Material_Changed_{i}", TowerMaterialsChanged[i] ? 1 : 0);
         }
+        // 儲存教學面板狀態
+        PlayerPrefs.SetInt("HasClosedTeachPanel", hasClosedTeachPanel ? 1 : 0);
     }
     
     public static void Load()
@@ -368,6 +371,8 @@ public static class GameDB
             TowerMaterialsChanged[i] = PlayerPrefs.GetInt($"Tower_Material_Changed_{i}", 0) == 1;
         }
         
+        // 讀取教學面板狀態
+        hasClosedTeachPanel = PlayerPrefs.GetInt("HasClosedTeachPanel", 0) == 1;
         
         Config.bgmAudioVolume = PlayerPrefs.GetFloat("BGM_Volume", 0.6f);
         Config.sfxAudioVolume = PlayerPrefs.GetFloat("SFX_Volume", 0.8f);
@@ -415,6 +420,10 @@ public static class GameDB
         tahouUpgradeBtnInteractable = true;
         //重置等級
         InitializeTowers();
+        
+        // 重置教學面板狀態
+        hasClosedTeachPanel = false;
+        
         // 儲存重置後的狀態
         Save();
     }

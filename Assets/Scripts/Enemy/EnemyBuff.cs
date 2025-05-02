@@ -9,4 +9,8 @@ public class EnemyBuff
     public int Atk;
     public int Def;
     public float Spd;
+    
+    /*--CountDown--*/
+    public int CountDownSecond;
+    public int HpPreSecond;
 }

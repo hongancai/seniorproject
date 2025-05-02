@@ -192,7 +192,9 @@ public class S1Mgr : MonoBehaviour
         // 開始淡出黑幕
         blackScreen.DOFade(0f, 2f)
             .SetEase(Ease.InOutSine)
-            .OnComplete(() => { blackScreen.gameObject.SetActive(false); });
+            .SetUpdate(true)
+            .OnComplete(() => { blackScreen.gameObject.SetActive(false); 
+                });
         GameDB.Load();
         UpdateDisplay();
     }
