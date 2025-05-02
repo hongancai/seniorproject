@@ -14,7 +14,11 @@ public class Enemy : MonoBehaviour
     public int minCoins = 1;
     public int maxCoins = 3;
    
-    
+    public enum Storm
+    {
+        Find,
+        Attack
+    }
     void Start()
     {  
         agent = GetComponent<NavMeshAgent>();
