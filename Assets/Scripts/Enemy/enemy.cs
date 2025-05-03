@@ -33,7 +33,7 @@ public class Enemy : MonoBehaviour
         animator.Play("move");
         gameObject.transform.eulerAngles = new Vector3(30, 0, 0);
         var vector3 = gameObject.transform.position;
-        vector3.y = 0.061f; //強制更新高度
+        vector3.y = 0.67f; //強制更新高度
         gameObject.transform.position = vector3;
     }
     
