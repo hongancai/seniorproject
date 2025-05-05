@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +9,14 @@ public class Money : MonoBehaviour
     {
         
     }
-    
+
+    private void Update()
+    {
+        transform.localEulerAngles = new Vector3(30, 0, 0);
+        var vector3 = transform.position;
+        vector3.y = 0.21f;
+        transform.position = vector3;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
