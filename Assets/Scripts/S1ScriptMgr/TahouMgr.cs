@@ -141,11 +141,11 @@ public class TahouMgr : WindLionGodBaseMgr
                     if (_avatar == null)
                     {
                         _avatar = Instantiate(tahouprefabs);
-                        _avatar.transform.localScale = Vector3.one;
+                        _avatar.transform.localScale = new Vector3(2.59f,2.3f,1);
                         _avatar.transform.localEulerAngles = new Vector3(30, 0, 0);
                     }
                     Vector3 position = hit.point;
-                    position.y = 0;
+                    position.y = 0.72f;
                     _avatar.transform.localPosition = position;
                     _avatar.SetActive(true);
                     GameDB.tahouPos = _avatar.transform.localPosition;

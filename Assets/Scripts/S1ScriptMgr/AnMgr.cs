@@ -87,7 +87,7 @@ public class AnMgr : WindLionGodBaseMgr
         {
             gridManager.ShowAllValidAreas();
         }
-        Debug.Log("開始丟瓊林風獅爺喔");
+        Debug.Log("開始丟安岐風獅爺喔");
     }
 
     #endregion
@@ -142,11 +142,11 @@ public class AnMgr : WindLionGodBaseMgr
                     if (_avatar == null)
                     {
                         _avatar = Instantiate(anprefabs);
-                        _avatar.transform.localScale = Vector3.one;
+                        _avatar.transform.localScale = new Vector3(2.3f,2.3f,1);
                         _avatar.transform.localEulerAngles = new Vector3(30, 0, 0);
                     }
                     Vector3 position = hit.point;
-                    position.y = 0;
+                    position.y = 0.81f;
                     _avatar.transform.localPosition = position;
                     _avatar.SetActive(true);
                     GameDB.anPos = _avatar.transform.localPosition;

@@ -132,11 +132,11 @@ public enum HoushuiState
                     if (_avatar == null)
                     {
                         _avatar = Instantiate(houshuiprefabs);
-                        _avatar.transform.localScale = Vector3.one;
+                        _avatar.transform.localScale =new Vector3(5.92f, 3.85f, 1);
                         _avatar.transform.localEulerAngles = new Vector3(30, 0, 0);
                     }
                     Vector3 position = hit.point;
-                    position.y = 0;
+                    position.y = 1.04f;
                     _avatar.transform.localPosition = position;
                     _avatar.SetActive(true);
                     GameDB.houshuiPos = _avatar.transform.localPosition;
