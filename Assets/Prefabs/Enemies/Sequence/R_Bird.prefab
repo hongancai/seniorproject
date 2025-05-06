@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 9144368763770202361}
   - component: {fileID: 6270624008226293627}
   - component: {fileID: 629452630865061788}
+  - component: {fileID: 6683721298172018865}
   m_Layer: 0
   m_Name: R_Bird
   m_TagString: Untagged
@@ -221,6 +222,23 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.6528926, y: 0.62204295, z: 0.13613337}
   m_Center: {x: 0.0811106, y: -0.027638022, z: -0.019635273}
+--- !u!114 &6683721298172018865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 589674022837202513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d07762b60beec9f4da6627852bcfce9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinPrefab: {fileID: 22302317296963439, guid: 830c8f39631e2154386c46e8e8cbcc56,
+    type: 3}
+  minCoins: 2
+  maxCoins: 4
+  healthBarQuad: {fileID: 3273899052013850139}
 --- !u!1 &1911602515421006856
 GameObject:
   m_ObjectHideFlags: 0

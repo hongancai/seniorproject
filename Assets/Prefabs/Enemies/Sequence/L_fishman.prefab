@@ -272,6 +272,7 @@ GameObject:
   - component: {fileID: 4329391925987227765}
   - component: {fileID: 4203557384814973700}
   - component: {fileID: 1610866258445044964}
+  - component: {fileID: 3144271360848248331}
   m_Layer: 0
   m_Name: L_fishman
   m_TagString: Untagged
@@ -474,3 +475,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   traget: {fileID: 2263502838131984, guid: 75bacd367aa8aa449b00670780ef2edc, type: 3}
   agent: {fileID: 4203557384814973700}
+--- !u!114 &3144271360848248331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8996230619842768349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d2c1c3f429eec64f91613a1f9d0e25f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinPrefab: {fileID: 22302317296963439, guid: 830c8f39631e2154386c46e8e8cbcc56,
+    type: 3}
+  minCoins: 4
+  maxCoins: 6
+  healthBarQuad: {fileID: 7620523302799765360}

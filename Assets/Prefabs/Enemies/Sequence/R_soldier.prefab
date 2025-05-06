@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 7697312871246752376}
   - component: {fileID: 302997421360466887}
   - component: {fileID: 5556333744845034533}
+  - component: {fileID: 4652056881832285618}
   m_Layer: 0
   m_Name: R_soldier
   m_TagString: Untagged
@@ -220,6 +221,23 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.5261394, y: 0.64845854, z: 0.2983318}
   m_Center: {x: 0.12869927, y: 0.0058095558, z: -0.013312653}
+--- !u!114 &4652056881832285618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5676199049355791505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 098da5f202426244bba0ab7d59902df6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinPrefab: {fileID: 22302317296963439, guid: 830c8f39631e2154386c46e8e8cbcc56,
+    type: 3}
+  minCoins: 3
+  maxCoins: 5
+  healthBarQuad: {fileID: 8482777773865480126}
 --- !u!1 &8476650976812582692
 GameObject:
   m_ObjectHideFlags: 0

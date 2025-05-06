@@ -138,6 +138,7 @@ GameObject:
   - component: {fileID: 5853683679339119320}
   - component: {fileID: 7774312726536964546}
   - component: {fileID: 1827129457762796249}
+  - component: {fileID: 2446512621519405221}
   m_Layer: 0
   m_Name: L_Bird
   m_TagString: Untagged
@@ -341,6 +342,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   traget: {fileID: 2263502838131984, guid: 75bacd367aa8aa449b00670780ef2edc, type: 3}
   agent: {fileID: 6648287251314679802}
+--- !u!114 &2446512621519405221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7009392473986988357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0af5dc12acfba364092199c21e4409e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinPrefab: {fileID: 22302317296963439, guid: 830c8f39631e2154386c46e8e8cbcc56,
+    type: 3}
+  minCoins: 2
+  maxCoins: 4
+  healthBarQuad: {fileID: 8322882198038533067}
 --- !u!1 &8232522356144849235
 GameObject:
   m_ObjectHideFlags: 0

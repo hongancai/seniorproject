@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 6986619486170265856}
   - component: {fileID: 6472646300750265134}
   - component: {fileID: 5834504877801483771}
+  - component: {fileID: 1635010760454202275}
   m_Layer: 0
   m_Name: L_soldier
   m_TagString: Untagged
@@ -220,6 +221,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   traget: {fileID: 2263502838131984, guid: 75bacd367aa8aa449b00670780ef2edc, type: 3}
   agent: {fileID: 2555640267558605201}
+--- !u!114 &1635010760454202275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4495647229167423568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 311ca43a2752b694b9f492486b9dde00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinPrefab: {fileID: 22302317296963439, guid: 830c8f39631e2154386c46e8e8cbcc56,
+    type: 3}
+  minCoins: 3
+  maxCoins: 5
+  healthBarQuad: {fileID: 7616276857826290323}
 --- !u!1 &7616276857826290323
 GameObject:
   m_ObjectHideFlags: 0

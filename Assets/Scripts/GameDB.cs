@@ -66,11 +66,11 @@ public static class GameDB
     public static bool wave2= false;
     public static bool wave3= false;
     public static bool wave4= false;
+    public static bool wave5 = false; // 新增第五波
+    public static bool wave6 = false;
     
-    //Enemy
-    public static int enemyHp = 0;
-    public static int enemyAtk = 0;
-    public static int enemyDef =0;
+    public static int currentWave = 0;
+    
     
     public static EnemyNpc storm;
     public static EnemyNpc bird;
@@ -81,19 +81,19 @@ public static class GameDB
     private static void InitializeEnemys()
     {
         storm = new EnemyNpc();
-        storm.enemybased = new EnemyBuff() { HP = 50, Atk = 10, Def = 2, Spd = 0.4f};
+        storm.enemybased = new EnemyBuff() { HP = 50, Atk = 10, Def = 2, Spd = 0.6f};
         
         bird = new EnemyNpc();
-        bird.enemybased = new EnemyBuff() { HP = 80, Atk = 15, Def = 5, Spd = 2.0f};
+        bird.enemybased = new EnemyBuff() { HP = 80, Atk = 15, Def = 5, Spd = 1.5f};
         
         fishman = new EnemyNpc();
-        fishman.enemybased = new EnemyBuff() { HP = 120, Atk = 25, Def = 8, Spd = 1.2f};
+        fishman.enemybased = new EnemyBuff() { HP = 120, Atk = 25, Def = 8, Spd = 1.0f};
         
         soilder = new EnemyNpc();
-        soilder.enemybased = new EnemyBuff() { HP = 180, Atk = 30, Def = 10, Spd = 1.8f};
+        soilder.enemybased = new EnemyBuff() { HP = 180, Atk = 30, Def = 10, Spd = 0.5f};
         
         ghost = new EnemyNpc();
-        ghost.enemybased = new EnemyBuff() { HP = 150, Atk = 20, Def = 5, Spd = 2.5f};
+        ghost.enemybased = new EnemyBuff() { HP = 150, Atk = 20, Def = 5, Spd = 1.8f};
     }
     //Tower
      private static void InitializeTowers()
@@ -338,6 +338,13 @@ public static class GameDB
     public static void Save()
     {
         PlayerPrefs.SetInt("Money", money);
+        PlayerPrefs.SetInt("Wave1", wave1 ? 1 : 0);
+        PlayerPrefs.SetInt("Wave2", wave2 ? 1 : 0);
+        PlayerPrefs.SetInt("Wave3", wave3 ? 1 : 0);
+        PlayerPrefs.SetInt("Wave4", wave4 ? 1 : 0);
+        PlayerPrefs.SetInt("Wave5", wave5 ? 1 : 0);
+        PlayerPrefs.SetInt("Wave6", wave6 ? 1 : 0);
+        PlayerPrefs.SetInt("CurrentWave", currentWave);
         
         for (int i = 0; i < Bought.Count; i++)
         {
@@ -371,6 +378,15 @@ public static class GameDB
             TowerMaterialsChanged[i] = PlayerPrefs.GetInt($"Tower_Material_Changed_{i}", 0) == 1;
         }
         
+        // 讀取波次狀態
+        wave1 = PlayerPrefs.GetInt("Wave1", 0) == 1;
+        wave2 = PlayerPrefs.GetInt("Wave2", 0) == 1;
+        wave3 = PlayerPrefs.GetInt("Wave3", 0) == 1;
+        wave4 = PlayerPrefs.GetInt("Wave4", 0) == 1;
+        wave5 = PlayerPrefs.GetInt("Wave5", 0) == 1;
+        wave6 = PlayerPrefs.GetInt("Wave6", 0) == 1;
+        currentWave = PlayerPrefs.GetInt("CurrentWave", 0);
+        
         // 讀取教學面板狀態
         hasClosedTeachPanel = PlayerPrefs.GetInt("HasClosedTeachPanel", 0) == 1;
         
@@ -387,7 +403,16 @@ public static class GameDB
     public static void ResetAll()
     {
         money = 100000;  // 重置金錢
-    
+        
+        
+        wave1 = false;
+        wave2 = false;
+        wave3 = false;
+        wave4 = false;
+        wave5 = false;
+        wave6 = false;
+        currentWave = 0;
+        
         // 重置所有商品購買狀態
         for (int i = 0; i < Bought.Count; i++)
         {

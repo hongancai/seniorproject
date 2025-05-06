@@ -272,6 +272,7 @@ GameObject:
   - component: {fileID: 3413944540149142092}
   - component: {fileID: 1349601388127904765}
   - component: {fileID: 1692191674032844821}
+  - component: {fileID: 1734417799431115531}
   m_Layer: 0
   m_Name: 'R_ghost '
   m_TagString: Untagged
@@ -287,14 +288,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9056093939747717993}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
   m_LocalPosition: {x: 4.76, y: 6.91, z: 0.23032475}
-  m_LocalScale: {x: 4.6, y: 8.1, z: 1}
+  m_LocalScale: {x: 1.8, y: 2.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2664871292997719166}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
 --- !u!33 &1168369581559224533
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -474,3 +475,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.57464516, y: 0.3418916, z: 0.23869938}
   m_Center: {x: 0.017152896, y: -0.16790174, z: -0.044827387}
+--- !u!114 &1734417799431115531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9056093939747717993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ed7be9841baae94c97f059bd08fb75d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinPrefab: {fileID: 22302317296963439, guid: 830c8f39631e2154386c46e8e8cbcc56,
+    type: 3}
+  minCoins: 5
+  maxCoins: 7
+  healthBarQuad: {fileID: 8384296665387879672}

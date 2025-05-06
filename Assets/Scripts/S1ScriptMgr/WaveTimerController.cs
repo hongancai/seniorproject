@@ -26,24 +26,27 @@ public class WaveTimerController : MonoBehaviour
         {
             Debug.LogError("找不到 MonsterSpawner 組件！");
         }
+    }
+    
+    void Start()
+    {
+        // 從 GameDB 中讀取當前波次
+        GameDB.Load();
+        currentWave = GameDB.currentWave;
+        
+        // 如果是新遊戲，預設為第1波
+        if (currentWave <= 0)
+        {
+            currentWave = 1;
+        }
         
         // 初始化 UI
-        if (waveNumberText != null)
-        {
-            waveNumberText.text = "1";
-        }
+        UpdateWaveText();
         
         if (timerFillImage != null)
         {
             timerFillImage.fillAmount = 1f;
         }
-    }
-    
-    void Start()
-    {
-        // 遊戲開始時顯示第一波
-        currentWave = 1;
-        UpdateWaveText();
         
         // 監聽 MonsterSpawner 完成一波的事件
         if (monsterSpawner != null)
@@ -88,6 +91,13 @@ public class WaveTimerController : MonoBehaviour
     // 當一波怪物被清空時調用
     private void OnWaveCompleted()
     {
+        // 同步波次狀態
+        currentWave = monsterSpawner.GetCurrentWave();
+        
+        // 保存當前狀態
+        GameDB.currentWave = currentWave;
+        GameDB.Save();
+        
         // 如果不是最後一波，開始計時下一波
         if (currentWave < monsterSpawner.totalWaves)
         {
@@ -98,6 +108,14 @@ public class WaveTimerController : MonoBehaviour
     // 當新的一波開始時調用
     private void OnWaveStarted()
     {
+        // 更新當前波次 (與 MonsterSpawner 保持同步)
+        currentWave = monsterSpawner.GetCurrentWave();
+        UpdateWaveText();
+        
+        // 保存當前狀態
+        GameDB.currentWave = currentWave;
+        GameDB.Save();
+        
         // 停止計時器
         isTimerActive = false;
     }
@@ -105,15 +123,21 @@ public class WaveTimerController : MonoBehaviour
     // 開始波次間的計時器
     private void StartWaveTimer()
     {
+        // 為下一波更新波數
         currentWave++;
         UpdateWaveText();
-        
+    
+        // 關鍵修改：更新 GameDB 中的下一波數值
+        // 這確保了即使切換場景，回來後也會顯示正確的波數
+        GameDB.currentWave = currentWave;
+        GameDB.Save(); // 立即保存更新的波數
+    
         // 重設填充圖片並開始倒數
         if (timerFillImage != null)
         {
             timerFillImage.fillAmount = 1f;
         }
-        
+    
         StartCoroutine(CountdownTimer());
     }
     

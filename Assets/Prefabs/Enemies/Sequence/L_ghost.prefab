@@ -138,6 +138,7 @@ GameObject:
   - component: {fileID: 6747450194548548701}
   - component: {fileID: 4473758148628723656}
   - component: {fileID: 3709915106638208354}
+  - component: {fileID: 2429985556364044289}
   m_Layer: 0
   m_Name: L_ghost
   m_TagString: Untagged
@@ -340,6 +341,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   traget: {fileID: 2263502838131984, guid: 75bacd367aa8aa449b00670780ef2edc, type: 3}
   agent: {fileID: 7264697579495101029}
+--- !u!114 &2429985556364044289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3049527744438981808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0295d50c6510a55419495dcb481b3c2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinPrefab: {fileID: 22302317296963439, guid: 830c8f39631e2154386c46e8e8cbcc56,
+    type: 3}
+  minCoins: 5
+  maxCoins: 7
+  healthBarQuad: {fileID: 9024034730952402656}
 --- !u!1 &9024034730952402656
 GameObject:
   m_ObjectHideFlags: 0
