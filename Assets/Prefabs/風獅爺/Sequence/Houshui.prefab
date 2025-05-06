@@ -51,8 +51,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.12657835, y: 0.14086567, z: 0.52330166}
-  m_Center: {x: -0.22085392, y: 0.07816489, z: 0.23834917}
+  m_Size: {x: 0.12657832, y: 0.14086567, z: 1.8499745}
+  m_Center: {x: -0.22085392, y: 0.078164905, z: -0.14607257}
 --- !u!1 &6036298624617539756
 GameObject:
   m_ObjectHideFlags: 0
@@ -66,7 +66,6 @@ GameObject:
   - component: {fileID: 3010987140104788616}
   - component: {fileID: 5480024037815172680}
   - component: {fileID: 1647309930649800878}
-  - component: {fileID: 6402738208439077975}
   m_Layer: 0
   m_Name: Hp
   m_TagString: Untagged
@@ -173,20 +172,6 @@ SortingGroup:
   m_SortingLayer: 0
   m_SortingOrder: 1100
   m_SortAtRoot: 0
---- !u!114 &6402738208439077975
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6036298624617539756}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7e3770fe9c29d84bb272df7781a0087, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHP: 100
-  currentHP: 100
 --- !u!1 &6631425310867886074
 GameObject:
   m_ObjectHideFlags: 0
@@ -542,5 +527,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.12657835, y: 0.14086567, z: 0.52330166}
-  m_Center: {x: -0.22085392, y: 0.07816489, z: 0.23834917}
+  m_Size: {x: 0.12657832, y: 0.14086567, z: 1.5288557}
+  m_Center: {x: -0.22085392, y: 0.078164905, z: 0.016822375}

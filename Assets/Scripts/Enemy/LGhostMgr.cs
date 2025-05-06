@@ -11,7 +11,7 @@ public class LGhostMgr : MonoBehaviour
     private float ghostSpd;
     private Animator animator;
     
-    private RGhostHpHandler hpHandler;
+    private LGhostHpHandler hpHandler;
     
     private bool isDead = false;
     void Start()

@@ -235,8 +235,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinPrefab: {fileID: 22302317296963439, guid: 830c8f39631e2154386c46e8e8cbcc56,
     type: 3}
-  minCoins: 3
-  maxCoins: 5
+  minCoins: 6
+  maxCoins: 8
   healthBarQuad: {fileID: 8482777773865480126}
 --- !u!1 &8476650976812582692
 GameObject:
@@ -371,7 +371,6 @@ GameObject:
   - component: {fileID: 601238023210128725}
   - component: {fileID: 3767317865006060148}
   - component: {fileID: 1372869547194993117}
-  - component: {fileID: 2747966689916973927}
   m_Layer: 0
   m_Name: Hp
   m_TagString: Untagged
@@ -478,17 +477,3 @@ SortingGroup:
   m_SortingLayer: 0
   m_SortingOrder: 1100
   m_SortAtRoot: 0
---- !u!114 &2747966689916973927
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8482777773865480126}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7e3770fe9c29d84bb272df7781a0087, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHP: 100
-  currentHP: 100

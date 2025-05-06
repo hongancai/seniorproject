@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 4653350939911877543}
   - component: {fileID: 6957603035952784831}
   - component: {fileID: 5107560588490752123}
-  - component: {fileID: 4873505907522533083}
   m_Layer: 0
   m_Name: Hp
   m_TagString: Untagged
@@ -120,20 +119,6 @@ SortingGroup:
   m_SortingLayer: 0
   m_SortingOrder: 1100
   m_SortAtRoot: 0
---- !u!114 &4873505907522533083
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 917636174080680024}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7e3770fe9c29d84bb272df7781a0087, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHP: 100
-  currentHP: 100
 --- !u!1 &2052119298565745921
 GameObject:
   m_ObjectHideFlags: 0

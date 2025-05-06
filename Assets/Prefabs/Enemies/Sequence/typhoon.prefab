@@ -354,8 +354,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinPrefab: {fileID: 22302317296963439, guid: 830c8f39631e2154386c46e8e8cbcc56,
     type: 3}
-  minCoins: 1
-  maxCoins: 3
+  minCoins: 2
+  maxCoins: 4
   healthBarQuad: {fileID: 441791619254874730}
 --- !u!1 &4263568321041782498
 GameObject:

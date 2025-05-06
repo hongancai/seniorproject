@@ -5,8 +5,8 @@ using UnityEngine;
 public class RBirdHpHandler : MonoBehaviour
 {
     public GameObject coinPrefab;
-    public int minCoins = 2;
-    public int maxCoins = 4;
+    public int minCoins = 3;
+    public int maxCoins = 6;
     
     // 血條Quad物件引用
     public GameObject healthBarQuad;

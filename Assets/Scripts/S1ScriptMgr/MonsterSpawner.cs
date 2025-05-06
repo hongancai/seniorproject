@@ -19,7 +19,8 @@ public class MonsterSpawner : MonoBehaviour
     
     public GameObject shopObject;
     public GameObject parkEntrance;
-    public GameObject nextLevelEntrance;
+    //public GameObject nextLevelEntrance;
+    public GameObject winPnl;
     
     public int totalWaves = 6;           // 改為六波
     public int monstersPerWave = 5;       // 這個將不再直接使用，改為根據波次動態設定
@@ -63,7 +64,7 @@ public class MonsterSpawner : MonoBehaviour
 
     private void InitializeLevel()
     {
-        nextLevelEntrance.SetActive(false);
+        winPnl.SetActive(false);
         shopObject.SetActive(true);
         parkEntrance.SetActive(true);
         
@@ -100,128 +101,144 @@ public class MonsterSpawner : MonoBehaviour
     {
         // 從當前波次開始生成，使用 GameDB 中保存的值
         currentWave = GameDB.currentWave;
-    
+
         for (int wave = currentWave; wave <= totalWaves; wave++)
         {
             currentWave = wave;
-        
+
             // 更新 GameDB 中的當前波次
             GameDB.currentWave = currentWave;
             GameDB.Save(); // 保存當前狀態
-            
+
             // 顯示警告
             warningSystem.ShowWarning();
-            yield return new WaitForSeconds(3f);  // 等待警告顯示完成
-            
+            yield return new WaitForSeconds(3f); // 等待警告顯示完成
+
             // 關閉場景物件
             DisableSceneObjects();
-            
+
             // 根據波次生成不同怪物
             switch (wave)
             {
-                case 1:  // 第一波：五隻暴風
+                case 1: // 第一波：五隻暴風
                     currentWaveMonsters = 5;
                     yield return SpawnMonsters(new Dictionary<string, int>
                     {
-                        {"leftStorm", 5}
+                        { "leftStorm", 5 }
                     });
                     break;
-                    
-                case 2:  // 第二波：左右側各兩隻暴風、兩隻鳥
+
+                case 2: // 第二波：左右側各兩隻暴風、兩隻鳥
                     currentWaveMonsters = 8; // 2+2+2+2 = 8隻怪物
                     yield return SpawnMonsters(new Dictionary<string, int>
                     {
-                        {"leftStorm", 2},
-                        {"rightStorm", 2},
-                        {"leftBird", 2},
-                        {"rightBird", 2}
+                        { "leftStorm", 2 },
+                        { "rightStorm", 2 },
+                        { "leftBird", 2 },
+                        { "rightBird", 2 }
                     });
                     break;
-                    
-                case 3:  // 第三波：左右側各一隻暴風、兩隻鳥、兩個士兵
+
+                case 3: // 第三波：左右側各一隻暴風、兩隻鳥、兩個士兵
                     currentWaveMonsters = 10; // (1+2+2)左 + (1+2+2)右 = 10隻怪物
                     yield return SpawnMonsters(new Dictionary<string, int>
                     {
-                        {"leftStorm", 1},
-                        {"rightStorm", 1},
-                        {"leftBird", 2},
-                        {"rightBird", 2},
-                        {"leftSoldier", 2},
-                        {"rightSoldier", 2}
+                        { "leftStorm", 1 },
+                        { "rightStorm", 1 },
+                        { "leftBird", 2 },
+                        { "rightBird", 2 },
+                        { "leftSoldier", 2 },
+                        { "rightSoldier", 2 }
                     });
                     break;
-                      
-                case 4:  // 第四波：左右側各兩隻鳥、兩個士兵、三個漁人
+
+                case 4: // 第四波：左右側各兩隻鳥、兩個士兵、三個漁人
                     currentWaveMonsters = 14; // (2+2+3)左 + (2+2+3)右 = 14隻怪物
                     yield return SpawnMonsters(new Dictionary<string, int>
                     {
-                        {"leftBird", 2},
-                        {"rightBird", 2},
-                        {"leftSoldier", 2},
-                        {"rightSoldier", 2},
-                        {"leftFishman", 3},
-                        {"rightFishman", 3}
+                        { "leftBird", 2 },
+                        { "rightBird", 2 },
+                        { "leftSoldier", 2 },
+                        { "rightSoldier", 2 },
+                        { "leftFishman", 3 },
+                        { "rightFishman", 3 }
                     });
                     break;
-                
-                case 5:  // 第五波：左右側各兩個士兵、三個漁人、三隻鬼
+
+                case 5: // 第五波：左右側各兩個士兵、三個漁人、三隻鬼
                     currentWaveMonsters = 16; // (2+3+3)左 + (2+3+3)右 = 16隻怪物
                     yield return SpawnMonsters(new Dictionary<string, int>
                     {
-                        {"leftSoldier", 2},
-                        {"rightSoldier", 2},
-                        {"leftFishman", 3},
-                        {"rightFishman", 3},
-                        {"leftGhost", 3},
-                        {"rightGhost", 3}
+                        { "leftSoldier", 2 },
+                        { "rightSoldier", 2 },
+                        { "leftFishman", 3 },
+                        { "rightFishman", 3 },
+                        { "leftGhost", 3 },
+                        { "rightGhost", 3 }
                     });
                     break;
-                
-                case 6:  // 第六波：共有兩個暴風、兩隻鳥、三個士兵、四個漁人、四個鬼
+
+                case 6: // 第六波：共有兩個暴風、兩隻鳥、三個士兵、四個漁人、四個鬼
                     currentWaveMonsters = 17; // 2+2+3+4+6 = 17隻怪物
                     yield return SpawnMonsters(new Dictionary<string, int>
                     {
-                        {"leftStorm", 1},
-                        {"rightStorm", 1},
-                        {"leftBird", 1},
-                        {"rightBird", 1},
-                        {"leftSoldier", 2},
-                        {"rightSoldier", 1},
-                        {"leftFishman", 2},
-                        {"rightFishman", 2},
-                        {"leftGhost", 3},
-                        {"rightGhost", 3}
+                        { "leftStorm", 1 },
+                        { "rightStorm", 1 },
+                        { "leftBird", 1 },
+                        { "rightBird", 1 },
+                        { "leftSoldier", 2 },
+                        { "rightSoldier", 1 },
+                        { "leftFishman", 2 },
+                        { "rightFishman", 2 },
+                        { "leftGhost", 3 },
+                        { "rightGhost", 3 }
                     });
                     break;
             }
 
             // 等待當前波次的怪物被清空
             yield return new WaitUntil(() => currentWaveMonsters <= 0);
-            
+
             // 更新 GameDB 的波次完成狀態
             UpdateGameDBWaveStatus(wave);
-            
+
             // 保存狀態
             GameDB.Save();
-            
+
             // 開啟場景物件
             EnableSceneObjects();
-            
+
             // 觸發波次完成事件
             OnWaveCompleted?.Invoke();
-            
-            // 最後一波結束後開啟下一關入口
+
+            // WIN
             if (wave == totalWaves)
             {
-                nextLevelEntrance.SetActive(true);
+                winPnl.SetActive(true);
             }
             else
             {
-                yield return new WaitForSeconds(25f);  // 波次間隔
+                yield return new WaitForSeconds(25f); // 波次間隔
+            }
+
+            if (winPnl.activeSelf)
+            {
+                Time.timeScale = 0;
+                float currentVolume = GameDB.Audio._bgmAudioSource.volume;
+                if (GameDB.Audio._bgmAudioSource != null)
+                {
+                    if (!GameDB.Audio._bgmAudioSource.isPlaying)
+                    {
+                        GameDB.Audio._bgmAudioSource.Play();
+                    }
+
+                    // 保持原有音量，不降低
+                    GameDB.Audio._bgmAudioSource.volume = currentVolume;
+                }
             }
         }
     }
-    
+
     // 更新 GameDB 的波次狀態
     private void UpdateGameDBWaveStatus(int wave)
     {

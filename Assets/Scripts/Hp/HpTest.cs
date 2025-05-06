@@ -61,4 +61,5 @@ public class HpTest : MonoBehaviour
         Debug.Log(hpPercentage);
         hpHandler.SetHp(hpPercentage);
     }
+    
 }
