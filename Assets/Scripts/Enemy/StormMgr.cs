@@ -7,7 +7,8 @@ public class StormMgr : MonoBehaviour
 {
     public Transform traget;
     public NavMeshAgent agent;
-    
+
+    private float stormSpeed;
     private Animator animator;
     private bool isDead = false;
     
@@ -21,8 +22,10 @@ public class StormMgr : MonoBehaviour
     }
     
     void Start()
-    {  
+    {
+        stormSpeed = GameDB.storm.enemybased.Spd;
         agent = GetComponent<NavMeshAgent>();
+        agent.speed = stormSpeed;
         animator = GetComponentInChildren<Animator>(); // 獲取子物件上的Animator
         hpHandler = GetComponentInChildren<StormHpHandler>();
     }
@@ -80,6 +83,5 @@ public class StormMgr : MonoBehaviour
             agent.enabled = false;
         }
         
-        // 注意：我們不在這裡播放死亡動畫，由StormHpHandler負責處理
     }
 }

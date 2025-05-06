@@ -133,7 +133,6 @@ GameObject:
   - component: {fileID: 5282757913914063869}
   - component: {fileID: 8934428485919980753}
   - component: {fileID: 5115781039676901425}
-  - component: {fileID: 5965308744129852558}
   m_Layer: 0
   m_Name: Hp
   m_TagString: Untagged
@@ -240,20 +239,6 @@ SortingGroup:
   m_SortingLayer: 0
   m_SortingOrder: 1100
   m_SortAtRoot: 0
---- !u!114 &5965308744129852558
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5234988805928235168}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7e3770fe9c29d84bb272df7781a0087, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHP: 100
-  currentHP: 100
 --- !u!1 &7440900180845231169
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,6 +255,7 @@ GameObject:
   - component: {fileID: 4100593028231324021}
   - component: {fileID: 6281006791981792006}
   - component: {fileID: 5922199372207002506}
+  - component: {fileID: 1304749535049402147}
   m_Layer: 0
   m_Name: Qionglin
   m_TagString: Untagged
@@ -436,3 +422,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c12b24c14464b04295d1166a41a4ab0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1304749535049402147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7440900180845231169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3dc5e9438973d245acfa6a9efdc2080, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBarQuad: {fileID: 5234988805928235168}
+  hurtsfx: {fileID: 8300000, guid: b63ebfed11009ca418ed6805931a24b8, type: 3}
+  infoPanelHandler: {fileID: 0}

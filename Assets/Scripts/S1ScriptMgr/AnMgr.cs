@@ -43,7 +43,6 @@ public class AnMgr : WindLionGodBaseMgr
 
     private  void Update()
     {
-        Debug.Log ("============>"+currentState);
         switch (currentState)
         {
             case Status.Idle:

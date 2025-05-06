@@ -9342,6 +9342,11 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1991842349471845092, guid: e9ea77b4350cbc148b1a6f1611e9e950,
+        type: 3}
+      propertyPath: blackImg
+      value: 
+      objectReference: {fileID: 1151888198}
     - target: {fileID: 3312785976322877295, guid: e9ea77b4350cbc148b1a6f1611e9e950,
         type: 3}
       propertyPath: m_SortingOrder
@@ -14744,15 +14749,15 @@ MonoBehaviour:
   - {fileID: 571678060}
   - {fileID: 1850779750}
   - {fileID: 2117149014}
-  qionglinprefabs: {fileID: 6445586940266981759, guid: 1636cc685b7b7834088015d3c2e6986c,
+  qionglinprefabs: {fileID: 7440900180845231169, guid: 3fc49e4d4b53eaf4a91f87544d61a141,
     type: 3}
-  houshuiprefabs: {fileID: 35124367444229913, guid: cbef2a35776dfed4b8cd9c75862a5a80,
+  houshuiprefabs: {fileID: 6999759777478376281, guid: 816857be4049d7641a0e44097eae2c7c,
     type: 3}
-  liuprefabs: {fileID: 2987370417034821724, guid: ae4cb0a78bf44184da1db214047d8be4,
+  liuprefabs: {fileID: 4752103428878638752, guid: d1f4aa40a049a0f4b8e72a3bb6695ba9,
     type: 3}
-  anprefabs: {fileID: 6468111561045020269, guid: 4a74bfdadc6b5134988fa7e268a78739,
+  anprefabs: {fileID: 6086078852946165840, guid: c2134f4393a2b6c4c8e2efaaa6623f79,
     type: 3}
-  tahouprefabs: {fileID: 3934151419306809092, guid: cf7bb3a887a2dba46888eeaf84d86c48,
+  tahouprefabs: {fileID: 9082990109832598144, guid: b78c1ac5f1fca3642aba81364dab4b22,
     type: 3}
   coinprefabs: {fileID: 22302317296963439, guid: 830c8f39631e2154386c46e8e8cbcc56,
     type: 3}

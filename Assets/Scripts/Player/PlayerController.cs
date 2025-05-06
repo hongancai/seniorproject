@@ -9,7 +9,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody _rb;
     private InputMaster _inputMaster;
     private Animator animator;
-    
+
+    public GameObject blackImg;
 
     private string lastDirection = "L"; // 預設為左邊
     private float normalSpeed = 4.0f;   // 正常移動速度
@@ -33,6 +34,18 @@ public class PlayerController : MonoBehaviour
 
     private void Movement()
     {
+        // 檢查黑幕是否顯示
+        if (blackImg != null && blackImg.activeSelf)
+        {
+            // 當黑幕顯示時，停止所有速度並播放閒置動畫
+            _rb.velocity = Vector3.zero;
+            string idleAnimation = lastDirection == "R" ? "R_idle" : "L_idle";
+            if (!animator.GetCurrentAnimatorStateInfo(0).IsName(idleAnimation))
+            {
+                animator.Play(idleAnimation);
+            }
+            return;  // 直接返回，不執行後面的移動代碼
+        }
         Vector3 move = Vector3.zero;
         bool isMoving = false;
         

@@ -81,7 +81,7 @@ public static class GameDB
     private static void InitializeEnemys()
     {
         storm = new EnemyNpc();
-        storm.enemybased = new EnemyBuff() { HP = 50, Atk = 10, Def = 2, Spd = 1.5f};
+        storm.enemybased = new EnemyBuff() { HP = 50, Atk = 10, Def = 2, Spd = 0.4f};
         
         bird = new EnemyNpc();
         bird.enemybased = new EnemyBuff() { HP = 80, Atk = 15, Def = 5, Spd = 2.0f};

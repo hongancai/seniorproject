@@ -34,6 +34,7 @@ public class S1Mgr : MonoBehaviour
     private TahouMgr _tahouMgr;
     
     private TowerPnlMgr _towerPnlMgr;
+   
     
 
     #region Life Cycle
@@ -61,7 +62,7 @@ public class S1Mgr : MonoBehaviour
         if (GameDB.qionglinPos != Vector3.zero)
         {
             GameObject temp = Instantiate(qionglinprefabs);
-            temp.transform.localScale = Vector3.one;
+            temp.transform.localScale =  new Vector3(2.5f, 2.5f, 1);
             temp.transform.localEulerAngles = new Vector3(30, 0, 0);
             temp.transform.localPosition = GameDB.qionglinPos;
             _qionglinMgr.SetAvatar(temp);
@@ -70,7 +71,7 @@ public class S1Mgr : MonoBehaviour
         if (GameDB.houshuiPos != Vector3.zero)
         {
             GameObject temp = Instantiate(houshuiprefabs);
-            temp.transform.localScale = Vector3.one;
+            temp.transform.localScale =new Vector3(5.92f, 3.85f, 1);;
             temp.transform.localEulerAngles = new Vector3(30, 0, 0);
             temp.transform.localPosition = GameDB.houshuiPos;
             _houshuiMgr.SetAvatar(temp);
@@ -79,7 +80,7 @@ public class S1Mgr : MonoBehaviour
         if (GameDB.liuPos != Vector3.zero)
         {
             GameObject temp = Instantiate(liuprefabs);
-            temp.transform.localScale = Vector3.one;
+            temp.transform.localScale =  new Vector3(2.3f,2.3f,1);
             temp.transform.localEulerAngles = new Vector3(30, 0, 0);
             temp.transform.localPosition = GameDB.liuPos;
             _liuMgr.SetAvatar(temp);
@@ -88,8 +89,8 @@ public class S1Mgr : MonoBehaviour
         if (GameDB.anPos != Vector3.zero)
         {
             GameObject temp = Instantiate(anprefabs);
-            temp.transform.localScale = Vector3.one;
-            temp.transform.localEulerAngles = new Vector3(30, 0, 0);
+            temp.transform.localScale = new Vector3(2.3f,2.3f,1);
+            temp.transform.localEulerAngles =  new Vector3(30, 0, 0);
             temp.transform.localPosition = GameDB.anPos;
             _anMgr.SetAvatar(temp);
         }
@@ -97,7 +98,7 @@ public class S1Mgr : MonoBehaviour
         if (GameDB.tahouPos != Vector3.zero)
         {
             GameObject temp = Instantiate(tahouprefabs);
-            temp.transform.localScale = Vector3.one;
+            temp.transform.localScale = new Vector3(2.59f,2.3f,1);
             temp.transform.localEulerAngles = new Vector3(30, 0, 0);
             temp.transform.localPosition = GameDB.tahouPos;
             _tahouMgr.SetAvatar(temp);
@@ -195,6 +196,7 @@ public class S1Mgr : MonoBehaviour
             .SetUpdate(true)
             .OnComplete(() => { blackScreen.gameObject.SetActive(false); 
                 });
+        
         GameDB.Load();
         UpdateDisplay();
     }
