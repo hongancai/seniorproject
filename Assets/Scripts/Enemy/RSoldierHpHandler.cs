@@ -20,7 +20,7 @@ public class RSoldierHpHandler : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        // 從GameDB獲取鳥敵人的最大血量
+        // 從GameDB獲取敵人的最大血量
         maxHP = GameDB.soilder.enemybased.HP;
         currentHP = maxHP;
         
